@@ -1,0 +1,34 @@
+select
+	s.username,
+	s.sid,
+	s.serial#,
+	&&v_10gopts s.sql_id,
+	p.pid ppid,
+	s.status,
+	s.machine,
+	s.osuser,
+	substr(s.program,1,20) client_program,
+	s.process client_process,
+	substr(p.program,1,20) server_program,
+	p.spid spid,
+	to_char(logon_time, 'mm/dd/yy hh24:mi:ss') logon_time,
+	-- idle time
+	-- days added to hours
+	--( trunc(LAST_CALL_ET/86400) * 24 ) || ':'  ||
+	-- days separately
+	substr('0'||trunc(LAST_CALL_ET/86400),-2,2)  || ':'  ||
+	-- hours
+	substr('0'||trunc(mod(LAST_CALL_ET,86400)/3600),-2,2) || ':' ||
+	-- minutes
+	substr('0'||trunc(mod(mod(LAST_CALL_ET,86400),3600)/60),-2,2) || ':' ||
+	--seconds
+	substr('0'||mod(mod(mod(LAST_CALL_ET,86400),3600),60),-2,2)  idle_time
+from v$session s, v$process p
+where s.username is not null
+	-- use outer join to show sniped sessions in
+	-- v$session that don't have an OS process
+	and p.addr(+) = s.paddr
+	-- uncomment to see only your own session
+	--and userenv('SESSIONID') = s.audsid
+order by username, sid
+/
