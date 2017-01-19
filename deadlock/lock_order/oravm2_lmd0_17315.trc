@@ -1,0 +1,305 @@
+Trace file /u01/app/oracle/diag/rdbms/oravm/oravm2/trace/oravm2_lmd0_17315.trc
+Oracle Database 11g Enterprise Edition Release 11.2.0.2.0 - 64bit Production
+With the Partitioning, Real Application Clusters, OLAP, Data Mining
+and Real Application Testing options
+ORACLE_HOME = /u01/app/oracle/product/11.2.0/db_1
+System name:	Linux
+Node name:	oravm02.jks.com
+Release:	2.6.18-194.el5
+Version:	#1 SMP Mon Mar 29 22:10:29 EDT 2010
+Machine:	x86_64
+Instance name: oravm2
+Redo thread mounted by this instance: 0 <none>
+Oracle process number: 12
+Unix process pid: 17315, image: oracle@oravm02.jks.com (LMD0)
+
+
+*** 2012-07-19 13:32:26.077
+*** SESSION ID:(12.1) 2012-07-19 13:32:26.077
+*** CLIENT ID:() 2012-07-19 13:32:26.077
+*** SERVICE NAME:() 2012-07-19 13:32:26.077
+*** MODULE NAME:() 2012-07-19 13:32:26.077
+*** ACTION NAME:() 2012-07-19 13:32:26.077
+ 
+* Load Monitor used for high load check 
+* Old Low - High Load Threshold Range = [0 - 0] 
+* hlcpu 5 (kjihpc 5), slpct 90, llpct 75 
+* New Low - High Load Threshold Range = [960 - 1280] 
+
+*** 2012-07-19 13:32:27.337
+KSXPCINI: kjxgnpub KSXP 2.2.0GESR000 13, 0
+ftd (4) received from node 1 (4 4.0/0.0) 
+all ftds received 
+* kjxhvmaph: domain 0 valid = 1 according to instance 1 
+ftd (6) received from node 1 (4 7.0/0.0) 
+all ftds received 
+ftd (8) received from node 1 (4 9.0/0.0) 
+all ftds received 
+ftd (13) received from node 1 (4 14.0/0.0) 
+all ftds received 
+ftd (15) received from node 1 (4 16.0/0.0) 
+all ftds received 
+ftd (17) received from node 1 (4 16.0/0.0) 
+all ftds received 
+ftd (19) received from node 1 (4 20.0/0.0) 
+all ftds received 
+* Initialize deadlock detection * 
+ftd (21) received from node 1 (4 22.0/0.0) 
+all ftds received 
+ftd (23) received from node 1 (4 22.0/0.0) 
+all ftds received 
+
+*** 2012-07-19 13:32:27.978
+* received DRM start msg from 1 (cnt 1, last 1, rmno 1) 
+Rcvd DRM(1) AFFINITY Transfer pkey 2.1 to 1 oscan 1.1
+
+*** 2012-07-19 13:32:28.020
+* kjxpnpgoh: PnP Go Ahead received from 1 (pnp inc 4) 
+ftd (30) received from node 1 (4 0.31/0.0) 
+all ftds received 
+ftd (33) received from node 1 (4 0.33/2.0) 
+all ftds received 
+
+* kjxftdn: break from kjxftdn, post lmon later 
+ftd (35) received from node 1 (4 0.36/6.0) 
+all ftds received 
+ftd (37) received from node 1 (4 0.38/7.0) 
+all ftds received 
+2012-07-19 13:32:28.117576 : 
+End DRM(1) for pkey transfer request(s) from 1
+
+*** 2012-07-19 13:32:36.651
+Begin DRM(2) (swin 1) - AFFINITY transfer pkey 5.1 to 2 oscan 1.1
+kjiobjscn 1 
+ftd (30) received from node 1 (4 0.0/0.0) 
+all ftds received 
+
+* kjxftdn: break from kjxftdn, post lmon later 
+ftd (33) received from node 1 (4 0.33/5.0) 
+all ftds received 
+
+* kjxftdn: break from kjxftdn, post lmon later 
+ftd (35) received from node 1 (4 0.35/6.0) 
+all ftds received 
+
+* kjxftdn: break from kjxftdn, post lmon later 
+ftd (37) received from node 1 (4 0.38/7.0) 
+all ftds received 
+2012-07-19 13:32:36.752411 : 
+
+* End DRM for pkey remastering request(s) (locally requested)
+
+*** 2012-07-19 13:35:19.206
+ENQUEUE DUMP REQUEST: from 1 spnum 12 on [0xe0007][0x8ba],[TX][ext 0x5,0x0] for reason 3 mtype 0
+DUMP LOCAL BLOCKER/HOLDER: block level 3 res [0xe0007][0x8ba],[TX][ext 0x5,0x0]
+----------resource 0xb6786450----------------------
+resname       : [0xe0007][0x8ba],[TX][ext 0x5,0x0]
+hash mask     : x3
+Local inst    : 2
+dir_inst      : 2
+master_inst   : 2
+hv idx        : 21
+hv last r.inc : 0
+current inc   : 4
+hv status     : 0
+hv master     : 0
+open options  : dd 
+grant_bits    : KJUSERNL KJUSEREX 
+grant mode    : KJUSERNL  KJUSERCR  KJUSERCW  KJUSERPR  KJUSERPW  KJUSEREX
+count         : 1         0         0         0         0         1
+val_state     : KJUSERVS_NOVALUE
+valblk        : 0x00000000000000000000000000000000 .
+access_inst   : 2
+vbreq_state   : 0
+state         : x0
+resp          : 0xb6786450
+On Scan_q?    : N
+Total accesses: 161
+Imm.  accesses: 144
+Granted_locks : 1 
+Cvting_locks  : 1 
+value_block:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+GRANTED_Q :
+lp 0xbcfed7c8 gl KJUSEREX rp 0xb6786450 [0xe0007][0x8ba],[TX][ext 0x5,0x0]
+  master 2 gl owner 0xc27eacd8 possible pid 17660 xid 27000-0002-0000000D bast 0 rseq 8 mseq 0 history 0x95
+  open opt KJUSERDEADLOCK  
+CONVERT_Q: 
+lp 0xbcfed988 gl KJUSERNL rl KJUSERPR rp 0xb6786450 [0xe0007][0x8ba],[TX][ext 0x5,0x0]
+  master 2 owner 1  bast 0 rseq 123 mseq 0x1 history 0x97ad
+  convert opt KJUSERGETVALUE  
+----------enqueue 0xbcfed7c8------------------------
+lock version     : 1
+Owner inst       : 2
+grant_level      : KJUSEREX
+req_level        : KJUSEREX
+bast_level       : KJUSERNL
+notify_func      : (nil)
+resp             : 0xb6786450
+procp            : 0xc0634580
+pid              : 17315
+proc version     : 0
+oprocp           : (nil)
+opid             : 17315
+group lock owner : 0xc27eacd8
+possible pid     : 17660
+xid              : 27000-0002-0000000D
+dd_time          : 0.0 secs
+dd_count         : 0
+timeout          : 0.0 secs
+On_timer_q?      : N
+On_dd_q?         : N
+lock_state       : GRANTED
+ast_flag         : 0x0
+Open Options     : KJUSERDEADLOCK 
+Convert options  : KJUSERNOQUEUE KJUSERNODEADLOCKWAIT 
+History          : 0x95
+Msg_Seq          : 0x0
+res_seq          : 8
+valblk           : 0x00000000000000000000000000000000 .
+user session for deadlock lock 0xbcfed7c8
+  sid: 45 ser: 15 audsid: 1108527 user: 90/JKSTILL
+    flags: (0x45) USR/- flags_idl: (0x1) BSY/-/-/-/-/-
+    flags2: (0x40008) -/-
+  pid: 39 O/S info: user: oracle, term: UNKNOWN, ospid: 17660
+    image: oracle@oravm02.jks.com
+  client details:
+    O/S info: user: jkstill, term: pts/22, ospid: 30056
+    machine: poirot program: sqlplus@poirot (TNS V1-V3)
+    application name: SQL*Plus, hash value=3669949024
+  current SQL:
+  insert into table_1 values (2,'S2')
+DUMP LOCAL BLOCKER: initiate state dump for DEADLOCK
+  possible owner[39.17660] on resource TX-000E0007-000008BA
+
+*** 2012-07-19 13:35:19.313
+Submitting asynchronized dump request [28]. summary=[ges process stack dump (kjdglblkrdm1)].
+Global blockers dump start:---------------------------------
+DUMP LOCAL BLOCKER/HOLDER: block level 3 res [0xa0011][0x4204],[TX][ext 0x2,0x0]
+----------resource 0xc085ff28----------------------
+resname       : [0xa0011][0x4204],[TX][ext 0x2,0x0]
+hash mask     : x3
+Local inst    : 2
+dir_inst      : 1
+master_inst   : 1
+hv idx        : 105
+hv last r.inc : 0
+current inc   : 4
+hv status     : 0
+hv master     : 0
+open options  : dd 
+Held mode     : KJUSERNL
+Cvt mode      : KJUSERPR
+Next Cvt mode : KJUSERNL
+msg_seq       : 0x1
+res_seq       : 3
+grant_bits    : KJUSERNL 
+grant mode    : KJUSERNL  KJUSERCR  KJUSERCW  KJUSERPR  KJUSERPW  KJUSEREX
+count         : 1         0         0         0         0         0
+val_state     : KJUSERVS_NOVALUE
+valblk        : 0x303d9270ff7f00000000000000000000 0=p
+access_inst   : 1
+vbreq_state   : 0
+state         : x8
+resp          : 0xc085ff28
+On Scan_q?    : N
+Total accesses: 33
+Imm.  accesses: 18
+Granted_locks : 0 
+Cvting_locks  : 1 
+value_block:  30 3d 92 70 ff 7f 00 00 00 00 00 00 00 00 00 00
+GRANTED_Q :
+CONVERT_Q: 
+lp 0xc0b046f0 gl KJUSERNL rl KJUSERPR rp 0xc085ff28 [0xa0011][0x4204],[TX][ext 0x2,0x0]
+  master 1 gl owner 0xc27eacd8 possible pid 17660 xid 27000-0002-0000000D bast 0 rseq 3 mseq 0 history 0xda5149da
+  convert opt KJUSERGETVALUE  
+DUMP LOCAL BLOCKER/HOLDER: block level 3 res [0xe0007][0x8ba],[TX][ext 0x5,0x0]
+----------resource 0xb6786450----------------------
+resname       : [0xe0007][0x8ba],[TX][ext 0x5,0x0]
+hash mask     : x3
+Local inst    : 2
+dir_inst      : 2
+master_inst   : 2
+hv idx        : 21
+hv last r.inc : 0
+current inc   : 4
+hv status     : 0
+hv master     : 0
+open options  : dd 
+grant_bits    : KJUSERNL KJUSEREX 
+grant mode    : KJUSERNL  KJUSERCR  KJUSERCW  KJUSERPR  KJUSERPW  KJUSEREX
+count         : 1         0         0         0         0         1
+val_state     : KJUSERVS_NOVALUE
+valblk        : 0x303d9270ff7f00000000000000000000 0=p
+access_inst   : 2
+vbreq_state   : 0
+state         : x0
+resp          : 0xb6786450
+On Scan_q?    : N
+Total accesses: 163
+Imm.  accesses: 145
+Granted_locks : 1 
+Cvting_locks  : 1 
+value_block:  30 3d 92 70 ff 7f 00 00 00 00 00 00 00 00 00 00
+GRANTED_Q :
+lp 0xbcfed7c8 gl KJUSEREX rp 0xb6786450 [0xe0007][0x8ba],[TX][ext 0x5,0x0]
+  master 2 gl owner 0xc27eacd8 possible pid 17660 xid 27000-0002-0000000D bast 0 rseq 8 mseq 0 history 0x95
+  open opt KJUSERDEADLOCK  
+CONVERT_Q: 
+lp 0xbcfed988 gl KJUSERNL rl KJUSERPR rp 0xb6786450 [0xe0007][0x8ba],[TX][ext 0x5,0x0]
+  master 2 owner 1  bast 0 rseq 123 mseq 0x1 history 0x97ad
+  convert opt KJUSERGETVALUE  
+----------enqueue 0xbcfed7c8------------------------
+lock version     : 1
+Owner inst       : 2
+grant_level      : KJUSEREX
+req_level        : KJUSEREX
+bast_level       : KJUSERNL
+notify_func      : (nil)
+resp             : 0xb6786450
+procp            : 0xc0634580
+pid              : 17315
+proc version     : 0
+oprocp           : (nil)
+opid             : 17315
+group lock owner : 0xc27eacd8
+possible pid     : 17660
+xid              : 27000-0002-0000000D
+dd_time          : 0.0 secs
+dd_count         : 0
+timeout          : 0.0 secs
+On_timer_q?      : N
+On_dd_q?         : N
+lock_state       : GRANTED
+ast_flag         : 0x0
+Open Options     : KJUSERDEADLOCK 
+Convert options  : KJUSERNOQUEUE KJUSERNODEADLOCKWAIT 
+History          : 0x95
+Msg_Seq          : 0x0
+res_seq          : 8
+valblk           : 0x00000000000000003100050200000000 .1
+user session for deadlock lock 0xbcfed7c8
+  sid: 45 ser: 15 audsid: 1108527 user: 90/JKSTILL
+    flags: (0x45) USR/- flags_idl: (0x1) BSY/-/-/-/-/-
+    flags2: (0x40008) -/-
+  pid: 39 O/S info: user: oracle, term: UNKNOWN, ospid: 17660
+    image: oracle@oravm02.jks.com
+  client details:
+    O/S info: user: jkstill, term: pts/22, ospid: 30056
+    machine: poirot program: sqlplus@poirot (TNS V1-V3)
+    application name: SQL*Plus, hash value=3669949024
+  current SQL:
+  insert into table_1 values (2,'S2')
+DUMP LOCAL BLOCKER: initiate state dump for DEADLOCK
+  possible owner[39.17660] on resource TX-000E0007-000008BA
+
+*** 2012-07-19 13:35:19.315
+Submitting asynchronized dump request [28]. summary=[ges process stack dump (kjdglblkrdm1)].
+Global blockers dump end:-----------------------------------
+Global Wait-For-Graph(WFG) at ddTS[0.1] :
+BLOCKED 0xc0b046f0 3 wq 2 cvtops x1 TX 0xa0011.0x4204(ext 0x2,0x0)[27000-0002-0000000D] inst 2 
+BLOCKER 0xaf1479c8 3 wq 1 cvtops x28 TX 0xa0011.0x4204(ext 0x2,0x0)[24000-0001-0000039A] inst 1 
+BLOCKED 0xc09e8e00 3 wq 2 cvtops x1 TX 0xe0007.0x8ba(ext 0x5,0x0)[24000-0001-0000039A] inst 1 
+BLOCKER 0xbcfed7c8 3 wq 1 cvtops x28 TX 0xe0007.0x8ba(ext 0x5,0x0)[27000-0002-0000000D] inst 2 
+
+*** 2012-07-19 13:35:20.335
+* Cancel deadlock victim lockp 0xc0b046f0 
