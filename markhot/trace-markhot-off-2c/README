@@ -1,0 +1,44 @@
+
+Cursors  were purged, SQL re-ran - database was not restarted
+
+The 'cursor pin S wait on X' reappeared
+
+--
+
+SQL> 
+SQL> @purge_cursors 8buc8vvg6765r
+SQL_ID:
+
+PL/SQL procedure successfully completed.
+
+
+INVALIDATIONS EXECUTIONS CHILD_NUMBER
+------------- ---------- ------------
+	    0	       4	    0
+
+1 row selected.
+
+Purging SQL_ID 8buc8vvg6765r Cursor: 0000000095B2A480,3731069111
+8buc8vvg6765r: 0
+
+PL/SQL procedure successfully completed.
+
+
+no rows selected
+
+SQL> @purge_cursors 8buc8vvg6765r
+SQL_ID:
+
+PL/SQL procedure successfully completed.
+
+
+no rows selected
+
+8buc8vvg6765r: 0
+
+PL/SQL procedure successfully completed.
+
+
+no rows selected
+
+

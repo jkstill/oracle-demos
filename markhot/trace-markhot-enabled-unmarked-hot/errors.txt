@@ -1,0 +1,26 @@
+%ORA-12537%
+%ORA-12541%
+%ORA-29273%
+'+  --    ORA-24241: source text is wrapped.
+ ORA-01435 user does not exist 
+(--   ORA-20000: insufficient privileges
+ --   ORA-20001: Bad input value
+B--   ORA-20002: Bad user statistics table, may need to upgrade it
+ORA-01014:
+ORA-01089:
+ORA-00600:
+ORA-27403:
+ORA-01013:
+H#--   UNTIL_SCN_IS_NULL (ORA-20213)
+*%--   NO_RECOVERY_CATALOG (ORA-20300)
+2)--   TRANSLATION_IN_PROGRESS (ORA-20203)
+5---   TRANSLATION_NOT_IN_PROGRESS (ORA-20204)
+^@<error>ORA-20011: Approximate NDV failed: ORA-29913: error in ex@<notes><histograms>VERSION#;ELEM_TOID;</histograms><xstats></xst	
+%ORA-12537%
+%ORA-12541%
+%ORA-29273%
+dump PGA summary when signalling ORA-4036
+bytes of PGA usage below which process will not get ORA-4036
+disable policy timeout error (ORA-12751)
+don't signal ORA-1245 due to file 1 being offline
+ORA-07445: exception encountered: core dump [ksdfnd()+11] [SIGSEGV] [ADDR:0xB0002000] [PC:0xBE533B] [Address not mapped to object] []

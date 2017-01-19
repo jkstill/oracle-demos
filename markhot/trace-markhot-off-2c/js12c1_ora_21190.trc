@@ -1,0 +1,94 @@
+Trace file /u01/app/oracle/diag/rdbms/js12c1/js12c1/trace/js12c1_ora_21190.trc
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+ORACLE_HOME = /u01/app/oracle/product/12.1.0/db1
+System name:	Linux
+Node name:	localhost.localdomain
+Release:	3.8.13-118.15.3.el7uek.x86_64
+Version:	#2 SMP Wed Jan 4 15:33:28 PST 2017
+Machine:	x86_64
+Instance name: js12c1
+Redo thread mounted by this instance: 1
+Oracle process number: 41
+Unix process pid: 21190, image: oracle@localhost.localdomain
+
+
+*** 2017-01-18 12:14:16.083
+*** SESSION ID:(259.40516) 2017-01-18 12:14:16.083
+*** CLIENT ID:() 2017-01-18 12:14:16.083
+*** SERVICE NAME:(p01) 2017-01-18 12:14:16.083
+*** MODULE NAME:(SQL*Plus) 2017-01-18 12:14:16.083
+*** CLIENT DRIVER:(SQL*PLUS) 2017-01-18 12:14:16.083
+*** ACTION NAME:() 2017-01-18 12:14:16.083
+*** CONTAINER ID:(3) 2017-01-18 12:14:16.083
+ 
+WAIT #140450452142968: nam='SQL*Net message to client' ela= 0 driver id=1413697536 #bytes=1 p3=0 obj#=-1 tim=54732952500
+WAIT #140450452142968: nam='SQL*Net message from client' ela= 144 driver id=1413697536 #bytes=1 p3=0 obj#=-1 tim=54732952886
+CLOSE #140450452142968:c=0,e=2,dep=0,type=1,tim=54732952905
+
+*** 2017-01-18 12:14:37.335
+=====================
+PARSING IN CURSOR #140450452125384 len=169 dep=0 uid=110 oct=3 lid=110 tim=54754204492 hv=3731069111 ad='95b2a480' sqlid='8buc8vvg6765r'
+select t1.*
+from
+t t1
+, t t2
+, t t3
+, t t4
+, t t5
+, t t6
+, t t7
+, t t8
+, t t9
+, t t10
+/*, t t11
+, t t12
+, t t13
+, t t14
+, t t15
+, t t16
+, t t17
+, t t18
+, t t19
+, t t20*/
+END OF STMT
+PARSE #140450452125384:c=21132000,e=21251571,p=0,cr=0,cu=0,mis=1,r=0,dep=0,og=1,plh=1837345459,tim=54754204491
+EXEC #140450452125384:c=0,e=160,p=0,cr=0,cu=0,mis=0,r=0,dep=0,og=1,plh=1837345459,tim=54754204807
+WAIT #140450452125384: nam='SQL*Net message to client' ela= 2 driver id=1413697536 #bytes=1 p3=0 obj#=-1 tim=54754233361
+FETCH #140450452125384:c=0,e=25,p=0,cr=0,cu=0,mis=0,r=0,dep=0,og=1,plh=1837345459,tim=54754233441
+STAT #140450452125384 id=1 cnt=0 pid=0 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=25 us cost=20 size=368 card=1)'
+STAT #140450452125384 id=2 cnt=0 pid=1 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=22 us cost=18 size=368 card=1)'
+STAT #140450452125384 id=3 cnt=0 pid=2 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=21 us cost=16 size=368 card=1)'
+STAT #140450452125384 id=4 cnt=0 pid=3 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=20 us cost=14 size=368 card=1)'
+STAT #140450452125384 id=5 cnt=0 pid=4 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=18 us cost=12 size=368 card=1)'
+STAT #140450452125384 id=6 cnt=0 pid=5 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=17 us cost=10 size=368 card=1)'
+STAT #140450452125384 id=7 cnt=0 pid=6 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=15 us cost=8 size=368 card=1)'
+STAT #140450452125384 id=8 cnt=0 pid=7 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=13 us cost=6 size=368 card=1)'
+STAT #140450452125384 id=9 cnt=0 pid=8 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=13 us cost=4 size=368 card=1)'
+STAT #140450452125384 id=10 cnt=0 pid=9 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=10 us cost=2 size=368 card=1)'
+STAT #140450452125384 id=11 cnt=0 pid=9 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #140450452125384 id=12 cnt=0 pid=11 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #140450452125384 id=13 cnt=0 pid=8 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=4 size=0 card=1)'
+STAT #140450452125384 id=14 cnt=0 pid=13 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #140450452125384 id=15 cnt=0 pid=7 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=6 size=0 card=1)'
+STAT #140450452125384 id=16 cnt=0 pid=15 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #140450452125384 id=17 cnt=0 pid=6 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=8 size=0 card=1)'
+STAT #140450452125384 id=18 cnt=0 pid=17 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #140450452125384 id=19 cnt=0 pid=5 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=10 size=0 card=1)'
+STAT #140450452125384 id=20 cnt=0 pid=19 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #140450452125384 id=21 cnt=0 pid=4 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=12 size=0 card=1)'
+STAT #140450452125384 id=22 cnt=0 pid=21 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #140450452125384 id=23 cnt=0 pid=3 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=14 size=0 card=1)'
+STAT #140450452125384 id=24 cnt=0 pid=23 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #140450452125384 id=25 cnt=0 pid=2 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=16 size=0 card=1)'
+STAT #140450452125384 id=26 cnt=0 pid=25 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #140450452125384 id=27 cnt=0 pid=1 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=18 size=0 card=1)'
+STAT #140450452125384 id=28 cnt=0 pid=27 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+WAIT #140450452125384: nam='SQL*Net message from client' ela= 549 driver id=1413697536 #bytes=1 p3=0 obj#=-1 tim=54754271912
+CLOSE #140450452125384:c=0,e=11,dep=0,type=0,tim=54754272009
+=====================
+PARSING IN CURSOR #140449981082016 len=55 dep=0 uid=110 oct=42 lid=110 tim=54754272070 hv=2217940283 ad='0' sqlid='06nvwn223659v'
+alter session set events '10046 trace name context off'
+END OF STMT
+PARSE #140449981082016:c=0,e=21,p=0,cr=0,cu=0,mis=0,r=0,dep=0,og=0,plh=0,tim=54754272069
+EXEC #140449981082016:c=0,e=256,p=0,cr=0,cu=0,mis=0,r=0,dep=0,og=0,plh=0,tim=54754272347

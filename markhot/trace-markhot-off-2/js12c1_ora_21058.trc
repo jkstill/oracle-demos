@@ -1,0 +1,95 @@
+Trace file /u01/app/oracle/diag/rdbms/js12c1/js12c1/trace/js12c1_ora_21058.trc
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+ORACLE_HOME = /u01/app/oracle/product/12.1.0/db1
+System name:	Linux
+Node name:	localhost.localdomain
+Release:	3.8.13-118.15.3.el7uek.x86_64
+Version:	#2 SMP Wed Jan 4 15:33:28 PST 2017
+Machine:	x86_64
+Instance name: js12c1
+Redo thread mounted by this instance: 1
+Oracle process number: 41
+Unix process pid: 21058, image: oracle@localhost.localdomain
+
+
+*** 2017-01-18 12:07:55.487
+*** SESSION ID:(255.51848) 2017-01-18 12:07:55.487
+*** CLIENT ID:() 2017-01-18 12:07:55.487
+*** SERVICE NAME:(p01) 2017-01-18 12:07:55.487
+*** MODULE NAME:(SQL*Plus) 2017-01-18 12:07:55.487
+*** CLIENT DRIVER:(SQL*PLUS) 2017-01-18 12:07:55.487
+*** ACTION NAME:() 2017-01-18 12:07:55.487
+*** CONTAINER ID:(3) 2017-01-18 12:07:55.487
+ 
+WAIT #139960616970544: nam='SQL*Net message to client' ela= 1 driver id=1413697536 #bytes=1 p3=0 obj#=-1 tim=54352356668
+WAIT #139960616970544: nam='SQL*Net message from client' ela= 334 driver id=1413697536 #bytes=1 p3=0 obj#=-1 tim=54352357248
+CLOSE #139960616970544:c=0,e=5,dep=0,type=1,tim=54352357278
+
+*** 2017-01-18 12:08:16.899
+WAIT #139960616944472: nam='cursor: pin S wait on X' ela= 21411263 idn=3731069111 value=94489280512 where=21474836480 obj#=-1 tim=54373768592
+=====================
+PARSING IN CURSOR #139960616944472 len=169 dep=0 uid=110 oct=3 lid=110 tim=54373768707 hv=3731069111 ad='95b2a480' sqlid='8buc8vvg6765r'
+select t1.*
+from
+t t1
+, t t2
+, t t3
+, t t4
+, t t5
+, t t6
+, t t7
+, t t8
+, t t9
+, t t10
+/*, t t11
+, t t12
+, t t13
+, t t14
+, t t15
+, t t16
+, t t17
+, t t18
+, t t19
+, t t20*/
+END OF STMT
+PARSE #139960616944472:c=243000,e=21411413,p=0,cr=0,cu=0,mis=0,r=0,dep=0,og=1,plh=1837345459,tim=54373768707
+EXEC #139960616944472:c=0,e=74,p=0,cr=0,cu=0,mis=0,r=0,dep=0,og=1,plh=1837345459,tim=54373768836
+WAIT #139960616944472: nam='SQL*Net message to client' ela= 2 driver id=1413697536 #bytes=1 p3=0 obj#=-1 tim=54373768880
+FETCH #139960616944472:c=0,e=12,p=0,cr=0,cu=0,mis=0,r=0,dep=0,og=1,plh=1837345459,tim=54373768909
+STAT #139960616944472 id=1 cnt=0 pid=0 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=17 us cost=20 size=368 card=1)'
+STAT #139960616944472 id=2 cnt=0 pid=1 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=15 us cost=18 size=368 card=1)'
+STAT #139960616944472 id=3 cnt=0 pid=2 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=14 us cost=16 size=368 card=1)'
+STAT #139960616944472 id=4 cnt=0 pid=3 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=14 us cost=14 size=368 card=1)'
+STAT #139960616944472 id=5 cnt=0 pid=4 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=12 us cost=12 size=368 card=1)'
+STAT #139960616944472 id=6 cnt=0 pid=5 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=12 us cost=10 size=368 card=1)'
+STAT #139960616944472 id=7 cnt=0 pid=6 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=11 us cost=8 size=368 card=1)'
+STAT #139960616944472 id=8 cnt=0 pid=7 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=9 us cost=6 size=368 card=1)'
+STAT #139960616944472 id=9 cnt=0 pid=8 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=9 us cost=4 size=368 card=1)'
+STAT #139960616944472 id=10 cnt=0 pid=9 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=8 us cost=2 size=368 card=1)'
+STAT #139960616944472 id=11 cnt=0 pid=9 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139960616944472 id=12 cnt=0 pid=11 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139960616944472 id=13 cnt=0 pid=8 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=4 size=0 card=1)'
+STAT #139960616944472 id=14 cnt=0 pid=13 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139960616944472 id=15 cnt=0 pid=7 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=6 size=0 card=1)'
+STAT #139960616944472 id=16 cnt=0 pid=15 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139960616944472 id=17 cnt=0 pid=6 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=8 size=0 card=1)'
+STAT #139960616944472 id=18 cnt=0 pid=17 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139960616944472 id=19 cnt=0 pid=5 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=10 size=0 card=1)'
+STAT #139960616944472 id=20 cnt=0 pid=19 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139960616944472 id=21 cnt=0 pid=4 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=12 size=0 card=1)'
+STAT #139960616944472 id=22 cnt=0 pid=21 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139960616944472 id=23 cnt=0 pid=3 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=14 size=0 card=1)'
+STAT #139960616944472 id=24 cnt=0 pid=23 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139960616944472 id=25 cnt=0 pid=2 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=16 size=0 card=1)'
+STAT #139960616944472 id=26 cnt=0 pid=25 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139960616944472 id=27 cnt=0 pid=1 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=18 size=0 card=1)'
+STAT #139960616944472 id=28 cnt=0 pid=27 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+WAIT #139960616944472: nam='SQL*Net message from client' ela= 597 driver id=1413697536 #bytes=1 p3=0 obj#=-1 tim=54373769739
+CLOSE #139960616944472:c=0,e=5,dep=0,type=0,tim=54373769773
+=====================
+PARSING IN CURSOR #139960616944472 len=55 dep=0 uid=110 oct=42 lid=110 tim=54373769944 hv=2217940283 ad='0' sqlid='06nvwn223659v'
+alter session set events '10046 trace name context off'
+END OF STMT
+PARSE #139960616944472:c=0,e=152,p=0,cr=0,cu=0,mis=0,r=0,dep=0,og=0,plh=0,tim=54373769943
+EXEC #139960616944472:c=1000,e=249,p=0,cr=0,cu=0,mis=0,r=0,dep=0,og=0,plh=0,tim=54373770211

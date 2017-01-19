@@ -1,0 +1,6 @@
+
+select color, tranny, count(*)
+from cars
+group by color, tranny
+/
+

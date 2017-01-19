@@ -16,7 +16,7 @@ select username traceowner from v$process where pname = 'PMON';
 select host_name tracehost from v$instance;
 
 -- set tracefile identifier
-alter session set tracefile_identifier = '50-COL';
+alter session set tracefile_identifier = '2-COL';
 
 select value tracefile from v$diag_info where name = 'Default Trace File';
 

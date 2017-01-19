@@ -1,0 +1,47 @@
+
+Cursor unmarked hot and then purged
+
+apparently unmarkhot also purges the cursor from the shared pool
+
+'cursor: pin S wait on X' returned.
+
+Boths sessions did crash consistently.
+This is a an unpatched version of 12.1.0.2...
+
+
+----------
+
+select t1.*
+*
+ERROR at line 1:
+ORA-03113: end-of-file on communication channel
+Process ID: 21782
+Session ID: 262 Serial number: 44890
+
+---------
+
+
+
+SQL> l
+  1  begin
+  2  	dbms_shared_pool.unmarkhot('a6200685bcab063585e988dede6398b7', 0);
+  3* end;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> @@purge_cursors 8buc8vvg6765r
+SQL_ID:
+
+PL/SQL procedure successfully completed.
+
+
+no rows selected
+
+8buc8vvg6765r: 0
+
+PL/SQL procedure successfully completed.
+
+
+no rows selected
+

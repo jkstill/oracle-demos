@@ -1,0 +1,2118 @@
+Trace file /u01/app/oracle/diag/rdbms/js12c1/js12c1/trace/js12c1_ora_20695.trc
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+ORACLE_HOME = /u01/app/oracle/product/12.1.0/db1
+System name:	Linux
+Node name:	localhost.localdomain
+Release:	3.8.13-118.15.3.el7uek.x86_64
+Version:	#2 SMP Wed Jan 4 15:33:28 PST 2017
+Machine:	x86_64
+Instance name: js12c1
+Redo thread mounted by this instance: 1
+Oracle process number: 46
+Unix process pid: 20695, image: oracle@localhost.localdomain
+
+
+*** 2017-01-18 11:54:43.053
+*** SESSION ID:(22.33672) 2017-01-18 11:54:43.053
+*** CLIENT ID:() 2017-01-18 11:54:43.053
+*** SERVICE NAME:(p01) 2017-01-18 11:54:43.053
+*** MODULE NAME:(SQL*Plus) 2017-01-18 11:54:43.053
+*** CLIENT DRIVER:(SQL*PLUS) 2017-01-18 11:54:43.053
+*** ACTION NAME:() 2017-01-18 11:54:43.053
+*** CONTAINER ID:(3) 2017-01-18 11:54:43.053
+ 
+WAIT #139990760531696: nam='SQL*Net message to client' ela= 2 driver id=1413697536 #bytes=1 p3=0 obj#=-1 tim=53559923106
+WAIT #139990760531696: nam='SQL*Net message from client' ela= 263 driver id=1413697536 #bytes=1 p3=0 obj#=-1 tim=53559923679
+CLOSE #139990760531696:c=0,e=21,dep=0,type=1,tim=53559923734
+=====================
+PARSING IN CURSOR #139990675572584 len=484 dep=1 uid=0 oct=3 lid=0 tim=53559924091 hv=3039452944 ad='99705610' sqlid='7fwum1yuknrsh'
+select t.ts#,t.file#,t.block#,nvl(t.bobj#,0),nvl(t.tab#,0),t.intcols,nvl(t.clucols,0),t.flags,t.pctfree$,t.pctused$,t.initrans,t.maxtrans,t.rowcnt,t.blkcnt,t.empcnt,t.avgspc,t.chncnt,t.avgrln,t.analyzetime,t.samplesize,t.cols,t.property,nvl(t.degree,1),nvl(t.instances,1),t.avgspc_flb,t.flbcnt,t.kernelcols,nvl(t.trigflag, 0),nvl(t.spare1,0),nvl(t.spare2,0),t.spare4,t.spare6,ts.cachedblk,ts.cachehit,ts.logicalread from tab$ t, tab_stats$ ts where t.obj#= :1 and t.obj# = ts.obj# (+)
+END OF STMT
+BINDS #139990675572584:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7ec188  bln=22  avl=04  flg=05
+  value=92684
+EXEC #139990675572584:c=0,e=75,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=2035254952,tim=53559924145
+FETCH #139990675572584:c=0,e=48,p=0,cr=4,cu=0,mis=0,r=1,dep=1,og=4,plh=2035254952,tim=53559924202
+CLOSE #139990675572584:c=0,e=5,dep=1,type=3,tim=53559924221
+=====================
+PARSING IN CURSOR #139990760540816 len=210 dep=2 uid=0 oct=3 lid=0 tim=53559924755 hv=864012087 ad='99741ce0' sqlid='96g93hntrzjtr'
+select /*+ rule */ bucket_cnt, row_cnt, cache_cnt, null_cnt, timestamp#, sample_size, minimum, maximum, distcnt, lowval, hival, density, col#, spare1, spare2, avgcln from hist_head$ where obj#=:1 and intcol#=:2
+END OF STMT
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=4
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=1
+EXEC #139990760540816:c=0,e=103,p=0,cr=0,cu=0,mis=0,r=0,dep=2,og=3,plh=2239883476,tim=53559924835
+FETCH #139990760540816:c=0,e=36,p=0,cr=3,cu=0,mis=0,r=1,dep=2,og=3,plh=2239883476,tim=53559924911
+CLOSE #139990760540816:c=0,e=5,dep=2,type=3,tim=53559924939
+=====================
+PARSING IN CURSOR #139990675551664 len=39 dep=1 uid=0 oct=3 lid=0 tim=53559925445 hv=2576572266 ad='99799750' sqlid='gd28w82ct6rva'
+select audit$ from tab$ where obj# = :1
+END OF STMT
+BINDS #139990675551664:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7ec188  bln=22  avl=04  flg=05
+  value=92684
+EXEC #139990675551664:c=1000,e=1267,p=0,cr=3,cu=0,mis=1,r=0,dep=1,og=4,plh=2970138452,tim=53559925499
+FETCH #139990675551664:c=0,e=19,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=4,plh=2970138452,tim=53559925527
+STAT #139990675551664 id=1 cnt=1 pid=0 pos=1 obj=4 op='TABLE ACCESS CLUSTER TAB$ (cr=3 pr=0 pw=0 time=22 us cost=2 size=44 card=1)'
+STAT #139990675551664 id=2 cnt=1 pid=1 pos=1 obj=3 op='INDEX UNIQUE SCAN I_OBJ# (cr=2 pr=0 pw=0 time=12 us cost=1 size=0 card=1)'
+CLOSE #139990675551664:c=0,e=41,dep=1,type=3,tim=53559925592
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=10
+EXEC #139990760540816:c=0,e=58,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559927290
+FETCH #139990760540816:c=0,e=22,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559927321
+CLOSE #139990760540816:c=0,e=3,dep=3,type=3,tim=53559927337
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=2
+EXEC #139990760540816:c=0,e=43,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559927442
+FETCH #139990760540816:c=0,e=8,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559927456
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559927467
+=====================
+PARSING IN CURSOR #139990760522752 len=151 dep=3 uid=0 oct=3 lid=0 tim=53559928104 hv=2507062328 ad='9973a990' sqlid='7u49y06aqxg1s'
+select /*+ rule */ bucket, endpoint, col#, epvalue, epvalue_raw, ep_repeat_count from histgrm$ where obj#=:1 and intcol#=:2 and row#=:3 order by bucket
+END OF STMT
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=2
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=01  flg=01
+  value=0
+EXEC #139990760522752:c=2000,e=683,p=0,cr=0,cu=0,mis=1,r=0,dep=3,og=3,plh=3312420081,tim=53559928166
+FETCH #139990760522752:c=0,e=59,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559928233
+STAT #139990760522752 id=1 cnt=20 pid=0 pos=1 obj=0 op='SORT ORDER BY (cr=3 pr=0 pw=0 time=55 us cost=0 size=0 card=0)'
+STAT #139990760522752 id=2 cnt=20 pid=1 pos=1 obj=66 op='TABLE ACCESS CLUSTER HISTGRM$ (cr=3 pr=0 pw=0 time=39 us)'
+STAT #139990760522752 id=3 cnt=1 pid=2 pos=1 obj=65 op='INDEX UNIQUE SCAN I_OBJ#_INTCOL# (cr=2 pr=0 pw=0 time=5 us)'
+CLOSE #139990760522752:c=0,e=29,dep=3,type=3,tim=53559928275
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=2
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=1
+EXEC #139990760522752:c=0,e=40,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559928331
+FETCH #139990760522752:c=0,e=53,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559928389
+CLOSE #139990760522752:c=0,e=5,dep=3,type=3,tim=53559928409
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=2
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=2
+EXEC #139990760522752:c=0,e=48,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559928471
+FETCH #139990760522752:c=0,e=39,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559928515
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559928526
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=2
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=3
+EXEC #139990760522752:c=0,e=36,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559928576
+FETCH #139990760522752:c=0,e=36,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559928616
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559928626
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=2
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=4
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559928673
+FETCH #139990760522752:c=0,e=37,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559928714
+CLOSE #139990760522752:c=0,e=2,dep=3,type=3,tim=53559928723
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=2
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=5
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559928769
+FETCH #139990760522752:c=0,e=35,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559928808
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559928818
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=2
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=6
+EXEC #139990760522752:c=0,e=58,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559928887
+FETCH #139990760522752:c=0,e=42,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559928936
+CLOSE #139990760522752:c=0,e=5,dep=3,type=3,tim=53559928951
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=2
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=7
+EXEC #139990760522752:c=0,e=38,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559929011
+FETCH #139990760522752:c=0,e=37,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559929062
+CLOSE #139990760522752:c=0,e=4,dep=3,type=3,tim=53559929073
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=2
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=8
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559929121
+FETCH #139990760522752:c=0,e=36,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559929162
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559929172
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=2
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=9
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559929218
+FETCH #139990760522752:c=0,e=35,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559929257
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559929267
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=2
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=10
+EXEC #139990760522752:c=1000,e=71,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559929350
+FETCH #139990760522752:c=0,e=45,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559929429
+CLOSE #139990760522752:c=0,e=5,dep=3,type=3,tim=53559929446
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=2
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=11
+EXEC #139990760522752:c=0,e=39,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559929499
+FETCH #139990760522752:c=0,e=35,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559929539
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559929549
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=2
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=12
+EXEC #139990760522752:c=0,e=36,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559929601
+FETCH #139990760522752:c=0,e=40,p=0,cr=3,cu=0,mis=0,r=14,dep=3,og=3,plh=3312420081,tim=53559929645
+CLOSE #139990760522752:c=0,e=1,dep=3,type=3,tim=53559929665
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=3
+EXEC #139990760540816:c=0,e=40,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559929832
+FETCH #139990760540816:c=0,e=14,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559929852
+CLOSE #139990760540816:c=0,e=4,dep=3,type=3,tim=53559929890
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=15
+EXEC #139990760540816:c=0,e=30,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559929941
+FETCH #139990760540816:c=0,e=8,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559929953
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559929962
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=31
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=15
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=01  flg=01
+  value=0
+EXEC #139990760522752:c=0,e=38,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559930012
+FETCH #139990760522752:c=0,e=27,p=0,cr=3,cu=0,mis=0,r=4,dep=3,og=3,plh=3312420081,tim=53559930043
+CLOSE #139990760522752:c=0,e=2,dep=3,type=3,tim=53559930058
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=1
+EXEC #139990760540816:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559930274
+FETCH #139990760540816:c=0,e=12,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559930291
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559930303
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=75
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=1
+EXEC #139990760540816:c=0,e=27,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559930349
+FETCH #139990760540816:c=1000,e=63,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559930416
+CLOSE #139990760540816:c=0,e=3,dep=3,type=3,tim=53559930453
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=6
+EXEC #139990760540816:c=0,e=32,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559930583
+FETCH #139990760540816:c=0,e=8,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559930596
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559930605
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=6
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=01  flg=01
+  value=0
+EXEC #139990760522752:c=0,e=49,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559930676
+FETCH #139990760522752:c=0,e=48,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559930729
+CLOSE #139990760522752:c=0,e=6,dep=3,type=3,tim=53559930744
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=6
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=1
+EXEC #139990760522752:c=0,e=37,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559930795
+FETCH #139990760522752:c=0,e=37,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559930836
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559930846
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=6
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=2
+EXEC #139990760522752:c=0,e=46,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559930929
+FETCH #139990760522752:c=0,e=40,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559930974
+CLOSE #139990760522752:c=0,e=5,dep=3,type=3,tim=53559930988
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=6
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=3
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559931036
+FETCH #139990760522752:c=0,e=36,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559931077
+CLOSE #139990760522752:c=0,e=2,dep=3,type=3,tim=53559931086
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=6
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=4
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559931135
+FETCH #139990760522752:c=0,e=36,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559931175
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559931185
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=6
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=5
+EXEC #139990760522752:c=0,e=42,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559931237
+FETCH #139990760522752:c=0,e=35,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559931277
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559931287
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=6
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=6
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559931335
+FETCH #139990760522752:c=1000,e=76,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559931416
+CLOSE #139990760522752:c=0,e=7,dep=3,type=3,tim=53559931448
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=6
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=7
+EXEC #139990760522752:c=0,e=40,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559931503
+FETCH #139990760522752:c=0,e=40,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559931548
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559931558
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=6
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=8
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559931603
+FETCH #139990760522752:c=0,e=35,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559931642
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559931652
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=6
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=9
+EXEC #139990760522752:c=0,e=34,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559931697
+FETCH #139990760522752:c=0,e=35,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559931736
+CLOSE #139990760522752:c=0,e=2,dep=3,type=3,tim=53559931745
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=6
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=10
+EXEC #139990760522752:c=0,e=41,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559931806
+FETCH #139990760522752:c=0,e=35,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559931846
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559931856
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=6
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=11
+EXEC #139990760522752:c=0,e=39,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559931931
+FETCH #139990760522752:c=0,e=38,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559931975
+CLOSE #139990760522752:c=0,e=4,dep=3,type=3,tim=53559931988
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=6
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=12
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559932036
+FETCH #139990760522752:c=0,e=37,p=0,cr=3,cu=0,mis=0,r=14,dep=3,og=3,plh=3312420081,tim=53559932077
+CLOSE #139990760522752:c=0,e=1,dep=3,type=3,tim=53559932089
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=2
+EXEC #139990760540816:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559932217
+FETCH #139990760540816:c=0,e=12,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559932234
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559932244
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=3
+EXEC #139990760540816:c=0,e=26,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559932288
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559932297
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559932305
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=3
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=01  flg=01
+  value=0
+EXEC #139990760522752:c=0,e=36,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559932352
+FETCH #139990760522752:c=1000,e=55,p=0,cr=3,cu=0,mis=0,r=2,dep=3,og=3,plh=3312420081,tim=53559932411
+CLOSE #139990760522752:c=0,e=1,dep=3,type=3,tim=53559932438
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=4
+EXEC #139990760540816:c=0,e=36,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559932491
+FETCH #139990760540816:c=0,e=7,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559932503
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559932512
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=4
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=01  flg=01
+  value=0
+EXEC #139990760522752:c=0,e=36,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559932563
+FETCH #139990760522752:c=0,e=15,p=0,cr=3,cu=0,mis=0,r=3,dep=3,og=3,plh=3312420081,tim=53559932583
+CLOSE #139990760522752:c=0,e=1,dep=3,type=3,tim=53559932595
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=5
+EXEC #139990760540816:c=0,e=26,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559932635
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559932645
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559932653
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=5
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=01  flg=01
+  value=0
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559932699
+FETCH #139990760522752:c=0,e=41,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559932744
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559932755
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=5
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=1
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559932803
+FETCH #139990760522752:c=0,e=35,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559932842
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559932852
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=5
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=2
+EXEC #139990760522752:c=0,e=44,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559932939
+FETCH #139990760522752:c=0,e=38,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559932982
+CLOSE #139990760522752:c=0,e=5,dep=3,type=3,tim=53559933001
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=5
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=3
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559933049
+FETCH #139990760522752:c=0,e=34,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559933088
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559933098
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=5
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=4
+EXEC #139990760522752:c=1000,e=64,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559933173
+FETCH #139990760522752:c=0,e=38,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559933227
+CLOSE #139990760522752:c=0,e=6,dep=3,type=3,tim=53559933242
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=5
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=5
+EXEC #139990760522752:c=0,e=37,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559933293
+FETCH #139990760522752:c=0,e=35,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559933332
+CLOSE #139990760522752:c=0,e=4,dep=3,type=3,tim=53559933343
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=5
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=6
+EXEC #139990760522752:c=0,e=40,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559933414
+FETCH #139990760522752:c=0,e=37,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559933455
+CLOSE #139990760522752:c=0,e=4,dep=3,type=3,tim=53559933467
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=5
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=7
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559933519
+FETCH #139990760522752:c=0,e=34,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559933557
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559933567
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=5
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=8
+EXEC #139990760522752:c=0,e=42,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559933623
+FETCH #139990760522752:c=0,e=35,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559933662
+CLOSE #139990760522752:c=0,e=3,dep=3,type=3,tim=53559933672
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=5
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=9
+EXEC #139990760522752:c=0,e=34,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559933717
+FETCH #139990760522752:c=0,e=57,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559933778
+CLOSE #139990760522752:c=0,e=5,dep=3,type=3,tim=53559933797
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=5
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=10
+EXEC #139990760522752:c=0,e=59,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559933894
+FETCH #139990760522752:c=0,e=38,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559933937
+CLOSE #139990760522752:c=0,e=4,dep=3,type=3,tim=53559933949
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=5
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=11
+EXEC #139990760522752:c=1000,e=77,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559934063
+FETCH #139990760522752:c=0,e=49,p=0,cr=3,cu=0,mis=0,r=20,dep=3,og=3,plh=3312420081,tim=53559934119
+CLOSE #139990760522752:c=0,e=4,dep=3,type=3,tim=53559934137
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=5
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=12
+EXEC #139990760522752:c=0,e=39,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559934192
+FETCH #139990760522752:c=0,e=54,p=0,cr=3,cu=0,mis=0,r=14,dep=3,og=3,plh=3312420081,tim=53559934250
+CLOSE #139990760522752:c=0,e=1,dep=3,type=3,tim=53559934269
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=7
+EXEC #139990760540816:c=0,e=70,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559934367
+FETCH #139990760540816:c=0,e=13,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559934402
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559934416
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=7
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=01  flg=01
+  value=0
+EXEC #139990760522752:c=0,e=39,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559934470
+FETCH #139990760522752:c=0,e=19,p=0,cr=3,cu=0,mis=0,r=2,dep=3,og=3,plh=3312420081,tim=53559934493
+CLOSE #139990760522752:c=0,e=0,dep=3,type=3,tim=53559934505
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=8
+EXEC #139990760540816:c=0,e=27,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559934552
+FETCH #139990760540816:c=0,e=6,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559934562
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559934570
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=9
+EXEC #139990760540816:c=0,e=25,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559934608
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559934617
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559934625
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=10
+EXEC #139990760540816:c=0,e=24,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559934662
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559934670
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559934678
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=11
+EXEC #139990760540816:c=0,e=24,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559934713
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559934721
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559934729
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=12
+EXEC #139990760540816:c=0,e=24,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559934764
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559934777
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559934785
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=13
+EXEC #139990760540816:c=0,e=25,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559934823
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559934832
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559934839
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=13
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=01  flg=01
+  value=0
+EXEC #139990760522752:c=0,e=63,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559934911
+FETCH #139990760522752:c=0,e=23,p=0,cr=3,cu=0,mis=0,r=6,dep=3,og=3,plh=3312420081,tim=53559934941
+CLOSE #139990760522752:c=0,e=1,dep=3,type=3,tim=53559934955
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=14
+EXEC #139990760540816:c=0,e=28,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559934999
+FETCH #139990760540816:c=0,e=6,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559935010
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559935018
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=14
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=01  flg=01
+  value=0
+EXEC #139990760522752:c=0,e=35,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559935064
+FETCH #139990760522752:c=0,e=19,p=0,cr=3,cu=0,mis=0,r=9,dep=3,og=3,plh=3312420081,tim=53559935088
+CLOSE #139990760522752:c=0,e=0,dep=3,type=3,tim=53559935098
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=15
+EXEC #139990760540816:c=0,e=26,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559935138
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559935147
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559935155
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=15
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=01  flg=01
+  value=0
+EXEC #139990760522752:c=1000,e=82,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559935256
+FETCH #139990760522752:c=0,e=26,p=0,cr=3,cu=0,mis=0,r=15,dep=3,og=3,plh=3312420081,tim=53559935289
+CLOSE #139990760522752:c=0,e=1,dep=3,type=3,tim=53559935303
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=16
+EXEC #139990760540816:c=0,e=46,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559935367
+FETCH #139990760540816:c=0,e=7,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559935381
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559935392
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=17
+EXEC #139990760540816:c=0,e=27,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559935442
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559935451
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559935459
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=18
+EXEC #139990760540816:c=0,e=24,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559935497
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559935506
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559935513
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=19
+EXEC #139990760540816:c=0,e=25,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559935552
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559935561
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559935568
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=20
+EXEC #139990760540816:c=0,e=24,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559935603
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559935611
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559935619
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=21
+EXEC #139990760540816:c=0,e=25,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559935656
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559935664
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559935671
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=22
+EXEC #139990760540816:c=0,e=29,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559935713
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559935722
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559935730
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=23
+EXEC #139990760540816:c=0,e=53,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559935795
+FETCH #139990760540816:c=0,e=7,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559935808
+CLOSE #139990760540816:c=0,e=3,dep=3,type=3,tim=53559935820
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=24
+EXEC #139990760540816:c=0,e=43,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559935881
+FETCH #139990760540816:c=0,e=7,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559935894
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559935905
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=25
+EXEC #139990760540816:c=0,e=27,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559935946
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559935954
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559935962
+BINDS #139990760522752:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=72 off=0
+  kxsbbbfp=7f521e7ec158  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=01
+  value=25
+ Bind#2
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=48
+  kxsbbbfp=7f521e7ec188  bln=22  avl=01  flg=01
+  value=0
+EXEC #139990760522752:c=0,e=36,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=3312420081,tim=53559936011
+FETCH #139990760522752:c=0,e=21,p=0,cr=3,cu=0,mis=0,r=11,dep=3,og=3,plh=3312420081,tim=53559936037
+CLOSE #139990760522752:c=0,e=0,dep=3,type=3,tim=53559936049
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=26
+EXEC #139990760540816:c=0,e=26,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559936089
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559936098
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559936105
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=27
+EXEC #139990760540816:c=0,e=30,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559936149
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559936157
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559936177
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=28
+EXEC #139990760540816:c=0,e=37,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559936228
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559936238
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559936247
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=29
+EXEC #139990760540816:c=0,e=26,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559936285
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559936293
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559936301
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=30
+EXEC #139990760540816:c=0,e=26,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559936343
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559936352
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559936360
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=31
+EXEC #139990760540816:c=0,e=33,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559936468
+FETCH #139990760540816:c=0,e=8,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559936481
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559936491
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=32
+EXEC #139990760540816:c=0,e=26,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559936532
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559936541
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559936549
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=33
+EXEC #139990760540816:c=0,e=34,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559936597
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559936606
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559936614
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=35
+EXEC #139990760540816:c=0,e=42,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559936672
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559936681
+CLOSE #139990760540816:c=0,e=1,dep=3,type=3,tim=53559936689
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=19
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=37
+EXEC #139990760540816:c=0,e=25,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559936728
+FETCH #139990760540816:c=0,e=6,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559936738
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559936746
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=75
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=2
+EXEC #139990760540816:c=0,e=97,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559936915
+FETCH #139990760540816:c=0,e=7,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559936928
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559936939
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=75
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=3
+EXEC #139990760540816:c=0,e=33,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559936985
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559936994
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559937002
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=02  flg=05
+  value=75
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=4
+EXEC #139990760540816:c=1000,e=72,p=0,cr=0,cu=0,mis=0,r=0,dep=3,og=3,plh=2239883476,tim=53559937084
+FETCH #139990760540816:c=0,e=8,p=0,cr=3,cu=0,mis=0,r=1,dep=3,og=3,plh=2239883476,tim=53559937118
+CLOSE #139990760540816:c=0,e=2,dep=3,type=3,tim=53559937129
+=====================
+PARSING IN CURSOR #139990760467632 len=865 dep=2 uid=0 oct=3 lid=0 tim=53559939060 hv=715221786 ad='996e7418' sqlid='616m6uhpa2usu'
+select i.obj#,i.ts#,i.file#,i.block#,i.intcols,i.type#,i.flags,i.property,i.pctfree$,i.initrans,i.maxtrans,i.blevel,i.leafcnt,i.distkey,i.lblkkey,i.dblkkey,i.clufac,i.cols,i.analyzetime,i.samplesize,i.dataobj#,nvl(i.degree,1),nvl(i.instances,1),i.rowcnt,mod(i.pctthres$,256),i.indmethod#,i.trunccnt,nvl(c.unicols,0),nvl(c.deferrable#+c.valid#,0),nvl(i.spare1,i.intcols),i.spare4,i.spare2,i.spare6,decode(i.pctthres$,null,null,mod(trunc(i.pctthres$/256),256)),nvl(i.evaledition#,1),nvl(i.unusablebefore#,0),nvl(i.unusablebeginning#,0), ist.cachedblk,ist.cachehit,ist.logicalread from ind$ i, ind_stats$ ist, (select enabled, min(cols) unicols,min(to_number(bitand(defer,1))) deferrable#,min(to_number(bitand(defer,4))) valid# from cdef$ where obj#=:1 and enabled > 1 group by enabled) c where i.obj#=c.enabled(+) and i.obj# = ist.obj#(+) and i.bo#=:1 order by i.obj#
+END OF STMT
+BINDS #139990760467632:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7ec188  bln=22  avl=03  flg=05
+  value=448
+ Bind#1
+  No oacdef for this bind.
+EXEC #139990760467632:c=13000,e=13417,p=0,cr=270,cu=0,mis=1,r=0,dep=2,og=4,plh=3455736973,tim=53559939230
+FETCH #139990760467632:c=1000,e=185,p=0,cr=3,cu=0,mis=0,r=0,dep=2,og=4,plh=3455736973,tim=53559939440
+STAT #139990760467632 id=1 cnt=0 pid=0 pos=1 obj=0 op='SORT ORDER BY (cr=3 pr=0 pw=0 time=225 us cost=6 size=360 card=2)'
+STAT #139990760467632 id=2 cnt=0 pid=1 pos=1 obj=0 op='HASH JOIN OUTER (cr=3 pr=0 pw=0 time=210 us cost=5 size=360 card=2)'
+STAT #139990760467632 id=3 cnt=0 pid=2 pos=1 obj=0 op='JOIN FILTER CREATE :BF0000 (cr=3 pr=0 pw=0 time=126 us cost=2 size=274 card=2)'
+STAT #139990760467632 id=4 cnt=0 pid=3 pos=1 obj=0 op='NESTED LOOPS OUTER (cr=3 pr=0 pw=0 time=44 us cost=2 size=274 card=2)'
+STAT #139990760467632 id=5 cnt=0 pid=4 pos=1 obj=19 op='TABLE ACCESS CLUSTER IND$ (cr=3 pr=0 pw=0 time=41 us cost=2 size=170 card=2)'
+STAT #139990760467632 id=6 cnt=1 pid=5 pos=1 obj=3 op='INDEX UNIQUE SCAN I_OBJ# (cr=2 pr=0 pw=0 time=21 us cost=1 size=0 card=1)'
+STAT #139990760467632 id=7 cnt=0 pid=4 pos=2 obj=75 op='TABLE ACCESS BY INDEX ROWID IND_STATS$ (cr=0 pr=0 pw=0 time=0 us cost=0 size=52 card=1)'
+STAT #139990760467632 id=8 cnt=0 pid=7 pos=1 obj=76 op='INDEX UNIQUE SCAN I_IND_STATS$_OBJ# (cr=0 pr=0 pw=0 time=0 us cost=0 size=0 card=1)'
+STAT #139990760467632 id=9 cnt=0 pid=2 pos=2 obj=0 op='VIEW  (cr=0 pr=0 pw=0 time=0 us cost=3 size=172 card=4)'
+STAT #139990760467632 id=10 cnt=0 pid=9 pos=1 obj=0 op='SORT GROUP BY (cr=0 pr=0 pw=0 time=0 us cost=3 size=60 card=4)'
+STAT #139990760467632 id=11 cnt=0 pid=10 pos=1 obj=0 op='JOIN FILTER USE :BF0000 (cr=0 pr=0 pw=0 time=0 us cost=2 size=60 card=4)'
+STAT #139990760467632 id=12 cnt=0 pid=11 pos=1 obj=31 op='TABLE ACCESS BY INDEX ROWID BATCHED CDEF$ (cr=0 pr=0 pw=0 time=0 us cost=2 size=60 card=4)'
+STAT #139990760467632 id=13 cnt=0 pid=12 pos=1 obj=54 op='INDEX RANGE SCAN I_CDEF2 (cr=0 pr=0 pw=0 time=0 us cost=1 size=0 card=4)'
+CLOSE #139990760467632:c=0,e=2,dep=2,type=3,tim=53559939619
+=====================
+PARSING IN CURSOR #139990676670632 len=418 dep=2 uid=0 oct=3 lid=0 tim=53559942224 hv=3759961951 ad='997914a8' sqlid='14d7z6mh1sxuz'
+select name,intcol#,segcol#,type#,length,nvl(precision#,0),decode(type#,2,nvl(scale,-127/*MAXSB1MINAL*/),178,scale,179,scale,180,scale,181,scale,182,scale,183,scale,231,scale,0),null$,fixedstorage,nvl(deflength,0),default$,rowid,col#,property, nvl(charsetid,0),nvl(charsetform,0),spare1,spare2,nvl(spare3,0), nvl(evaledition#,1),nvl(unusablebefore#,0),nvl(unusablebeginning#,0) from col$ where obj#=:1 order by intcol#
+END OF STMT
+BINDS #139990676670632:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7ec188  bln=22  avl=03  flg=05
+  value=448
+EXEC #139990676670632:c=3000,e=2629,p=0,cr=0,cu=0,mis=1,r=0,dep=2,og=4,plh=3765558045,tim=53559942295
+FETCH #139990676670632:c=0,e=43,p=0,cr=3,cu=0,mis=0,r=1,dep=2,og=4,plh=3765558045,tim=53559942348
+FETCH #139990676670632:c=0,e=4,p=0,cr=0,cu=0,mis=0,r=1,dep=2,og=4,plh=3765558045,tim=53559942402
+FETCH #139990676670632:c=0,e=3,p=0,cr=0,cu=0,mis=0,r=1,dep=2,og=4,plh=3765558045,tim=53559942412
+FETCH #139990676670632:c=0,e=2,p=0,cr=0,cu=0,mis=0,r=1,dep=2,og=4,plh=3765558045,tim=53559942420
+FETCH #139990676670632:c=0,e=2,p=0,cr=0,cu=0,mis=0,r=1,dep=2,og=4,plh=3765558045,tim=53559942427
+FETCH #139990676670632:c=0,e=6,p=0,cr=0,cu=0,mis=0,r=0,dep=2,og=4,plh=3765558045,tim=53559942450
+STAT #139990676670632 id=1 cnt=5 pid=0 pos=1 obj=0 op='SORT ORDER BY (cr=3 pr=0 pw=0 time=45 us cost=3 size=708 card=12)'
+STAT #139990676670632 id=2 cnt=5 pid=1 pos=1 obj=21 op='TABLE ACCESS CLUSTER COL$ (cr=3 pr=0 pw=0 time=22 us cost=2 size=708 card=12)'
+STAT #139990676670632 id=3 cnt=1 pid=2 pos=1 obj=3 op='INDEX UNIQUE SCAN I_OBJ# (cr=2 pr=0 pw=0 time=11 us cost=1 size=0 card=1)'
+CLOSE #139990676670632:c=0,e=2,dep=2,type=3,tim=53559942528
+=====================
+PARSING IN CURSOR #139990676960424 len=76 dep=1 uid=0 oct=3 lid=0 tim=53559943006 hv=1052578227 ad='95b31360' sqlid='04kug40zbu4dm'
+select policy#, action# from aud_object_opt$ where object# = :1 and type = 2
+END OF STMT
+PARSE #139990676960424:c=17000,e=17369,p=0,cr=276,cu=0,mis=1,r=0,dep=1,og=4,plh=4006480256,tim=53559943005
+BINDS #139990676960424:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=08 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7ec188  bln=22  avl=04  flg=05
+  value=92684
+EXEC #139990676960424:c=1000,e=1031,p=0,cr=0,cu=0,mis=1,r=0,dep=1,og=4,plh=4006480256,tim=53559944111
+FETCH #139990676960424:c=0,e=43,p=0,cr=9,cu=0,mis=0,r=0,dep=1,og=4,plh=4006480256,tim=53559944178
+STAT #139990676960424 id=1 cnt=0 pid=0 pos=1 obj=448 op='TABLE ACCESS FULL AUD_OBJECT_OPT$ (cr=9 pr=0 pw=0 time=44 us cost=2 size=114 card=1)'
+CLOSE #139990676960424:c=0,e=3,dep=1,type=0,tim=53559944206
+BINDS #139990760467632:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7ec188  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  No oacdef for this bind.
+EXEC #139990760467632:c=0,e=51,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=3455736973,tim=53559944277
+FETCH #139990760467632:c=0,e=51,p=0,cr=3,cu=0,mis=0,r=0,dep=1,og=4,plh=3455736973,tim=53559944334
+CLOSE #139990760467632:c=0,e=2,dep=1,type=3,tim=53559944387
+BINDS #139990676670632:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7ec188  bln=22  avl=04  flg=05
+  value=92684
+EXEC #139990676670632:c=0,e=31,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=3765558045,tim=53559944437
+FETCH #139990676670632:c=0,e=37,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944479
+FETCH #139990676670632:c=0,e=3,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944493
+FETCH #139990676670632:c=0,e=2,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944501
+FETCH #139990676670632:c=0,e=2,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944509
+FETCH #139990676670632:c=0,e=1,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944516
+FETCH #139990676670632:c=0,e=2,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944524
+FETCH #139990676670632:c=0,e=2,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944531
+FETCH #139990676670632:c=0,e=1,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944538
+FETCH #139990676670632:c=0,e=1,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944545
+FETCH #139990676670632:c=0,e=2,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944553
+FETCH #139990676670632:c=0,e=2,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944560
+FETCH #139990676670632:c=0,e=2,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944567
+FETCH #139990676670632:c=0,e=2,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944574
+FETCH #139990676670632:c=0,e=1,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944581
+FETCH #139990676670632:c=0,e=2,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944589
+FETCH #139990676670632:c=0,e=2,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944596
+FETCH #139990676670632:c=0,e=2,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944603
+FETCH #139990676670632:c=0,e=1,p=0,cr=0,cu=0,mis=0,r=1,dep=1,og=4,plh=3765558045,tim=53559944610
+FETCH #139990676670632:c=0,e=3,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=3765558045,tim=53559944623
+CLOSE #139990676670632:c=0,e=1,dep=1,type=3,tim=53559944635
+=====================
+PARSING IN CURSOR #139990676592968 len=276 dep=1 uid=0 oct=3 lid=0 tim=53559944781 hv=412367524 ad='99729290' sqlid='ct2g3h4c98fp4'
+select col#, grantee#, privilege#,max(mod(nvl(option$,0),2)), min(bitand(nvl(option$,0), 4) /4), max(bitand(nvl(option$,0), 8) /8), max(bitand(nvl(option$,0), 16) /16) from objauth$ where obj#=:1 and col# is not null group by privilege#, col#, grantee# order by col#, grantee#
+END OF STMT
+BINDS #139990676592968:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7ec188  bln=22  avl=04  flg=05
+  value=92684
+EXEC #139990676592968:c=0,e=48,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=2968095032,tim=53559944821
+FETCH #139990676592968:c=0,e=18,p=0,cr=2,cu=0,mis=0,r=0,dep=1,og=4,plh=2968095032,tim=53559944845
+CLOSE #139990676592968:c=0,e=2,dep=1,type=3,tim=53559944900
+=====================
+PARSING IN CURSOR #139990676561920 len=258 dep=1 uid=0 oct=3 lid=0 tim=53559944930 hv=743590400 ad='99721cf0' sqlid='8uh6xphq54kh0'
+select grantee#,privilege#,nvl(col#,0),max(mod(nvl(option$,0),2)),min(bitand(nvl(option$,0), 4) /4), max(bitand(nvl(option$,0), 8) /8), max(bitand(nvl(option$,0), 16) /16) from objauth$ where obj#=:1 group by grantee#,privilege#,nvl(col#,0) order by grantee#
+END OF STMT
+BINDS #139990676561920:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7ec188  bln=22  avl=04  flg=05
+  value=92684
+EXEC #139990676561920:c=1000,e=40,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=2968095032,tim=53559944962
+FETCH #139990676561920:c=0,e=6,p=0,cr=2,cu=0,mis=0,r=0,dep=1,og=4,plh=2968095032,tim=53559944973
+CLOSE #139990676561920:c=0,e=0,dep=1,type=3,tim=53559944982
+=====================
+PARSING IN CURSOR #139990760508696 len=90 dep=1 uid=0 oct=3 lid=0 tim=53559945008 hv=3433193208 ad='99746508' sqlid='cn6hhn36a4rrs'
+select con#,obj#,rcon#,enabled,nvl(defer,0),spare2,spare3,refact from cdef$ where robj#=:1
+END OF STMT
+BINDS #139990760508696:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7ec188  bln=22  avl=04  flg=05
+  value=92684
+EXEC #139990760508696:c=0,e=28,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=3845132125,tim=53559945029
+FETCH #139990760508696:c=0,e=8,p=0,cr=2,cu=0,mis=0,r=0,dep=1,og=4,plh=3845132125,tim=53559945041
+CLOSE #139990760508696:c=0,e=1,dep=1,type=3,tim=53559945049
+=====================
+PARSING IN CURSOR #139990760500896 len=160 dep=1 uid=0 oct=3 lid=0 tim=53559945067 hv=2880999359 ad='99756780' sqlid='gx4mv66pvj3xz'
+select con#,type#,condlength,intcols,robj#,rcon#,match#,refact,nvl(enabled,0),rowid,cols,nvl(defer,0),mtime,nvl(spare1,0),spare2,spare3 from cdef$ where obj#=:1
+END OF STMT
+BINDS #139990760500896:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7ec188  bln=22  avl=04  flg=05
+  value=92684
+EXEC #139990760500896:c=0,e=29,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=2570921597,tim=53559945087
+FETCH #139990760500896:c=0,e=16,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=4,plh=2570921597,tim=53559945107
+=====================
+PARSING IN CURSOR #139990676588848 len=70 dep=1 uid=0 oct=3 lid=0 tim=53559945124 hv=3849548163 ad='9972f8c0' sqlid='53saa2zkr6wc3'
+select intcol#,nvl(pos#,0),col#,nvl(spare1,0) from ccol$ where con#=:1
+END OF STMT
+BINDS #139990676588848:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7eb170  bln=22  avl=04  flg=05
+  value=10301
+EXEC #139990676588848:c=0,e=26,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=3038981986,tim=53559945144
+FETCH #139990676588848:c=0,e=10,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=4,plh=3038981986,tim=53559945158
+FETCH #139990676588848:c=0,e=1,p=0,cr=1,cu=0,mis=0,r=0,dep=1,og=4,plh=3038981986,tim=53559945167
+CLOSE #139990676588848:c=0,e=1,dep=1,type=3,tim=53559945174
+FETCH #139990760500896:c=0,e=3,p=0,cr=1,cu=0,mis=0,r=1,dep=1,og=4,plh=2570921597,tim=53559945181
+BINDS #139990676588848:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7eb170  bln=22  avl=04  flg=05
+  value=10302
+EXEC #139990676588848:c=0,e=16,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=3038981986,tim=53559945208
+FETCH #139990676588848:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=4,plh=3038981986,tim=53559945216
+FETCH #139990676588848:c=0,e=1,p=0,cr=1,cu=0,mis=0,r=0,dep=1,og=4,plh=3038981986,tim=53559945224
+CLOSE #139990676588848:c=0,e=0,dep=1,type=3,tim=53559945235
+FETCH #139990760500896:c=0,e=3,p=0,cr=1,cu=0,mis=0,r=1,dep=1,og=4,plh=2570921597,tim=53559945243
+BINDS #139990676588848:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7eb170  bln=22  avl=04  flg=05
+  value=10303
+EXEC #139990676588848:c=0,e=16,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=3038981986,tim=53559945270
+FETCH #139990676588848:c=0,e=3,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=4,plh=3038981986,tim=53559945277
+FETCH #139990676588848:c=0,e=1,p=0,cr=1,cu=0,mis=0,r=0,dep=1,og=4,plh=3038981986,tim=53559945285
+CLOSE #139990676588848:c=0,e=1,dep=1,type=3,tim=53559945292
+FETCH #139990760500896:c=0,e=3,p=0,cr=1,cu=0,mis=0,r=1,dep=1,og=4,plh=2570921597,tim=53559945299
+BINDS #139990676588848:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7eb170  bln=22  avl=04  flg=05
+  value=10304
+EXEC #139990676588848:c=0,e=15,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=3038981986,tim=53559945324
+FETCH #139990676588848:c=0,e=3,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=4,plh=3038981986,tim=53559945331
+FETCH #139990676588848:c=0,e=1,p=0,cr=1,cu=0,mis=0,r=0,dep=1,og=4,plh=3038981986,tim=53559945339
+CLOSE #139990676588848:c=0,e=0,dep=1,type=3,tim=53559945345
+FETCH #139990760500896:c=0,e=31,p=0,cr=1,cu=0,mis=0,r=1,dep=1,og=4,plh=2570921597,tim=53559945381
+BINDS #139990676588848:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7eb170  bln=22  avl=04  flg=05
+  value=10305
+EXEC #139990676588848:c=0,e=20,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=3038981986,tim=53559945426
+FETCH #139990676588848:c=0,e=6,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=4,plh=3038981986,tim=53559945436
+FETCH #139990676588848:c=0,e=1,p=0,cr=1,cu=0,mis=0,r=0,dep=1,og=4,plh=3038981986,tim=53559945444
+CLOSE #139990676588848:c=0,e=0,dep=1,type=3,tim=53559945451
+FETCH #139990760500896:c=0,e=3,p=0,cr=1,cu=0,mis=0,r=1,dep=1,og=4,plh=2570921597,tim=53559945459
+BINDS #139990676588848:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=24 off=0
+  kxsbbbfp=7f521e7eb170  bln=22  avl=04  flg=05
+  value=10306
+EXEC #139990676588848:c=0,e=16,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=4,plh=3038981986,tim=53559945485
+FETCH #139990676588848:c=0,e=3,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=4,plh=3038981986,tim=53559945492
+FETCH #139990676588848:c=0,e=1,p=0,cr=1,cu=0,mis=0,r=0,dep=1,og=4,plh=3038981986,tim=53559945500
+CLOSE #139990676588848:c=0,e=0,dep=1,type=3,tim=53559945506
+FETCH #139990760500896:c=0,e=2,p=0,cr=1,cu=0,mis=0,r=0,dep=1,og=4,plh=2570921597,tim=53559945512
+CLOSE #139990760500896:c=0,e=0,dep=1,type=3,tim=53559945518
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=1
+EXEC #139990760540816:c=0,e=40,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559945985
+FETCH #139990760540816:c=0,e=14,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946005
+CLOSE #139990760540816:c=0,e=2,dep=1,type=3,tim=53559946017
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=2
+EXEC #139990760540816:c=0,e=26,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946057
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946066
+CLOSE #139990760540816:c=0,e=1,dep=1,type=3,tim=53559946074
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=3
+EXEC #139990760540816:c=0,e=30,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946118
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946127
+CLOSE #139990760540816:c=0,e=1,dep=1,type=3,tim=53559946135
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=4
+EXEC #139990760540816:c=0,e=25,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946171
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946179
+CLOSE #139990760540816:c=0,e=1,dep=1,type=3,tim=53559946186
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=5
+EXEC #139990760540816:c=0,e=24,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946226
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946234
+CLOSE #139990760540816:c=0,e=1,dep=1,type=3,tim=53559946242
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=6
+EXEC #139990760540816:c=0,e=24,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946278
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946287
+CLOSE #139990760540816:c=0,e=1,dep=1,type=3,tim=53559946294
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=7
+EXEC #139990760540816:c=0,e=24,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946328
+FETCH #139990760540816:c=0,e=3,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946335
+CLOSE #139990760540816:c=0,e=1,dep=1,type=3,tim=53559946343
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=8
+EXEC #139990760540816:c=0,e=47,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946439
+FETCH #139990760540816:c=0,e=7,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946451
+CLOSE #139990760540816:c=0,e=2,dep=1,type=3,tim=53559946462
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=9
+EXEC #139990760540816:c=0,e=25,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946505
+FETCH #139990760540816:c=0,e=5,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946524
+CLOSE #139990760540816:c=0,e=2,dep=1,type=3,tim=53559946533
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=10
+EXEC #139990760540816:c=0,e=24,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946568
+FETCH #139990760540816:c=0,e=12,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946585
+CLOSE #139990760540816:c=0,e=1,dep=1,type=3,tim=53559946593
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=11
+EXEC #139990760540816:c=0,e=24,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946627
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946635
+CLOSE #139990760540816:c=0,e=2,dep=1,type=3,tim=53559946643
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=12
+EXEC #139990760540816:c=0,e=24,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946680
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946689
+CLOSE #139990760540816:c=0,e=1,dep=1,type=3,tim=53559946696
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=13
+EXEC #139990760540816:c=0,e=25,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946732
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946740
+CLOSE #139990760540816:c=0,e=1,dep=1,type=3,tim=53559946747
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=14
+EXEC #139990760540816:c=0,e=25,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946783
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946791
+CLOSE #139990760540816:c=0,e=1,dep=1,type=3,tim=53559946798
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=15
+EXEC #139990760540816:c=0,e=24,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559946832
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559946840
+CLOSE #139990760540816:c=0,e=1,dep=1,type=3,tim=53559946847
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=16
+EXEC #139990760540816:c=1000,e=140,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559947026
+FETCH #139990760540816:c=0,e=7,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559947040
+CLOSE #139990760540816:c=0,e=2,dep=1,type=3,tim=53559947052
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=17
+EXEC #139990760540816:c=0,e=28,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559947096
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559947104
+CLOSE #139990760540816:c=0,e=1,dep=1,type=3,tim=53559947112
+BINDS #139990760540816:
+ Bind#0
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=48 off=0
+  kxsbbbfp=7f521e7ec170  bln=22  avl=04  flg=05
+  value=92684
+ Bind#1
+  oacdty=02 mxl=22(22) mxlc=00 mal=00 scl=00 pre=00
+  oacflg=00 fl2=1000001 frm=00 csi=00 siz=0 off=24
+  kxsbbbfp=7f521e7ec188  bln=22  avl=02  flg=01
+  value=18
+EXEC #139990760540816:c=0,e=24,p=0,cr=0,cu=0,mis=0,r=0,dep=1,og=3,plh=2239883476,tim=53559947147
+FETCH #139990760540816:c=0,e=4,p=0,cr=3,cu=0,mis=0,r=1,dep=1,og=3,plh=2239883476,tim=53559947155
+CLOSE #139990760540816:c=0,e=1,dep=1,type=3,tim=53559947162
+
+*** 2017-01-18 11:55:04.876
+=====================
+PARSING IN CURSOR #139990760468880 len=169 dep=0 uid=110 oct=3 lid=110 tim=53581745958 hv=1724282080 ad='956fbab0' sqlid='cf0tx1pmccx70'
+select t1.*
+from
+t t1
+, t t2
+, t t3
+, t t4
+, t t5
+, t t6
+, t t7
+, t t8
+, t t9
+, t t10
+/*, t t11
+, t t12
+, t t13
+, t t14
+, t t15
+, t t16
+, t t17
+, t t18
+, t t19
+, t t20*/
+END OF STMT
+PARSE #139990760468880:c=21228000,e=21822200,p=0,cr=394,cu=0,mis=1,r=0,dep=0,og=1,plh=1837345459,tim=53581745958
+EXEC #139990760468880:c=0,e=111,p=0,cr=0,cu=0,mis=0,r=0,dep=0,og=1,plh=1837345459,tim=53581746188
+WAIT #139990760468880: nam='SQL*Net message to client' ela= 2 driver id=1413697536 #bytes=1 p3=0 obj#=-1 tim=53581774374
+FETCH #139990760468880:c=0,e=27,p=0,cr=0,cu=0,mis=0,r=0,dep=0,og=1,plh=1837345459,tim=53581774483
+STAT #139990760468880 id=1 cnt=0 pid=0 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=26 us cost=20 size=368 card=1)'
+STAT #139990760468880 id=2 cnt=0 pid=1 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=24 us cost=18 size=368 card=1)'
+STAT #139990760468880 id=3 cnt=0 pid=2 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=22 us cost=16 size=368 card=1)'
+STAT #139990760468880 id=4 cnt=0 pid=3 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=19 us cost=14 size=368 card=1)'
+STAT #139990760468880 id=5 cnt=0 pid=4 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=17 us cost=12 size=368 card=1)'
+STAT #139990760468880 id=6 cnt=0 pid=5 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=16 us cost=10 size=368 card=1)'
+STAT #139990760468880 id=7 cnt=0 pid=6 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=13 us cost=8 size=368 card=1)'
+STAT #139990760468880 id=8 cnt=0 pid=7 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=10 us cost=6 size=368 card=1)'
+STAT #139990760468880 id=9 cnt=0 pid=8 pos=1 obj=0 op='MERGE JOIN CARTESIAN (cr=0 pr=0 pw=0 time=9 us cost=4 size=368 card=1)'
+STAT #139990760468880 id=10 cnt=0 pid=9 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=7 us cost=2 size=368 card=1)'
+STAT #139990760468880 id=11 cnt=0 pid=9 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139990760468880 id=12 cnt=0 pid=11 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139990760468880 id=13 cnt=0 pid=8 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=4 size=0 card=1)'
+STAT #139990760468880 id=14 cnt=0 pid=13 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139990760468880 id=15 cnt=0 pid=7 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=6 size=0 card=1)'
+STAT #139990760468880 id=16 cnt=0 pid=15 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139990760468880 id=17 cnt=0 pid=6 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=8 size=0 card=1)'
+STAT #139990760468880 id=18 cnt=0 pid=17 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139990760468880 id=19 cnt=0 pid=5 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=10 size=0 card=1)'
+STAT #139990760468880 id=20 cnt=0 pid=19 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139990760468880 id=21 cnt=0 pid=4 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=12 size=0 card=1)'
+STAT #139990760468880 id=22 cnt=0 pid=21 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139990760468880 id=23 cnt=0 pid=3 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=14 size=0 card=1)'
+STAT #139990760468880 id=24 cnt=0 pid=23 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139990760468880 id=25 cnt=0 pid=2 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=16 size=0 card=1)'
+STAT #139990760468880 id=26 cnt=0 pid=25 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+STAT #139990760468880 id=27 cnt=0 pid=1 pos=2 obj=0 op='BUFFER SORT (cr=0 pr=0 pw=0 time=0 us cost=18 size=0 card=1)'
+STAT #139990760468880 id=28 cnt=0 pid=27 pos=1 obj=92684 op='TABLE ACCESS FULL T (cr=0 pr=0 pw=0 time=0 us cost=2 size=0 card=1)'
+WAIT #139990760468880: nam='SQL*Net message from client' ela= 539 driver id=1413697536 #bytes=1 p3=0 obj#=-1 tim=53581812233
+CLOSE #139990760468880:c=0,e=11,dep=0,type=0,tim=53581812297
+=====================
+PARSING IN CURSOR #139990760468880 len=55 dep=0 uid=110 oct=42 lid=110 tim=53581812345 hv=2217940283 ad='0' sqlid='06nvwn223659v'
+alter session set events '10046 trace name context off'
+END OF STMT
+PARSE #139990760468880:c=0,e=20,p=0,cr=0,cu=0,mis=0,r=0,dep=0,og=0,plh=0,tim=53581812345
+EXEC #139990760468880:c=0,e=237,p=0,cr=0,cu=0,mis=0,r=0,dep=0,og=0,plh=0,tim=53581812604

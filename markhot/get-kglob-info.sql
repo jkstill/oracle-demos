@@ -1,0 +1,6 @@
+select KGLNAOBJ, KGLNAOWN, KGLHDNSP, KGLOBTYP, KGLNAHSV, KGLOBT23, KGLOBT24
+from x$kglob 
+--where KGLOBT23 > 1000 or KGLOBT24 > 1000
+where KGLNAOBJ like 'select t1%'
+order by KGLOBT24
+/
