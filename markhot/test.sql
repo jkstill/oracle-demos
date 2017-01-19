@@ -3,7 +3,7 @@ alter session set "_optimizer_search_limit"=200;
 
 col value format a80
 select value from v$diag_info where name = 'Default Trace File';
-@10046
+--@10046
 
 select t1.*
 from 
