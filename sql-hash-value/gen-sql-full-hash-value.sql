@@ -100,7 +100,7 @@ begin
 	full_hash_value := lower(little_endian(md5hash));
 
 	-- this would work, but so hard to read
-	full_hash_value := lower(little_endian(rawtohex(raw_hash)));
+	--full_hash_value := lower(little_endian(rawtohex(raw_hash)));
 
 	return full_hash_value;
 
