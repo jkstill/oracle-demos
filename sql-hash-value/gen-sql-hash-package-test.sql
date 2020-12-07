@@ -1,9 +1,14 @@
 
+/*
+
+ Jared Still - 2020-12-06
+ jkstill@gmail.com
+
+*/
+
 col full_hash_value format a80 
 col sql_text format a80 
 set linesize 200 trimspool on
-
-
 
 -- 4uqr7fxm12s3u - found in 10046 trace
 select 'gen_sql_hash test' from dual;

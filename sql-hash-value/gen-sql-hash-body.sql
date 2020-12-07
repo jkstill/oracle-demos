@@ -15,6 +15,13 @@ Also, it seems that ICD_GETSQLHASH is not what is being used to generate the val
 create or replace package body gen_sql_hash
 is 
 
+/*
+
+ Jared Still - 2020-12-06
+ jkstill@gmail.com
+
+*/
+
 function little_endian ( hash_str varchar2 ) return varchar2
 is
 	octet varchar2(8);

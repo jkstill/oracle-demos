@@ -2,6 +2,13 @@
 -- format wrapped preserves leading whitespace
 set serveroutput on size unlimited format wrapped
 
+/*
+
+ Jared Still - 2020-12-06
+ jkstill@gmail.com
+
+*/
+
 declare
 	c_sql clob;
 	md5hash varchar2(32);
