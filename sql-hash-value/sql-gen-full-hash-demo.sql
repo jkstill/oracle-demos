@@ -144,14 +144,14 @@ begin
 
 	for sqlrec in (
 		with data as (
-			select distinct sql_id, full_hash_value, sql_text
+			select distinct sql_id, full_hash_value, sql_text, s.hash_value
 			from v$sql s
 			join v$db_object_cache o on o.hash_value = s.hash_value
 				--and length(s.sql_text) <= 80
 				--and rownum <= 5000
 			order by sql_id
 		)
-		select sql_id, full_hash_value, sql_text
+		select sql_id, full_hash_value, sql_text, hash_value
 		from data
 		--where rownum <= 40
 	)
@@ -166,6 +166,7 @@ begin
 		dbms_output.put_line('     sql#: ' || i_sqlnum);
 		dbms_output.put_line('   sql_id: ' || sqlrec.sql_id);
 		dbms_output.put_line('      sql: ' || sqlrec.sql_text);
+		dbms_output.put_line('     hash: ' || gen_sql_hash.sql_id_to_hash(sqlrec.sql_id));
 		dbms_output.put_line('full_hash: ' || sqlrec.full_hash_value);
 		dbms_output.put_line('calc hash: ' || md5_hash);
 

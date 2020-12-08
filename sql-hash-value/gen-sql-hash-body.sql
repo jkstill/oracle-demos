@@ -22,6 +22,30 @@ is
 
 */
 
+
+-- SQL in this function courtesy of Tanel Poder
+function sql_id_to_hash (sql_id_in varchar2) return number
+is
+	hash_value number;
+begin
+	select
+		trunc (
+			mod(
+				sum(
+					(
+						instr('0123456789abcdfghjkmnpqrstuvwxyz',substr(lower(trim(sql_id_in)),level,1))-1
+					)
+					*power(32,length(trim(sql_id_in))-level)
+				),
+			power(2,32))
+		) into hash_value
+	from dual
+	connect by level <= length(trim(sql_id_in));
+
+	return hash_value;
+
+end;
+
 function little_endian ( hash_str varchar2 ) return varchar2
 is
 	octet varchar2(8);
