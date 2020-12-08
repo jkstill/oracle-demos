@@ -165,7 +165,7 @@ begin
 
 		dbms_output.put_line('     sql#: ' || i_sqlnum);
 		dbms_output.put_line('   sql_id: ' || sqlrec.sql_id);
-		dbms_output.put_line('      sql: ' || sqlrec.sql_text);
+		dbms_output.put_line('      sql: ' || sqlrec.sql_text||'EOS');
 		dbms_output.put_line('     hash: ' || gen_sql_hash.sql_id_to_hash(sqlrec.sql_id));
 		dbms_output.put_line('full_hash: ' || sqlrec.full_hash_value);
 		dbms_output.put_line('calc hash: ' || md5_hash);

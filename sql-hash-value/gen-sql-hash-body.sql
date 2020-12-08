@@ -22,6 +22,25 @@ is
 
 */
 
+ 
+function gen_sql_id ( sql_text_in clob ) return varchar2
+is
+begin
+
+	-- Oracle 12.1+
+	return dbms_sql_translator.sql_id(sql_text_in);
+	
+end;
+
+function gen_hash_value ( sql_text_in clob ) return number
+is
+begin
+
+	-- Oracle 12.1+
+	return dbms_sql_translator.sql_hash(sql_text_in);
+	
+end;
+
 
 -- SQL in this function courtesy of Tanel Poder
 function sql_id_to_hash (sql_id_in varchar2) return number
