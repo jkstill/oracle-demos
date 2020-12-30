@@ -5,7 +5,17 @@ set linesize 200 trimspool on
 -- format wrapped preserves leading whitespace
 set serveroutput on size unlimited format wrapped
 
+spool sql-gen-full-hash-demo.log
+
 declare
+
+	-- TRUE: show SQL only for mismatched hash values
+	-- FALSE: show all SQL
+	b_mismatched_only boolean := TRUE;  
+
+	-- set at runtime per iteration
+	b_mismatched boolean;
+
 	c_sql clob;
 	md5_hash varchar2(32);
 	sepline_len integer;
@@ -13,6 +23,9 @@ declare
 	i_sqlnum integer;
 	my_dummy number;
 	n_lob_len number;
+
+	type v_sql_tab_typ is table of integer index by varchar2(13);
+	v_sql_tab v_sql_tab_typ;
 
 	max_sql_len CONSTANT integer := 32767;
 
@@ -52,24 +65,29 @@ declare
 		full_hash_value := 'NA';
 
 		-- get the sql
-		with sqlsrc as (
-			select sql_fulltext as sql_text
-			-- even in 19c, v$sqlstats.sql_fulltext is truncated - ages old  bug
-			--from v$sqlstats
-			from v$sqlarea
-			where sql_id = sql_id_in
-			union all
-			select sql_fulltext as sql_text
-			from v$sql
-			where sql_id = sql_id_in
-			union all
-			select sql_text
-			from dba_hist_sqltext
-			where sql_id = sql_id_in
-		)
-		select sql_text into c_sql
-		from sqlsrc
-		where rownum < 2;
+		begin
+			with sqlsrc as (
+				select sql_fulltext as sql_text
+				-- even in 19c, v$sqlstats.sql_fulltext is truncated - ages old  bug
+				--from v$sqlstats
+				from v$sqlarea
+				where sql_id = sql_id_in
+				union all
+				select sql_fulltext as sql_text
+				from v$sql
+				where sql_id = sql_id_in
+				union all
+				select sql_text
+				from dba_hist_sqltext
+				where sql_id = sql_id_in
+			)
+			select sql_text into c_sql
+			from sqlsrc
+			where rownum < 2;
+		exception
+		when no_data_found then
+			return full_hash_value;
+		end;
 
 		if c_sql = empty_clob() then
 			return full_hash_value;
@@ -93,7 +111,7 @@ declare
 		   Querying V$Access Contents On Latch: Library Cache (Doc ID 757280.1)
 
 		 though it does not directly address SQL statements, it must be assumed that the chr() appended 
-		 to the statement appears only in internal documentation
+		 to the statement appears only in internal documentation ( the note shows '0' for cursor )
 		*/	
 
 		--select lower(rawtohex(utl_raw.cast_to_raw(dbms_obfuscation_toolkit.md5(input_string =>c_sql||chr(0))))) md5hash from dual
@@ -154,45 +172,67 @@ begin
 		)
 		select sql_id, full_hash_value, sql_text, hash_value
 		from data
+		order by sql_id
 		--where rownum <= 40
 	)
 	loop
 		
+		begin
+			v_sql_tab(sqlrec.sql_id) := v_sql_tab(sqlrec.sql_id) + 1;
+		exception
+		when no_data_found then
+			v_sql_tab(sqlrec.sql_id) := 1;
+		end;
+
+		-- no need to compute again for the same SQL
+		continue when v_sql_tab(sqlrec.sql_id) > 1;
+
 		n_lob_len := dbms_lob.getlength(sqlrec.sql_text);
-		dbms_output.put_line('  sql len: ' || n_lob_len);
 
 		md5_hash := calc_hash(sqlrec.sql_id);
 		i_sqlnum := i_sqlnum + 1;
 
-		dbms_output.put_line('     sql#: ' || i_sqlnum);
-		dbms_output.put_line('   sql_id: ' || sqlrec.sql_id);
-		dbms_output.put_line('      sql: ' || sqlrec.sql_text||'EOS');
-		dbms_output.put_line('     hash: ' || gen_sql_hash.sql_id_to_hash(sqlrec.sql_id));
-		dbms_output.put_line('full_hash: ' || sqlrec.full_hash_value);
-		dbms_output.put_line('calc hash: ' || md5_hash);
 
-		if sqlrec.full_hash_value != md5_hash then
-			dbms_output.put_line(' ==>> MISMATCH ==<< ');
-			--raise_application_error(-20000,'HASH Mismatch');
+		b_mismatched := sqlrec.full_hash_value != md5_hash;
 
-			-- dump the SQL
+		if (not b_mismatched_only) or b_mismatched then
+			dbms_output.put_line('  sql len: ' || n_lob_len);
+			dbms_output.put_line('     sql#: ' || i_sqlnum);
+			dbms_output.put_line('   sql_id: ' || sqlrec.sql_id);
+			dbms_output.put_line('      sql: ' || sqlrec.sql_text||'EOS');
+			dbms_output.put_line('     hash: ' || gen_sql_hash.sql_id_to_hash(sqlrec.sql_id));
+			dbms_output.put_line('full_hash: ' || sqlrec.full_hash_value);
+			dbms_output.put_line('calc hash: ' || md5_hash);
 
-			for srec in (
-				select address, data, text
-				from TABLE(hexdump.hexdump(cursor(select sql_fulltext from v$sqlstats where sql_id = sqlrec.sql_id)))
-			)
-			loop
-				dbms_output.put(srec.address || ' ');
-				dbms_output.put(srec.data || ' ');
-				dbms_output.put_line(srec.text);
-			end loop;
+			if sqlrec.full_hash_value != md5_hash then
+				dbms_output.put_line(' ==>> MISMATCH ==<< ');
+				--raise_application_error(-20000,'HASH Mismatch');
+
+				-- dump the SQL
+
+				dbms_output.new_line;
+				for srec in (
+					select address, data, text
+					from TABLE(hexdump.hexdump( sqlrec.sql_text))
+				)
+				loop
+					dbms_output.put(srec.address || ' ');
+					dbms_output.put(rpad(srec.data,50,' '));
+					dbms_output.put_line(srec.text);
+				end loop;
+
+			end if;
+
+			dbms_output.put_line(sepline);
 
 		end if;
 
-		dbms_output.put_line(sepline);
 
 	end loop;
 end;
 /
 
+spool off
+
+ed sql-gen-full-hash-demo.log
 
