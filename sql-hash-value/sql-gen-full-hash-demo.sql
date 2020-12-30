@@ -1,4 +1,5 @@
 
+set linesize 200 trimspool on
 
 
 -- format wrapped preserves leading whitespace
@@ -173,6 +174,19 @@ begin
 		if sqlrec.full_hash_value != md5_hash then
 			dbms_output.put_line(' ==>> MISMATCH ==<< ');
 			--raise_application_error(-20000,'HASH Mismatch');
+
+			-- dump the SQL
+
+			for srec in (
+				select address, data, text
+				from TABLE(hexdump.hexdump(cursor(select sql_fulltext from v$sqlstats where sql_id = sqlrec.sql_id)))
+			)
+			loop
+				dbms_output.put(srec.address || ' ');
+				dbms_output.put(srec.data || ' ');
+				dbms_output.put_line(srec.text);
+			end loop;
+
 		end if;
 
 		dbms_output.put_line(sepline);
