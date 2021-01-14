@@ -17,6 +17,8 @@ create table func_test (
 /
 
 
+@@insert
+
 -- fairly selective index
 create index  comp_id_idx on func_test(comp_id, pay_id);
 

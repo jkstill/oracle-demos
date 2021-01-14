@@ -16,6 +16,7 @@ end;
 /
 
 	   -- index(ft bad_idx) 
+   /*+ gather_plan_statistics */
 
 /*
 
@@ -28,15 +29,13 @@ the bad_idx index to be favored
 
 select count(*)
 from (
-select
-   /*+ gather_plan_statistics */
+select /*+ gather_plan_statistics */
    rval, is_prime(rval) rprime
 from func_test ft
 where ft.comp_id = :comp_id
    and ft.period_end_date = to_date(:period_end_date,'yyyy-mm-dd')
    and ft.trans_type = 'B'
    and ft.status = 'ACTIVE'
-   --and ft.pay_id = :pay_id
    and is_prime(rval) = 'Y'
 )
 /
