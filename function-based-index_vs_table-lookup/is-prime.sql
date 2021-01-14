@@ -1,4 +1,5 @@
-create or replace function is_prime ( prime_test_in integer ) return varchar2
+create or replace function is_prime ( prime_test_in integer ) 
+return varchar2 deterministic
 	is
 		i integer;
 		is_a_prime_number boolean;
