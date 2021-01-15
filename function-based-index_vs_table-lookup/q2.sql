@@ -23,7 +23,7 @@ end;
 select count(*)
 from (
 select /*+ gather_plan_statistics */
-   rval, is_prime(rval) rprime
+   rval, 'Y' rprime
 from func_test ft
 join primes pf on pf.prime_number = ft.rval
 where ft.comp_id = :comp_id

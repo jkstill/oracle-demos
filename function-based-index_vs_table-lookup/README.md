@@ -932,11 +932,140 @@ Y
 10 rows selected.
 ```
 
-The reduction in both CPU usage may well make this a wortwhile tradeoff, that is, trading a little space for a significant performance increase.
+The reduction in CPU usage may well make this a worthwhile tradeoff, that is, trading a little space for a significant performance increase.
 
 
+### Design Changes
 
+As this is a 3rd party app, we cannot make any design decisions.
 
+If you are in a position to suggest design changes however, you may want to consider this section as well.
+
+In general, using functions within a SQL statement is not optimal for database performance.
+
+What if rather than using a function, a lookup table were used instead?
+
+I can hear the groans now: "Adding a join? Joins are slow!"
+
+The truth is, joins are not slow. If there is one thing Oracle does well, it is joining tables.
+
+However, it is very easy to design tables and SQL statements in such a way that joins are very slow.
+
+Actually, it is not that joins are slow, it is simply that the design of the tables, indexes and SQL cant lead to performance issues due when far too many rows are being considered.
+
+But, that is not the point of this article.
+
+Let's create a table PRIMES, that consists of all primes found in the range of 1..999.
+
+```sql
+create table primes
+   prime_number integer not null,
+   constraint pk_prime primary key (prime_number)
+) organization index;
+```
+
+The code to populate this is not explained here, as it would lead to a rather lengthy side tracking of the main topic.
+
+We now have the first 168 primes:
+
+```text
+-- gather stats
+#SQL exec dbms_stats.gather_table_stats(ownname => user, tabname => 'PRIMES')
+
+#SQL @@show-stats
+
+OBJECT_NAME                    OBJEC LAST_ANALYZED           BLOCKS   NUM_ROWS
+------------------------------ ----- ------------------- ---------- ----------
+FUNC_TEST                      TABLE 2021-01-15 13:49:06      38657    2500000
+BAD_IDX                        INDEX 2021-01-15 13:49:14       8306    2500000
+COMP_ID_IDX                    INDEX 2021-01-15 13:49:15       6336    2500000
+PK_PRIME                       INDEX 2021-01-15 14:37:51          1        168
+
+4 rows selected.
+
+```
+
+Now that we have the primes, we can drop the Function Based Index, and rewrite the query to avoid the use of the `is_prime(rval)` function in the predicate.
+
+```text
+
+SQL# @flush
+System altered.
+System altered.
+Session altered.
+
+SQL# drop index func_test_fbi_idx;
+Index dropped.
+
+QL# get afiedt.buf
+  1  select count(*)
+  2  from (
+  3  select /*+ gather_plan_statistics */
+  4     rval, 'Y' rprime
+  5  from func_test ft
+  6  join primes pf on pf.prime_number = ft.rval
+  7  where ft.comp_id = :comp_id
+  8     and ft.period_end_date = to_date(:period_end_date,'yyyy-mm-dd')
+  9     and ft.trans_type = 'B'
+ 10     and ft.status = 'ACTIVE'
+ 11     --and is_prime(rval) = 'Y'
+ 12* )
+SQL# /
+
+  COUNT(*)
+----------
+        83
+
+1 row selected.
+
+Elapsed: 00:00:00.25
+```
+
+The execution time is the fastest yet.
+
+What is especially nice is there is no chance of that function being used in the predicate.
+
+Notice too that there is need to use the `is_prime(rval)` in the column projection either, as the only rows returned are those where rval is prime.
+
+The 
+
+```text
+SQL# @showplan_last
+
+Plan hash value: 3520673696
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                             | Name        | Starts | E-Rows |E-Bytes| Cost (%CPU)| E-Time   | A-Rows |   A-Time   | Buffers | Reads  |
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                      |             |      1 |        |       |   505 (100)|          |      1 |00:00:00.19 |     482 |    453 |
+|   1 |  SORT AGGREGATE                       |             |      1 |      1 |    30 |            |          |      1 |00:00:00.19 |     482 |    453 |
+|   2 |   NESTED LOOPS                        |             |      1 |    215 |  6450 |   505   (1)| 00:00:01 |     83 |00:00:00.17 |     482 |    453 |
+|*  3 |    TABLE ACCESS BY INDEX ROWID BATCHED| FUNC_TEST   |      1 |    521 | 13546 |   505   (1)| 00:00:01 |    508 |00:00:00.11 |     478 |    452 |
+|*  4 |     INDEX RANGE SCAN                  | COMP_ID_IDX |      1 |  25000 |       |    66   (0)| 00:00:01 |  25000 |00:00:00.07 |      66 |     66 |
+|*  5 |    INDEX UNIQUE SCAN                  | PK_PRIME    |    508 |      1 |     4 |     0   (0)|          |     83 |00:00:00.01 |       4 |      1 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+```
+
+This query exeucution plan is just slightly more complex than the others, but with an execution time of 0.25 seconds, it is clearly the fastest.
+
+When it comes to performance issues, sometimes the most expedient choice is not the one you might prefer.
+
+It is necessary to balance out the remediation with the current goals.
+
+In this case the current goal was 'make the system usable so our users can do their jobs', making the use of a SQL Patch the best choice this day.
+
+## Prologue
+
+Well, I did cheat a little in this article.
+
+While the situation shown is relatively close to what was really seen, and the method used was identical, there was a slight diffference in the real production table.
+
+The column being passed to the function was not a simple integer, it was a nested table.
+
+How can you deal with that?
+
+More to come...
 
 
 

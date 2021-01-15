@@ -18,7 +18,7 @@ select
 	, leaf_blocks blocks
 	, num_rows
 from user_indexes
-where table_name = 'FUNC_TEST'
+where table_name in ('FUNC_TEST','PRIMES')
 order by object_type desc, object_name
 /
 
