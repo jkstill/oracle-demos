@@ -32,7 +32,7 @@ declare
 begin
 	v_sql_id := :b_sql_id;
 	-- if prior to 12.2
-	-- dbms_sqldiag_internal._create_sql_patch
+	-- dbms_sqldiag_internal.i_create_sql_patch
 	v_patch_name :=  dbms_sqldiag.create_sql_patch(
 		sql_id  => v_sql_id,
 		hint_text => 'index(@"SEL$2" "FT" "COMP_ID_IDX")',

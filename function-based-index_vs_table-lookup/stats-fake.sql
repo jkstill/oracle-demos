@@ -1,8 +1,5 @@
 
 
-
-
-
 begin
 
 	--dbms_stats.delete_table_stats(ownname => user, tabname => 'FUNC_TEST', cascade_indexes => true);
@@ -39,10 +36,5 @@ begin
 end;
 /
 
-col object_name format a30
-
-select table_name object_name, last_analyzed from user_tables where table_name = 'FUNC_TEST'
-union all
-select index_name object_name, last_analyzed from user_indexes where table_name = 'FUNC_TEST'
-/
+@@show-stats
 
