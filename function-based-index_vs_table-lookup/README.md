@@ -144,7 +144,7 @@ create index  comp_id_idx on func_test(comp_id, pay_id);
 create index  bad_idx on func_test(rval, period_end_date);
 ```
 
-And now for the part where I cheat:  the index statistics are manipulate so the Oracle optimizer will favor the 'bad' index.
+And now for the part where I cheat:  the index statistics are manipulated so the Oracle optimizer will favor the 'bad' index.
 
 ```sql
 begin
