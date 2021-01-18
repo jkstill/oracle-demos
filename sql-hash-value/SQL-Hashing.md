@@ -466,6 +466,21 @@ A caveat is in order:  the SQL being tested so far is all SQL used internally by
 
 Again, I will update this document if I learn that is the case.
 
+# Maximum Length of SQL that is Hashed
+
+Various sources indicate that up to 20k characters of a SQL statement may be used for generating a Hash value for the SQL statement.
+
+That may be true in earlier versions of Oracle, but in the 64bit 19.8 database where I am testing the value is 32764.
+
+This was determined by hashing a 36K character string in a loop started at 32760, and exiting the loop when the hash value stopped changing.
+
+```text
+SQL# @find-max-sql-length-to-calc-hash.sql
+Creating a 36k CLOB to test max length of SQL that is hashed
+================================================================================
+SQL Hash stopped changing at i - 1: 32764
+i-hash: 32765:12895468709E28D62BB4B39EC2094E96
+```
 
 ## Files
 
@@ -476,6 +491,12 @@ Demo of using dbms_crypto.hash - see [dbms_crypto-hash.sql](https://github.com/j
 ### dbms_utility-get_sql_hash.sql
 
 Demo of using dbms_utility.get_sql_hash [dbms_utility-get_sql_hash.sql](https://github.com/jkstill/oracle-demos/blob/master/sql-hash-value/dbms_utility-get_sql_hash.sql)
+
+### find-max-sql-length-to-calc-hash.sql
+
+Determine the maximum length of CLOB that is considered for hashing via dbms_crypto.hash: [find-max-sql-length-to-calc-hash.sql](https://github.com/jkstill/oracle-demos/blob/master/sql-hash-value/find-max-sql-length-to-calc-hash.sql)
+
+In Oracle 19.8 the value is 32764, suggesting that up to 4 bytes may be appended to the end of the SQL statement for hashing.
 
 ### gen-sql-full-hash-demo.sql
 

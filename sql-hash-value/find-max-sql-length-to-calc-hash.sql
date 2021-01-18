@@ -3,7 +3,7 @@
 -- find-max-sql-length-to-calc-hash.sql
 -- Jared Still 2021 jkstill@gmail.com
 --
--- use a 38k padded string to test amount of 
+-- use a 36k padded string to test amount of 
 -- a SQL statement that is used to determine the MD5 and full_hash_value
 
 set serveroutput on format wrapped size unlimited
@@ -15,7 +15,7 @@ declare
 	v_prev_full_hash_value varchar2(32);
 begin
 
-	dbms_output.put_line('Creating a 38k CLOB to test max length of SQL that is hashed');
+	dbms_output.put_line('Creating a 36k CLOB to test max length of SQL that is hashed');
 
 	for i in 1..9
 	loop
