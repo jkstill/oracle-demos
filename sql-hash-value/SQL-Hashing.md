@@ -225,13 +225,14 @@ corrected_full_hash_value: 51CAF1ABA0366BFB4568F7FE07E34BF4
 
 Now it the generated full_hash_value is correct - compare the Oracle created full_hash_value to the one created with our bit of PL/SQL:
 
+```text
        Real Full Hash Value:  51CAF1AB A0366BFB4 568F7FE 07E34BF4
   corrected_full_hash_value:  51CAF1AB A0366BFB4 568F7FE 07E34BF4
+```
 
 These tests were performed on 64 bit Linux running on Intel processor.
 
 The tests may work differently on big-endian platforms, in which case the dbms_utility.get_endianness function would be useful.
-
 
 ### dbms_crypto.hash
 
@@ -266,7 +267,7 @@ See dbms_crypto-hash.sql
  24     dbms_output.put_line('full_hash_value: ' || full_hash_value);
  25
  26* end;
-JKSTILL@ora192rac-scan/pdb1.jks.com > /
+SQL#
 md5hash: ABF1CA51FB6B36A0FEF76845F44BE307
 full_hash_value: 51CAF1ABA0366BFB4568F7FE07E34BF4
 
@@ -275,7 +276,6 @@ full_hash_value: 51CAF1ABA0366BFB4568F7FE07E34BF4
 ### dbms_obfuscation_toolkit.md5 (deprecated)
 
 The dbms_obfuscation_toolkit.md5 function and procedures are of limited use, as they produce only the 4 byte hash_value, not the full 16 byte full_hash_value.
-
 
 ### Bash and md5sum
 
@@ -356,7 +356,6 @@ SQL# select ( 1164507134 * 4*power(2,30) + 132336628 ) from dual;
                  5001520056621026292
 
 ```
-
 
 Then a loop is iterated 13 times, successively using the remainder of hv/32 as a pointer in to the alphapbet, and then dividing the hash by 32.
 
@@ -525,5 +524,4 @@ As show previously, generate sql_id from SQL text: [sqlid-alphabet.sql](https://
 ### hash-gen-demos/sqlid-funcs.sh
 
 The Bash functions in a function-only file that may be sourced: [sqlid-funcs.sh](https://github.com/jkstill/oracle-demos/blob/master/sql-hash-value/hash-gen-demos/sqlid-funcs.sh)
-
 
