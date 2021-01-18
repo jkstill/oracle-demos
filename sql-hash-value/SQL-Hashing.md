@@ -225,8 +225,8 @@ corrected_full_hash_value: 51CAF1ABA0366BFB4568F7FE07E34BF4
 
 Now it the generated full_hash_value is correct - compare the Oracle created full_hash_value to the one created with our bit of PL/SQL:
 
-     Real Full Hash Value:  51CAF1AB A0366BFB4 568F7FE 07E34BF4
-corrected_full_hash_value:  51CAF1AB A0366BFB4 568F7FE 07E34BF4
+       Real Full Hash Value:  51CAF1AB A0366BFB4 568F7FE 07E34BF4
+  corrected_full_hash_value:  51CAF1AB A0366BFB4 568F7FE 07E34BF4
 
 These tests were performed on 64 bit Linux running on Intel processor.
 
