@@ -361,7 +361,7 @@ Then a loop is iterated 13 times, successively using the remainder of hv/32 as a
 
 Here it is in PL/SQL:
 
-``sql
+```sql
 function md5_to_sqlid(md5 in raw) return varchar2
 is
    type map_type is varray(32) of varchar2(1);
