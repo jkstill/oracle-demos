@@ -68,7 +68,7 @@ md5_to_fhv () {
 md5_to_sqlid () {
 	local md5="$1"
 
-	declare -a map=(
+	declare -a sqlid_map=(
 		[0]='0' [1]='1' [2]='2' [3]='3' [4]='4' [5]='5' [6]='6' [7]='7'
 		[8]='8' [9]='9' [10]='a' [11]='b' [12]='c' [13]='d' [14]='f' [15]='g'
 		[16]='h' [17]='j' [18]='k' [19]='m' [20]='n' [21]='p' [22]='q' [23]='r'
@@ -76,11 +76,12 @@ md5_to_sqlid () {
 	);
 
 	#echo
-	#for i in ${!map[@]}
+	#for i in ${!sqlid_map[@]}
 	#do
-		#echo "i: $i  ${map[$i]}"
+		#echo "i: $i  ${sqlid_map[$i]}"
 	#done
 
+	# SQL ID generated from the last 8 bytes
 	#md5: F0948CD09AA0DE41DFE9EF016C324700
 	#md5 part 1: DFE9EF01
 	#md5 part 2: 6C324700
@@ -115,7 +116,7 @@ md5_to_sqlid () {
 
 		#echo "hv: $hv"
 		#echo "r: $r"
-		sql_id=${map[r-1]}${sql_id}
+		sql_id=${sqlid_map[r-1]}${sql_id}
 		(( hv = hv/32 ))
 	done
 
@@ -152,7 +153,7 @@ declare gen_fhv=$(md5_to_fhv $md5)
 
 echo "       generated fhv: $gen_fhv"
 
-# oracle is using the last 8 bytes of the full_hash_value(hex) to generate the hash_value (number)
+# oracle is using the last 4 bytes of the full_hash_value(hex) to generate the hash_value (number)
 declare hash_value=$(fhv_to_hash_value $gen_fhv)
 echo "generated hash_value: $hash_value"
 

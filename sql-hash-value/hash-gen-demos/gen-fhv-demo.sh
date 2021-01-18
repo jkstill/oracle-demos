@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-declare fhv='d08c94f041dea09a01efe9df0047326c'
-declare md5='f0948cd09aa0de41dfe9ef016c324700'
-
 hex_to_num () {
 	local hexnum="$1"
 	#echo "hexnum: $hexnum"
@@ -78,34 +75,14 @@ md5_to_sqlid () {
 		[24]='s' [25]='t' [26]='u' [27]='v' [28]='w' [29]='x' [30]='y' [31]='z'
 	);
 
-	#echo
-	#for i in ${!sqlid_map[@]}
-	#do
-		#echo "i: $i  ${sqlid_map[$i]}"
-	#done
-
-	#md5: F0948CD09AA0DE41DFE9EF016C324700
-	#md5 part 1: DFE9EF01
-	#md5 part 2: 6C324700
-
 	declare h1=${md5:16:8}
 	declare h2=${md5:24:8}
-
-	#echo 
-	#echo "h1: $h1"
-	#echo "h2: $h2"
 
 	declare hn1=$(endian_4 $h1)
 	declare hn2=$(endian_4 $h2)
 
-	#echo "hn1: $hn1"
-	#echo "hn2: $hn2"
-
 	declare n1=$(hex_to_num $hn1)
 	declare n2=$(hex_to_num $hn2)
-
-	#echo "n1: $n1"
-	#echo "n2: $n2"
 
 	declare hv
 	(( hv = n1 * 4294967296 + n2 ))
@@ -116,8 +93,6 @@ md5_to_sqlid () {
 	do
 		(( r = ( hv % 32 ) +1 ))
 
-		#echo "hv: $hv"
-		#echo "r: $r"
 		sql_id=${sqlid_map[r-1]}${sql_id}
 		(( hv = hv/32 ))
 	done
@@ -125,38 +100,35 @@ md5_to_sqlid () {
 	echo $sql_id
 }
 
-echo "    fhv: $fhv"
+##########
+## main ##
+##########
+
+# get the md5 from a file
+
+declare sqlfile=${1:?'Please specify a file'}
+
+[ -r "$sqlfile" ] || {
+
+	echo
+	echo cannot open "$sqlfile"
+	echo
+	exit 1
+
+}
+
+declare md5=$(md5sum "$sqlfile" | awk '{ print $1 }')
+
 echo "    md5: $md5"
-
-echo "generating FHV from MD5"
-
 declare gen_fhv=$(md5_to_fhv $md5)
-
-echo
 
 echo "       generated fhv: $gen_fhv"
 
-if [[ "$gen_fhv" != "$fhv" ]]; then
-	echo 
-	echo "md5 -> fhv failed"
-	echo
-	exit 1
-fi
-
-echo
-
-# oracle is using the last 4 rytes of the full_hash_value(hex) to generate the hash_value (number)
-declare hash_value=$(fhv_to_hash_value $fhv)
-
+# oracle is using the last 4 bytes of the full_hash_value(hex) to generate the hash_value (number)
+declare hash_value=$(fhv_to_hash_value $gen_fhv)
 echo "generated hash_value: $hash_value"
-
-echo
 
 declare sql_id=$(md5_to_sqlid $md5)
 echo "    generated sql_id: $sql_id"
-
-echo
-
-
 
 
