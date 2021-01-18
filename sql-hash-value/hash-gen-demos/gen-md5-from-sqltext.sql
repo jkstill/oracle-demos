@@ -19,7 +19,7 @@ declare
 function md5_to_sqlid(md5 in raw) return varchar2
 is
 	type map_type is varray(32) of varchar2(1);
-	map  map_type := 
+	sqlid_map  map_type := 
 		map_type('0', '1', '2', '3', '4', '5', '6', '7',
                '8', '9', 'a', 'b', 'c', 'd', 'f', 'g',
                'h', 'j', 'k', 'm', 'n', 'p', 'q', 'r',
@@ -34,7 +34,7 @@ begin
 	dbms_output.put_line('hash: ' || to_char(hash));
 
 	for i in 1..13 loop
-		sqlid := map(mod(hash,32)+1) || sqlid;
+		sqlid := sqlid_map(mod(hash,32)+1) || sqlid;
 		dbms_output.put_line('mod: ' || to_char(mod(hash,32)+1));
 		hash  := trunc(hash/32);
 		dbms_output.put_line('hash: ' || to_char(hash));

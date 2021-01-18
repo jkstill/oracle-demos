@@ -65,6 +65,7 @@ begin
 
 end;
 
+-- this would be better done with utl_raw.reverse
 function little_endian ( hash_str varchar2 ) return varchar2
 is
 	octet varchar2(8);
