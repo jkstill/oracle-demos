@@ -903,7 +903,7 @@ SQL# l
 Elapsed: 00:00:00.34
 ```
 
-This is the fastest exeuction yet.  Let's take a look at the execution plan:
+This is the fastest execution yet.  Let's take a look at the execution plan:
 
 ```text
 SQL# @showplan_last
@@ -1115,7 +1115,7 @@ Plan hash value: 3520673696
 
 ```
 
-This query exeucution plan is just slightly more complex than the others, but with an execution time of 0.25 seconds, it is clearly the fastest.
+This query execution plan is just slightly more complex than the others, but with an execution time of 0.25 seconds, it is clearly the fastest.
 
 When it comes to performance issues, sometimes the most expedient choice is not the one you might prefer.
 
