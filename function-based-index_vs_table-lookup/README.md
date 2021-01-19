@@ -198,7 +198,7 @@ You can see where the optimizer is being lied to.
 
 The COMP_ID_IDX index is made to look more expensive than it really is by setting blocks to 32000, and the number of rows to 10M.
 
-Conversely, the BAD_IDX index has made to appear the right choice, as it has been made to appear as having only 8 blocks and 100 rows.
+Conversely, the BAD_IDX index has been made to appear the right choice, as it has been made to appear as having only 8 blocks and 100 rows.
 
 ## The Test Query
 
@@ -430,7 +430,7 @@ SQL# /
 Elapsed: 00:00:08.90
 ```
 
-That was significantly quicker that before - 8.9 seconds vs 13.16 seconds.
+That was significantly quicker than before - 8.9 seconds vs 13.16 seconds.
 
 ```text
 
@@ -479,7 +479,7 @@ Column Projection Information (identified by operation id):
 
 ```
 
-The A-Rows incresed dramatically, as predicate `is_prime(rval)` was removed.
+The A-Rows increased dramatically, as predicate `is_prime(rval)` was removed.
 
 Even so, the query now completes in 4.26 seconds quicker, as the overhead of calling the function has been removed.
 
@@ -684,7 +684,7 @@ Query Block Name / Object Alias (identified by operation id):
 
 There are various sources that recommend using the query block name as part of the hint, others the object name.
 
-As reminder, here is the test query again:
+As a reminder, here is the test query again:
 
 ```sql
 select    -- outer query 
@@ -943,7 +943,7 @@ Column Projection Information (identified by operation id):
 
 The number of A-Rows scanned has been greatly reduced, from 25000 down to 4220.
 
-In addition, you may have notice the filter `FT"."SYS_NC00012$"='Y'`. What's that?
+In addition, you may have noticed the filter `FT"."SYS_NC00012$"='Y'`. What's that?
 
 Creating a function based index has caused Oracle to create an invisible column in the test table:
 
@@ -1019,7 +1019,7 @@ The truth is, joins are not slow. If there is one thing Oracle does well, it is 
 
 However, it is very easy to design tables and SQL statements in such a way that joins are very slow.
 
-Actually, it is not that joins are slow, it is simply that the design of the tables, indexes and SQL cant lead to performance issues due when far too many rows are being considered.
+Actually, it is not that joins are slow, it is simply that the design of the tables, indexes and SQL can lead to performance issues due when far too many rows are being considered.
 
 But, that is not the point of this article.
 
@@ -1065,7 +1065,7 @@ Session altered.
 SQL# drop index func_test_fbi_idx;
 Index dropped.
 
-QL# get afiedt.buf
+SQL# get afiedt.buf
   1  select count(*)
   2  from (
   3  select /*+ gather_plan_statistics */
@@ -1093,9 +1093,8 @@ The execution time is the fastest yet.
 
 What is especially nice is there is no chance of that function being used in the predicate.
 
-Notice too that there is need to use the `is_prime(rval)` in the column projection either, as the only rows returned are those where rval is prime.
+Notice too that there is no need to use the `is_prime(rval)` in the column projection either, as the only rows returned are those where rval is prime.
 
-The 
 
 ```text
 SQL# @showplan_last
