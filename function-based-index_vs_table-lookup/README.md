@@ -28,9 +28,9 @@ SQL# host  oerr ora 13846
 
 ```
 
-A search of this error on My Oracle Support revealed ... nothing.
+A search of this error on My Oracle Support revealed ... nothing. There were no results returned from MOS when searching for ORA-13846.
 
-A search for that error did not bring back any results.
+A Google search for that error did bring back a number of results, but none of them appeared to be applicable, or at least, we found no recommended actions that we could take.
 
 A couple of things led us to believe this was likely to be a bug
 
@@ -500,7 +500,7 @@ As this is a 3rd party app, we could not alter the SQL, nor could be create an i
 
 ## Hinting the SQL
 
-The next we can do is hint the SQL to tell the optimizer we wnat to use a different index.
+The next we can do is hint the SQL to tell the optimizer we want to use a different index.
 
 You may be wondering why the hint was not placed in the part of the query where it it will be used, like this:
 
@@ -650,11 +650,79 @@ Following is a simplified version of the script.
 
 And that brings us to the hint with the query block included.
 
-It is necessary to tell `sql_patch` which part of the query the hint applies to.
+It is necessary to tell `create_sql_patch` which part of the query the hint applies to.
 
-And so the hint was first tested, to ensure it worked.
+This is because it appears that when the query is nested, as our test query is, the `create_sql_patch` code appears to apply the hint to the outermost query.
 
-The real script checks for patch existence and possibly and other niceties, but for the purposes of this article, I am keeping it brief.
+If we want the patch to be applied to the correct part of the query, we have to specify that in the hint.
+
+Following is a partial reproduction of the execution plan as it was first seen earlier.
+
+Recall the the table is aliases as 'ft'  in the SQL: `from func_test ft'.
+
+In the Query Block section of the execution plan we see that line 3 in the operations (INDEX SKIP SCAN) corresponds to the Query Block Name of 'SEL$F5BB74E1'.
+
+In the parsed query, the table is referred to by 'FT@SEL$2'.
+
+```text
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                            | Name      | Starts | E-Rows |E-Bytes| Cost (%CPU)| E-Time   | A-Rows |   A-Time   | Buffers | Reads  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                     |           |      1 |        |       |    18 (100)|          |      1 |00:00:13.08 |     109K|  40210 |
+|   1 |  SORT AGGREGATE                      |           |      1 |      1 |    26 |            |          |      1 |00:00:13.08 |     109K|  40210 |
+|*  2 |   TABLE ACCESS BY INDEX ROWID BATCHED| FUNC_TEST |      1 |      5 |   130 |    18   (0)| 00:00:01 |     83 |00:00:00.41 |     109K|  40210 |
+|*  3 |    INDEX SKIP SCAN                   | BAD_IDX   |      1 |    100 |       |    10   (0)| 00:00:01 |    105K|00:00:06.09 |    4491 |   4035 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Query Block Name / Object Alias (identified by operation id):
+-------------------------------------------------------------
+
+   1 - SEL$F5BB74E1
+   2 - SEL$F5BB74E1 / FT@SEL$2
+   3 - SEL$F5BB74E1 / FT@SEL$2
+```
+
+There are various sources that recommend using the query block name as part of the hint, others the object name.
+
+As reminder, here is the test query again:
+
+```sql
+select    -- outer query 
+   count(*)
+from (   -- inner query
+   select /*+ gather_plan_statistics */
+      rval, is_prime(rval) rprime
+   from func_test ft, dual d
+   where ft.comp_id = :comp_id
+      and ft.period_end_date = to_date(:period_end_date,'yyyy-mm-dd')
+      and ft.trans_type = 'B'
+      and ft.status = 'ACTIVE'
+      and is_prime(rval) = 'Y'
+)
+```
+
+It was found that when specifying no hint, the wrong index was used, as expected.
+
+When adding a hint to the outer query in this manner: `select  /*+ index("FT" "COMP_ID_IDX") */`, the wrong index was still used.
+
+When applied to the outer query, the hint would be useless.  The index to be used affects the inner query only.
+
+When adding the hint with either the query block name, or the object alias, or even just the second part of the object alias, the correct index would be used.
+Specifying the QBN and the alias together also worked
+
+Hinted with 
+- query block name: `select /*+ index(@"SEL$F5BB74E1" "FT" "COMP_ID_IDX") */`
+- alias name: `select /*+ index("FT"@"SEL$2" "FT" "COMP_ID_IDX") */`
+- partial alias name: `select /*+ index(@"SEL$2" "FT" "COMP_ID_IDX") */`
+- QBN and the object alias: `select /*+ index(@"SEL$F5BB74E1" "FT"@"SEL$2" "FT" "COMP_ID_IDX") */`
+
+If one character was changed in either the QBN or the object alias, then the hint would be ignored. This was just to prove that both were having an effect.
+
+Following this testing, the sql was hinted this way: `select /*+ index(@"SEL$2" "FT" "COMP_ID_IDX") */'.
+
+Next, a script was prepared to create the sql patch.
+
+The real script that was used to create the sql patch checks for patch existence and possibly other niceties, but for the purposes of this article, I am keeping it brief.
 
 ```sql
 
@@ -1065,13 +1133,14 @@ The column being passed to the function was not a simple integer, it was a neste
 
 How can you deal with that?
 
-More to come...
+Hint: the options will be more limited when a Nested Array is used.
 
+Look for that in a follow up article
 
 
 ## QuickStart SQL Patch Demo
 
-Do NOT do this in any production databaes, as the `flush.sql` does just what you should expect it to: it flushes the Shared Pool and the Buffer Cache.
+Do NOT do this in any production database, as the `flush.sql` script does just what you should expect it to: it flushes the Shared Pool and the Buffer Cache.
 
 ```text
 @@schema.sql
@@ -1096,6 +1165,4 @@ set autotrace on
 @@q1 
 set autotrace off
 ```
-
-
 
