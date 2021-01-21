@@ -21,3 +21,8 @@ https://docs.oracle.com/en/database/oracle/oracle-database/18/adobj/multilevel-c
 https://docs.oracle.com/en/database/oracle/oracle-database/18/adobj/multilevel-collection-types.html#GUID-579BF1AB-5A19-4226-8D47-3FADC21D748B
 
 
+multilevel collections in oracle 9i
+http://www.oracle-developer.net/display.php?id=208
+
+
+
