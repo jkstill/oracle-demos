@@ -69,10 +69,10 @@ md5_to_sqlid () {
 	local md5="$1"
 
 	declare -a sqlid_map=(
-       [0]='0'  [1]='1'  [2]='2'  [3]='3'  [4]='4'  [5]='5'  [6]='6'  [7]='7'
-       [8]='8'  [9]='9' [10]='a' [11]='b' [12]='c' [13]='d' [14]='f' [15]='g'
-      [16]='h' [17]='j' [18]='k' [19]='m' [20]='n' [21]='p' [22]='q' [23]='r'
-      [24]='s' [25]='t' [26]='u' [27]='v' [28]='w' [29]='x' [30]='y' [31]='z'
+		 [0]='0'	 [1]='1'	 [2]='2'	 [3]='3'	 [4]='4'	 [5]='5'	 [6]='6'	 [7]='7'
+		 [8]='8'	 [9]='9' [10]='a' [11]='b' [12]='c' [13]='d' [14]='f' [15]='g'
+		[16]='h' [17]='j' [18]='k' [19]='m' [20]='n' [21]='p' [22]='q' [23]='r'
+		[24]='s' [25]='t' [26]='u' [27]='v' [28]='w' [29]='x' [30]='y' [31]='z'
 	);
 
 	#echo
@@ -89,7 +89,7 @@ md5_to_sqlid () {
 	declare h1=${md5:16:8}
 	declare h2=${md5:24:8}
 
-	#echo 
+	#echo
 	#echo "h1: $h1"
 	#echo "h2: $h2"
 
@@ -140,18 +140,20 @@ declare sqlfile=${1:?'Please specify a file'}
 
 }
 
-# sqlid should be the filename - sqlfiles/cabd9827dc032.txt
+# sqlid should be the filename - sqlfiles/cabd9827dc032-SCHEMA.txt
 
-real_sqlid=$(echo $sqlfile | cut -f2 -d\/ | cut -f1 -d\. )
+real_sqlid=$(echo $sqlfile | cut -f2 -d\/ | cut -f1 -d- )
+schema=$(echo $sqlfile | cut -f2 -d- | cut -f1 -d\.)
 
 echo " sql_id: $real_sqlid"
+echo " schema: $schema"
 
 declare md5=$(md5sum "$sqlfile" | awk '{ print $1 }')
 
-echo "    md5: $md5"
+echo "	 md5: $md5"
 declare gen_fhv=$(md5_to_fhv $md5)
 
-echo "       generated fhv: $gen_fhv"
+echo "		 generated fhv: $gen_fhv"
 
 # oracle is using the last 4 bytes of the full_hash_value(hex) to generate the hash_value (number)
 declare hash_value=$(fhv_to_hash_value $gen_fhv)
@@ -159,7 +161,7 @@ echo "generated hash_value: $hash_value"
 
 
 declare sql_id=$(md5_to_sqlid $md5)
-echo "    generated sql_id: $sql_id"
+echo "	 generated sql_id: $sql_id"
 
 if [ "$real_sqlid" != "$sql_id" ]; then
 	echo "!! Hash Gen Mismatch !!"
@@ -173,16 +175,13 @@ if [ "$real_sqlid" != "$sql_id" ]; then
 
 	if [ "$real_sqlid" == "$sql_id" ]; then
 		echo "Found a match by appending chr(0)"
-		
-		echo "      new md5: $md5"
-		echo "         new generated fhv: $gen_fhv"
+
+		echo "		new md5: $md5"
+		echo "			new generated fhv: $gen_fhv"
 		echo "  new generated hash_value: $hash_value"
-		echo "      new generated sql_id: $sql_id"
+		echo "		new generated sql_id: $sql_id"
 	else
 		echo "!! Appending chr(0) did not help"
 	fi
 fi
-
-
-
 

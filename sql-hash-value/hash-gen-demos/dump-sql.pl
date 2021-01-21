@@ -87,10 +87,15 @@ $dbh->{RowCacheSize} = 100;
 $dbh->{LongReadLen} = 32764;
 $dbh->{LongTruncOk} = 1;
 
-
-my $sql = q{select sql_id, sql_fulltext
+my $sql = q{select sql_id, parsing_schema_name, sql_fulltext
 from v$sql
-where (sql_id, child_number) in  ( select sql_id, min(child_number) from v$sql group by sql_id)};
+where (sql_id, child_number) in (
+		select sql_id, min(child_number)
+		from v$sql
+		where parsing_schema_name not in ('SYS','PERFSTAT','ORACLE_OCM')
+		group by sql_id
+	)
+};
 
 my $sth = $dbh->prepare($sql);
 
@@ -99,13 +104,14 @@ $sth->execute;
 while ( my @sqlrec = $sth->fetchrow_array ) {
 
 	print "sql_id: $sqlrec[0]\n";
+	print "user: $sqlrec[1]\n";
 
-	my $sqlFilename = "${sqldir}/${sqlrec[0]}.txt";
+	my $sqlFilename = "${sqldir}/${sqlrec[0]}-${sqlrec[1]}.txt";
 
 	my $fh = IO::File->new;
 
 	$fh->open("> $sqlFilename") || die "could not create $sqlFilename - $!\n";
-	$fh->write($sqlrec[1] . chr(0));
+	$fh->write($sqlrec[2] . chr(0));
 	$fh->close;
 
 }
