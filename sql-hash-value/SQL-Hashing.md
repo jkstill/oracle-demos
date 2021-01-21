@@ -534,6 +534,12 @@ $ORACLE_HOME/perl/bin/perl dump-sql.pl --help
 
 Generate the FHV and other values from a file containing a SQL statement saved by `dump-sql.pl`: [gen-fhv.sh](https://github.com/jkstill/oracle-demos/blob/master/sql-hash-value/hash-gen-demos/gen-fhv.sh)
 
+### hash-gen-demos/gen-fhv-bc.sh
+
+May be required for Bash versions older than 4.3.
+
+Some integers generated are too large for older Bash, and may become a negative number
+
 ### hash-gen-demos/gen-all-fhv.sh
 
 Run `gen-fhv.sh` for all SQL saved in files by `dump-sql.pl`: [gen-all-fhv.sh](https://github.com/jkstill/oracle-demos/blob/master/sql-hash-value/hash-gen-demos/gen-all-fhv.sh)
