@@ -3,6 +3,9 @@
 
 use dbms_utility.get_sql_hash() to calculate the full_hash_value from the SQL text
 
+
+ see  Querying V$Access Contents On Latch: Library Cache (Doc ID 757280.1)
+
 This is not infallible, as about 1% of sql tested get an incorrect full_hash_value
 
 If Oracle is using dbms_utility.get_sql_hash internally and/or ICD_GETSQLHASH (C lib)
@@ -21,6 +24,48 @@ is
  jkstill@gmail.com
 
 */
+
+-- from an oracle script
+-- convert a 4-byte raw to unsigned integer in machine endianness
+function unsigned_integer(r in raw) return number as
+	n number;
+begin
+	n := utl_raw.cast_to_binary_integer(r, utl_raw.machine_endian);
+	if (n < 0) then
+		n := n + 4294967296;
+	end if;
+	return n;
+end;
+
+-- create sql_id from md5 hash
+function md5_to_sqlid(md5 in raw) return varchar2
+is
+	type map_type is varray(32) of varchar2(1);
+	map  map_type := 
+		map_type('0', '1', '2', '3', '4', '5', '6', '7',
+               '8', '9', 'a', 'b', 'c', 'd', 'f', 'g',
+               'h', 'j', 'k', 'm', 'n', 'p', 'q', 'r',
+               's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
+
+	hash  number;
+	sqlid varchar2(13);
+begin
+	hash := unsigned_integer(utl_raw.substr(md5, 9, 4)) * 4294967296 +
+	unsigned_integer(utl_raw.substr(md5, 13, 4));
+	for i in 1..13 loop
+		sqlid := map(mod(hash,32)+1) || sqlid;
+		hash  := trunc(hash/32);
+	end loop;
+	return sqlid;
+end;
+
+
+-- MD5 hash to SQL hash
+function md5_to_sqlhash(md5 in raw) return number
+is
+begin
+	return unsigned_integer(utl_raw.substr(md5, 13, 4));
+end;
 
  
 function gen_sql_id ( sql_text_in clob ) return varchar2
@@ -65,7 +110,6 @@ begin
 
 end;
 
--- this would be better done with utl_raw.reverse
 function little_endian ( hash_str varchar2 ) return varchar2
 is
 	octet varchar2(8);
@@ -99,6 +143,7 @@ is
 	raw_hash raw(128);
 	n_pre10i_hash number;
 
+	-- see find-max-sql-length-to-calc-hash.sql
 	max_sql_len CONSTANT integer := 32767;
 
 begin
@@ -144,7 +189,7 @@ is
 	raw_hash raw(128);
 	n_pre10i_hash number;
 
-	max_sql_len CONSTANT integer := 32767;
+	max_sql_len CONSTANT integer := 32764;
 
 begin
 
@@ -177,6 +222,8 @@ begin
 	--n_lob_len := dbms_lob.getlength(c_sql);
 	--dbms_output.put_line('  calc_hash.sql len: ' || n_lob_len);
 	-- oracle uses the first 32767 bytes of the string to calculate the hash
+	-- the last 1-3 characters may be bytes may be chr(0)
+	-- see find-max-sql-length-to-calc-hash.sql
 	c_sql := dbms_lob.substr(c_sql,max_sql_len,1);
 
 	-- using the built in utility, there are hash mismatches on the same sql as seen in other methods tried in prototypes

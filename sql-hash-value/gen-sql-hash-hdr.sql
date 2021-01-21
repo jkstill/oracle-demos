@@ -14,6 +14,10 @@ is
 	function sql_id_to_hash (sql_id_in varchar2) return number;
 	function gen_sql_id ( sql_text_in clob ) return varchar2;
 	function gen_hash_value ( sql_text_in clob ) return number;
+	function little_endian ( hash_str varchar2 ) return varchar2;
+	function md5_to_sqlid(md5 in raw) return varchar2;
+	function md5_to_sqlhash(md5 in raw) return number;
+
 end;
 /
 
