@@ -1,6 +1,7 @@
 
 <h2>dbms_shared_pool.markhot example</h2>
 
+This is the publicly visible markhot repo.
 
 The dbms_shared_pool.markhot procedure can be used to allow multiple copies of a cursor object to exist. 
 This has been proven to work effectively with evidence following.
