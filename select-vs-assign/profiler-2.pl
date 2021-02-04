@@ -10,6 +10,7 @@
 # only interpret the timestamps in the trace file.
 #
 # Usage: # $0 file.trc
+# Cary Millsap
 
 
 use strict;

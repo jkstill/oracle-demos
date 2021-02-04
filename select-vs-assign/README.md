@@ -133,7 +133,7 @@ Now, let's dig a little bit and get a better understanding of why there is such 
 
 We can use perf to count the operations performaed by the server.
 
-The `record.sh` script is used to start the recording.
+The `record.sh` script is used to start the recording on the server.
 
 ### Testing Method
 
@@ -149,7 +149,7 @@ Switching back to the SQLPlus session, I press ENTER.
 
 Then I switch back to the server, and press CTL-C when the SQLPlus job is done.
 
-This is somewhat crude, but sufficient for these tests.
+Though somewhat crude, this method is sufficient for these tests.
 
 Each of the tests was performed in this way, resulting in two files
 
@@ -157,6 +157,14 @@ Each of the tests was performed in this way, resulting in two files
 - perf.data.select
 
 These files were renamed from the default `perf.data` following each test.
+
+In the previous tests you may have noticed that the SPID was reported.
+This refers to the server PID for the Oracle process started in behalf of the SQLPlus session.
+It is this PID that is used with the `record.sh` script.
+
+eg. `./record.sh 13280`
+
+The same SQL scripts were run while recording each with perf.
 
 ### perf report
 
@@ -174,14 +182,168 @@ What is most interesting at this time is the number of operations performed, exp
 
 We aren't looking at timing, just how much work had to be done on the server for each test script.
 
+For that, we just need one line from each file:
 
+```text
+$ grep 'Event count'  perf.rpt.*
+ perf.rpt.assign:# Event count (approx.): 223223223
+ perf.rpt.select:# Event count (approx.): 7292292285
+```
 
+Well, that is interesting. The number of calls when running the `select.sql` script 32x that of the `assign.sql` script.
 
 ## Testing with Oracle Trace
 
 There are a number of methods to start a trace on an Oracle Session.
 
-Here I will be using 
+Here I will be using the old standby, `alter session set events '10046 trace name context forever, level 12'`, simply because I have a script for it, and the name is easy to remember.
+
+The same two test SQL scripts were again run, but this time by first setting the `tracefile_identifier` and enabling the trace.
+
+### select.sql
+
+```text
+alter session set tracefile_identifier = 'SELECT';
+select value from v$diag where name = 'Default Trace File';
+@@10046
+@@select
+exit
+```
+
+### assign.sql
+
+```text
+alter session set tracefile_identifier = 'ASSIGN';
+select value from v$diag where name = 'Default Trace File';
+@@10046
+@@assign
+exit
+```
+
+Then the tracefiles were copied from the server.
+
+
+### Analisys
+
+We can learn a bit just by checking the sizes of the files:
+
+```text
+$  wc cdb1_ora*.trc
+  3000405   6001742 256119114 cdb1_ora_5689_SELECT.trc
+      159       850      9088 cdb1_ora_6414_ASSIGN.trc
+  3000564   6002592 256128202 total
+```
+
+There is striking disparity in the size of those files.
+
+The overhead of using Oracle Trace caused the execution time of `select.sql` to balloon from 8 seconds to 55 seconds.
+
+Here is a simple profile of each trace file:
+
+```text
+$ ./profiler-2.pl cdb1_ora_5689_SELECT.trc
+Response Time Component                    Duration     Pct    # Calls      Dur/Call
+----------------------------------------  ---------  ------  ---------  ------------
+CPU service                                  45.13s   80.9%         12     3.761055s
+SQL*Net message from client                   6.12s   11.0%          7     0.874465s
+unaccounted-for                               4.52s    8.1%          1     4.515813s
+library cache lock                            0.00s    0.0%          1     0.000958s
+library cache pin                             0.00s    0.0%          1     0.000514s
+PGA memory operation                          0.00s    0.0%         29     0.000009s
+SQL*Net message to client                     0.00s    0.0%          7     0.000001s
+----------------------------------------  ---------  ------  ---------  ------------
+Total response time                          55.77s  100.0%
+
+
+$ ./profiler-2.pl cdb1_ora_6414_ASSIGN.trc
+Response Time Component                    Duration     Pct    # Calls      Dur/Call
+----------------------------------------  ---------  ------  ---------  ------------
+SQL*Net message from client                   6.63s   95.5%          7     0.946822s
+CPU service                                   0.31s    4.4%         12     0.025454s
+unaccounted-for                               0.01s    0.1%          1     0.009777s
+PGA memory operation                          0.00s    0.0%          2     0.000009s
+SQL*Net message to client                     0.00s    0.0%          7     0.000001s
+----------------------------------------  ---------  ------  ---------  ------------
+Total response time                           6.94s  100.0%
+```
+
+It would seem the result are a bit skewed by the overhead of the trace, as there are 45 seconds of CPU used.
+(recall that without tracing, the script took 8 seconds)
+
+Using standard linux tools, we can get a better idea of why the `select.sql` takes so much more time than `assign.sql`.
+
+_assign.sql trace_
+
+```text
+  awk '{ print $1 }' cdb1_ora_6414_ASSIGN.trc | sort | uniq -c | sort -n | tail -20
+      3 BINDS
+      3 Bind#0
+      3 Bind#1
+      3 Dump
+      3 Dumping
+      3 END
+      3 PARSING
+      3 oacdty=02
+      3 oacdty=123
+      3 oacflg=00
+      3 oacflg=01
+      3 toid
+      3 value=###
+      5 EXEC
+      5 PARSE
+      9
+      9 STAT
+     10 CLOSE
+     11 ***
+     16 WAIT
+```
+
+_select.sql trace_
+
+```text
+  awk '{ print $1 }' cdb1_ora_5689_SELECT.trc | sort | uniq -c | sort -n | tail -20
+      3 select
+      3 toid
+      3 value=###
+      3 value=4294951004
+      5 =====================
+      5 END
+      5 PARSING
+      7 PARSE
+     11 kxsbbbfp=7f7826769da0
+     12 STAT
+     14 BINDS
+     14 Bind#0
+     14 oacdty=02
+     14 oacflg=00
+     45 WAIT
+     58 ***
+     67
+1000013 FETCH
+1000016 EXEC
+1000021 CLOSE
+```
+
+The last three lines of the report tell the story; when assigning variable via `select into from dual`, Oracle had to create, fetch and close a cursor 1M times.
+
+That overhead can be avoided simply by assigning variables directly, as seen in `assign.sql`.
+
+## Conclusion
+
+It is good to periodically test your assumptions.
+
+You probably would not notice the difference in singleton events that happen too quickly for a human to perceive the difference in timing.
+
+But when scaled up such as I have done here, the differences are easy to see.
+
+Will using a direct assignment make a noticable difference in a PL/SQL program that does it only once?  Probably not.
+
+But what if that PL/SQL program is called frequently?
+
+What if there are several PL/SQL programs doing this?  Maybe some of them doing so in a loop?
+
+Not only would the difference in performance be discernable, but extra resources would be consumed, which would not available for other processes.
+
 
 
 ## Scripts
