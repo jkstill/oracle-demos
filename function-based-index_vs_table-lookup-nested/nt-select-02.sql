@@ -30,6 +30,7 @@ select distinct
 	, f.credit_id
 	-- the column in the PRIZE_CODE_OBJ_TYP
 	, sum(fp.code_num) over ( partition by f.comp_id, f.pay_id, f.credit_id ) code_sum
+	, max(prize_code_sum(f.prize_codes)) over ( partition by f.comp_id, f.pay_id, f.credit_id ) code_sum_f
 from func_test_prize f
 	, table(f.prize_codes) fp
 /

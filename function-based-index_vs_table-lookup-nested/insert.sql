@@ -41,9 +41,9 @@ select
 	, substr('ABCD',trunc(dbms_random.value(1,5)),1) trans_type
 	, decode(mod(rownum,3),0,'ACTIVE',1,'INACTIVE',2,'PENDING') status
 	, prize_code_nt (
-		prize_code_obj_typ( trunc(dbms_random.value(1,7)) ),
-		prize_code_obj_typ( trunc(dbms_random.value(1,7)) ),
-		prize_code_obj_typ( trunc(dbms_random.value(1,7)) )
+		prize_code_obj_typ( trunc(dbms_random.value(1,30)) ),
+		prize_code_obj_typ( trunc(dbms_random.value(1,30)) ),
+		prize_code_obj_typ( trunc(dbms_random.value(1,30)) )
 	)
 	, dbms_random.string('L', 20) c1
 	, dbms_random.string('L', 20) c2

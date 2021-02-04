@@ -1,5 +1,4 @@
 
-
 /* 
 SQL# desc func_test_prize
  Name                                      Null?    Type
@@ -25,14 +24,19 @@ SQL# desc PRIZE_CODE_NT
 
 */
 
--- just get the various sums of the codes
 
-select distinct
+
+set timing on
+
+select count(*) from (
+select /*+ all_rows */
+	f.comp_id
+	, f.pay_id
+	, f.credit_id
 	-- the column in the PRIZE_CODE_OBJ_TYP
-	sum(fp.code_num) over ( partition by f.comp_id, f.pay_id, f.credit_id ) code_sum
-	, count(*) over ( partition by f.comp_id, f.pay_id, f.credit_id ) sum_count
+	, f.prize_codes
 from func_test_prize f
-	, table(f.prize_codes) fp
-order by 1 desc
+where prize_code_sum(f.prize_codes) = 42
+)
 /
 
