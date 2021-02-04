@@ -1,0 +1,2145 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 223  of event 'cpu-clock'
+# Event count (approx.): 223223223
+#
+# Children      Self  Command          Shared Object       Symbol                                        
+# ........  ........  ...............  ..................  ..............................................
+#
+    77.58%     0.00%  oracle_5365_cdb  libc-2.17.so        [.] __libc_start_main
+            |
+            ---__libc_start_main
+               main
+               ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               |          
+                --172--ttcpip
+                          opiodr
+                          kpoal8
+                          opiexe
+                          kkxexe
+                          peicnt
+                          plsql_run
+                          pfrrun
+                          |          
+                          |--166--pfrrun_no_tool
+                          |          |          
+                          |          |--62--pfrinstr_BCAL
+                          |          |          |          
+                          |          |          |--57--pevm_icd_call_common
+                          |          |          |          |          
+                          |          |          |           --50--pessdt
+                          |          |          |                     |          
+                          |          |          |                     |--42--psdsysdt
+                          |          |          |                     |          |          
+                          |          |          |                     |           --36--dtegtdi
+                          |          |          |                     |                     |          
+                          |          |          |                     |                      --25--slgtd
+                          |          |          |                     |                                |          
+                          |          |          |                     |                                 --24--slgtds
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                           |--14--__vdso_gettimeofday
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                            --3--localtime_r
+                          |          |          |                     |          
+                          |          |          |                      --2--pisoda
+                          |          |          |          
+                          |          |           --3--__sigsetjmp
+                          |          |          
+                          |          |--39--pfrinstr_XCAL
+                          |          |          |          
+                          |          |          |--28--pevm_CHK_INST
+                          |          |          |          |          
+                          |          |          |           --20--kgiPinObject
+                          |          |          |                     |          
+                          |          |          |                      --10--kglpnp
+                          |          |          |          
+                          |          |           --8--pfrxca
+                          |          |          
+                          |          |--17--pfrinstr_ENTER
+                          |          |          |          
+                          |          |           --15--pevm_ENTER
+                          |          |          
+                          |          |--16--pfrinstr_RET
+                          |          |          pevm_RET
+                          |          |          |          
+                          |          |           --11--pfrust
+                          |          |          
+                          |          |--14--pfrinstr_INFR
+                          |          |          |          
+                          |          |           --13--pfrfd_init_frame
+                          |          |                     |          
+                          |          |                      --8--pfrfd1_init_locals
+                          |          |          
+                          |          |--4--pfrinstr_MOVA
+                          |          |          
+                          |          |--3--pfrinstr_BCTR
+                          |          |          
+                          |           --2--pevm_ENTER
+                          |          
+                           --3--pfrinstr_MOVD
+
+    77.58%     0.00%  oracle_5365_cdb  oracle              [.] main
+            |
+            ---main
+               ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               |          
+                --172--ttcpip
+                          opiodr
+                          kpoal8
+                          opiexe
+                          kkxexe
+                          peicnt
+                          plsql_run
+                          pfrrun
+                          |          
+                          |--166--pfrrun_no_tool
+                          |          |          
+                          |          |--62--pfrinstr_BCAL
+                          |          |          |          
+                          |          |          |--57--pevm_icd_call_common
+                          |          |          |          |          
+                          |          |          |           --50--pessdt
+                          |          |          |                     |          
+                          |          |          |                     |--42--psdsysdt
+                          |          |          |                     |          |          
+                          |          |          |                     |           --36--dtegtdi
+                          |          |          |                     |                     |          
+                          |          |          |                     |                      --25--slgtd
+                          |          |          |                     |                                |          
+                          |          |          |                     |                                 --24--slgtds
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                           |--14--__vdso_gettimeofday
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                            --3--localtime_r
+                          |          |          |                     |          
+                          |          |          |                      --2--pisoda
+                          |          |          |          
+                          |          |           --3--__sigsetjmp
+                          |          |          
+                          |          |--39--pfrinstr_XCAL
+                          |          |          |          
+                          |          |          |--28--pevm_CHK_INST
+                          |          |          |          |          
+                          |          |          |           --20--kgiPinObject
+                          |          |          |                     |          
+                          |          |          |                      --10--kglpnp
+                          |          |          |          
+                          |          |           --8--pfrxca
+                          |          |          
+                          |          |--17--pfrinstr_ENTER
+                          |          |          |          
+                          |          |           --15--pevm_ENTER
+                          |          |          
+                          |          |--16--pfrinstr_RET
+                          |          |          pevm_RET
+                          |          |          |          
+                          |          |           --11--pfrust
+                          |          |          
+                          |          |--14--pfrinstr_INFR
+                          |          |          |          
+                          |          |           --13--pfrfd_init_frame
+                          |          |                     |          
+                          |          |                      --8--pfrfd1_init_locals
+                          |          |          
+                          |          |--4--pfrinstr_MOVA
+                          |          |          
+                          |          |--3--pfrinstr_BCTR
+                          |          |          
+                          |           --2--pevm_ENTER
+                          |          
+                           --3--pfrinstr_MOVD
+
+    77.58%     0.00%  oracle_5365_cdb  oracle              [.] ssthrdmain
+            |
+            ---ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               |          
+                --172--ttcpip
+                          opiodr
+                          kpoal8
+                          opiexe
+                          kkxexe
+                          peicnt
+                          plsql_run
+                          pfrrun
+                          |          
+                          |--166--pfrrun_no_tool
+                          |          |          
+                          |          |--62--pfrinstr_BCAL
+                          |          |          |          
+                          |          |          |--57--pevm_icd_call_common
+                          |          |          |          |          
+                          |          |          |           --50--pessdt
+                          |          |          |                     |          
+                          |          |          |                     |--42--psdsysdt
+                          |          |          |                     |          |          
+                          |          |          |                     |           --36--dtegtdi
+                          |          |          |                     |                     |          
+                          |          |          |                     |                      --25--slgtd
+                          |          |          |                     |                                |          
+                          |          |          |                     |                                 --24--slgtds
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                           |--14--__vdso_gettimeofday
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                            --3--localtime_r
+                          |          |          |                     |          
+                          |          |          |                      --2--pisoda
+                          |          |          |          
+                          |          |           --3--__sigsetjmp
+                          |          |          
+                          |          |--39--pfrinstr_XCAL
+                          |          |          |          
+                          |          |          |--28--pevm_CHK_INST
+                          |          |          |          |          
+                          |          |          |           --20--kgiPinObject
+                          |          |          |                     |          
+                          |          |          |                      --10--kglpnp
+                          |          |          |          
+                          |          |           --8--pfrxca
+                          |          |          
+                          |          |--17--pfrinstr_ENTER
+                          |          |          |          
+                          |          |           --15--pevm_ENTER
+                          |          |          
+                          |          |--16--pfrinstr_RET
+                          |          |          pevm_RET
+                          |          |          |          
+                          |          |           --11--pfrust
+                          |          |          
+                          |          |--14--pfrinstr_INFR
+                          |          |          |          
+                          |          |           --13--pfrfd_init_frame
+                          |          |                     |          
+                          |          |                      --8--pfrfd1_init_locals
+                          |          |          
+                          |          |--4--pfrinstr_MOVA
+                          |          |          
+                          |          |--3--pfrinstr_BCTR
+                          |          |          
+                          |           --2--pevm_ENTER
+                          |          
+                           --3--pfrinstr_MOVD
+
+    77.58%     0.00%  oracle_5365_cdb  oracle              [.] opimai_real
+            |
+            ---opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               |          
+                --172--ttcpip
+                          opiodr
+                          kpoal8
+                          opiexe
+                          kkxexe
+                          peicnt
+                          plsql_run
+                          pfrrun
+                          |          
+                          |--166--pfrrun_no_tool
+                          |          |          
+                          |          |--62--pfrinstr_BCAL
+                          |          |          |          
+                          |          |          |--57--pevm_icd_call_common
+                          |          |          |          |          
+                          |          |          |           --50--pessdt
+                          |          |          |                     |          
+                          |          |          |                     |--42--psdsysdt
+                          |          |          |                     |          |          
+                          |          |          |                     |           --36--dtegtdi
+                          |          |          |                     |                     |          
+                          |          |          |                     |                      --25--slgtd
+                          |          |          |                     |                                |          
+                          |          |          |                     |                                 --24--slgtds
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                           |--14--__vdso_gettimeofday
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                            --3--localtime_r
+                          |          |          |                     |          
+                          |          |          |                      --2--pisoda
+                          |          |          |          
+                          |          |           --3--__sigsetjmp
+                          |          |          
+                          |          |--39--pfrinstr_XCAL
+                          |          |          |          
+                          |          |          |--28--pevm_CHK_INST
+                          |          |          |          |          
+                          |          |          |           --20--kgiPinObject
+                          |          |          |                     |          
+                          |          |          |                      --10--kglpnp
+                          |          |          |          
+                          |          |           --8--pfrxca
+                          |          |          
+                          |          |--17--pfrinstr_ENTER
+                          |          |          |          
+                          |          |           --15--pevm_ENTER
+                          |          |          
+                          |          |--16--pfrinstr_RET
+                          |          |          pevm_RET
+                          |          |          |          
+                          |          |           --11--pfrust
+                          |          |          
+                          |          |--14--pfrinstr_INFR
+                          |          |          |          
+                          |          |           --13--pfrfd_init_frame
+                          |          |                     |          
+                          |          |                      --8--pfrfd1_init_locals
+                          |          |          
+                          |          |--4--pfrinstr_MOVA
+                          |          |          
+                          |          |--3--pfrinstr_BCTR
+                          |          |          
+                          |           --2--pevm_ENTER
+                          |          
+                           --3--pfrinstr_MOVD
+
+    77.58%     0.00%  oracle_5365_cdb  oracle              [.] sou2o
+            |
+            ---sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               |          
+                --172--ttcpip
+                          opiodr
+                          kpoal8
+                          opiexe
+                          kkxexe
+                          peicnt
+                          plsql_run
+                          pfrrun
+                          |          
+                          |--166--pfrrun_no_tool
+                          |          |          
+                          |          |--62--pfrinstr_BCAL
+                          |          |          |          
+                          |          |          |--57--pevm_icd_call_common
+                          |          |          |          |          
+                          |          |          |           --50--pessdt
+                          |          |          |                     |          
+                          |          |          |                     |--42--psdsysdt
+                          |          |          |                     |          |          
+                          |          |          |                     |           --36--dtegtdi
+                          |          |          |                     |                     |          
+                          |          |          |                     |                      --25--slgtd
+                          |          |          |                     |                                |          
+                          |          |          |                     |                                 --24--slgtds
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                           |--14--__vdso_gettimeofday
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                            --3--localtime_r
+                          |          |          |                     |          
+                          |          |          |                      --2--pisoda
+                          |          |          |          
+                          |          |           --3--__sigsetjmp
+                          |          |          
+                          |          |--39--pfrinstr_XCAL
+                          |          |          |          
+                          |          |          |--28--pevm_CHK_INST
+                          |          |          |          |          
+                          |          |          |           --20--kgiPinObject
+                          |          |          |                     |          
+                          |          |          |                      --10--kglpnp
+                          |          |          |          
+                          |          |           --8--pfrxca
+                          |          |          
+                          |          |--17--pfrinstr_ENTER
+                          |          |          |          
+                          |          |           --15--pevm_ENTER
+                          |          |          
+                          |          |--16--pfrinstr_RET
+                          |          |          pevm_RET
+                          |          |          |          
+                          |          |           --11--pfrust
+                          |          |          
+                          |          |--14--pfrinstr_INFR
+                          |          |          |          
+                          |          |           --13--pfrfd_init_frame
+                          |          |                     |          
+                          |          |                      --8--pfrfd1_init_locals
+                          |          |          
+                          |          |--4--pfrinstr_MOVA
+                          |          |          
+                          |          |--3--pfrinstr_BCTR
+                          |          |          
+                          |           --2--pevm_ENTER
+                          |          
+                           --3--pfrinstr_MOVD
+
+    77.58%     0.00%  oracle_5365_cdb  oracle              [.] opidrv
+            |
+            ---opidrv
+               opiodr
+               opiino
+               opitsk
+               |          
+                --172--ttcpip
+                          opiodr
+                          kpoal8
+                          opiexe
+                          kkxexe
+                          peicnt
+                          plsql_run
+                          pfrrun
+                          |          
+                          |--166--pfrrun_no_tool
+                          |          |          
+                          |          |--62--pfrinstr_BCAL
+                          |          |          |          
+                          |          |          |--57--pevm_icd_call_common
+                          |          |          |          |          
+                          |          |          |           --50--pessdt
+                          |          |          |                     |          
+                          |          |          |                     |--42--psdsysdt
+                          |          |          |                     |          |          
+                          |          |          |                     |           --36--dtegtdi
+                          |          |          |                     |                     |          
+                          |          |          |                     |                      --25--slgtd
+                          |          |          |                     |                                |          
+                          |          |          |                     |                                 --24--slgtds
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                           |--14--__vdso_gettimeofday
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                            --3--localtime_r
+                          |          |          |                     |          
+                          |          |          |                      --2--pisoda
+                          |          |          |          
+                          |          |           --3--__sigsetjmp
+                          |          |          
+                          |          |--39--pfrinstr_XCAL
+                          |          |          |          
+                          |          |          |--28--pevm_CHK_INST
+                          |          |          |          |          
+                          |          |          |           --20--kgiPinObject
+                          |          |          |                     |          
+                          |          |          |                      --10--kglpnp
+                          |          |          |          
+                          |          |           --8--pfrxca
+                          |          |          
+                          |          |--17--pfrinstr_ENTER
+                          |          |          |          
+                          |          |           --15--pevm_ENTER
+                          |          |          
+                          |          |--16--pfrinstr_RET
+                          |          |          pevm_RET
+                          |          |          |          
+                          |          |           --11--pfrust
+                          |          |          
+                          |          |--14--pfrinstr_INFR
+                          |          |          |          
+                          |          |           --13--pfrfd_init_frame
+                          |          |                     |          
+                          |          |                      --8--pfrfd1_init_locals
+                          |          |          
+                          |          |--4--pfrinstr_MOVA
+                          |          |          
+                          |          |--3--pfrinstr_BCTR
+                          |          |          
+                          |           --2--pevm_ENTER
+                          |          
+                           --3--pfrinstr_MOVD
+
+    77.58%     0.00%  oracle_5365_cdb  oracle              [.] opiodr
+            |
+            ---opiodr
+               opiino
+               opitsk
+               |          
+                --172--ttcpip
+                          opiodr
+                          kpoal8
+                          opiexe
+                          kkxexe
+                          peicnt
+                          plsql_run
+                          pfrrun
+                          |          
+                          |--166--pfrrun_no_tool
+                          |          |          
+                          |          |--62--pfrinstr_BCAL
+                          |          |          |          
+                          |          |          |--57--pevm_icd_call_common
+                          |          |          |          |          
+                          |          |          |           --50--pessdt
+                          |          |          |                     |          
+                          |          |          |                     |--42--psdsysdt
+                          |          |          |                     |          |          
+                          |          |          |                     |           --36--dtegtdi
+                          |          |          |                     |                     |          
+                          |          |          |                     |                      --25--slgtd
+                          |          |          |                     |                                |          
+                          |          |          |                     |                                 --24--slgtds
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                           |--14--__vdso_gettimeofday
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                            --3--localtime_r
+                          |          |          |                     |          
+                          |          |          |                      --2--pisoda
+                          |          |          |          
+                          |          |           --3--__sigsetjmp
+                          |          |          
+                          |          |--39--pfrinstr_XCAL
+                          |          |          |          
+                          |          |          |--28--pevm_CHK_INST
+                          |          |          |          |          
+                          |          |          |           --20--kgiPinObject
+                          |          |          |                     |          
+                          |          |          |                      --10--kglpnp
+                          |          |          |          
+                          |          |           --8--pfrxca
+                          |          |          
+                          |          |--17--pfrinstr_ENTER
+                          |          |          |          
+                          |          |           --15--pevm_ENTER
+                          |          |          
+                          |          |--16--pfrinstr_RET
+                          |          |          pevm_RET
+                          |          |          |          
+                          |          |           --11--pfrust
+                          |          |          
+                          |          |--14--pfrinstr_INFR
+                          |          |          |          
+                          |          |           --13--pfrfd_init_frame
+                          |          |                     |          
+                          |          |                      --8--pfrfd1_init_locals
+                          |          |          
+                          |          |--4--pfrinstr_MOVA
+                          |          |          
+                          |          |--3--pfrinstr_BCTR
+                          |          |          
+                          |           --2--pevm_ENTER
+                          |          
+                           --3--pfrinstr_MOVD
+
+    77.58%     0.00%  oracle_5365_cdb  oracle              [.] opiino
+            |
+            ---opiino
+               opitsk
+               |          
+                --172--ttcpip
+                          opiodr
+                          kpoal8
+                          opiexe
+                          kkxexe
+                          peicnt
+                          plsql_run
+                          pfrrun
+                          |          
+                          |--166--pfrrun_no_tool
+                          |          |          
+                          |          |--62--pfrinstr_BCAL
+                          |          |          |          
+                          |          |          |--57--pevm_icd_call_common
+                          |          |          |          |          
+                          |          |          |           --50--pessdt
+                          |          |          |                     |          
+                          |          |          |                     |--42--psdsysdt
+                          |          |          |                     |          |          
+                          |          |          |                     |           --36--dtegtdi
+                          |          |          |                     |                     |          
+                          |          |          |                     |                      --25--slgtd
+                          |          |          |                     |                                |          
+                          |          |          |                     |                                 --24--slgtds
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                           |--14--__vdso_gettimeofday
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                            --3--localtime_r
+                          |          |          |                     |          
+                          |          |          |                      --2--pisoda
+                          |          |          |          
+                          |          |           --3--__sigsetjmp
+                          |          |          
+                          |          |--39--pfrinstr_XCAL
+                          |          |          |          
+                          |          |          |--28--pevm_CHK_INST
+                          |          |          |          |          
+                          |          |          |           --20--kgiPinObject
+                          |          |          |                     |          
+                          |          |          |                      --10--kglpnp
+                          |          |          |          
+                          |          |           --8--pfrxca
+                          |          |          
+                          |          |--17--pfrinstr_ENTER
+                          |          |          |          
+                          |          |           --15--pevm_ENTER
+                          |          |          
+                          |          |--16--pfrinstr_RET
+                          |          |          pevm_RET
+                          |          |          |          
+                          |          |           --11--pfrust
+                          |          |          
+                          |          |--14--pfrinstr_INFR
+                          |          |          |          
+                          |          |           --13--pfrfd_init_frame
+                          |          |                     |          
+                          |          |                      --8--pfrfd1_init_locals
+                          |          |          
+                          |          |--4--pfrinstr_MOVA
+                          |          |          
+                          |          |--3--pfrinstr_BCTR
+                          |          |          
+                          |           --2--pevm_ENTER
+                          |          
+                           --3--pfrinstr_MOVD
+
+    77.58%     0.00%  oracle_5365_cdb  oracle              [.] opitsk
+            |
+            ---opitsk
+               |          
+                --172--ttcpip
+                          opiodr
+                          kpoal8
+                          opiexe
+                          kkxexe
+                          peicnt
+                          plsql_run
+                          pfrrun
+                          |          
+                          |--166--pfrrun_no_tool
+                          |          |          
+                          |          |--62--pfrinstr_BCAL
+                          |          |          |          
+                          |          |          |--57--pevm_icd_call_common
+                          |          |          |          |          
+                          |          |          |           --50--pessdt
+                          |          |          |                     |          
+                          |          |          |                     |--42--psdsysdt
+                          |          |          |                     |          |          
+                          |          |          |                     |           --36--dtegtdi
+                          |          |          |                     |                     |          
+                          |          |          |                     |                      --25--slgtd
+                          |          |          |                     |                                |          
+                          |          |          |                     |                                 --24--slgtds
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                           |--14--__vdso_gettimeofday
+                          |          |          |                     |                                           |          
+                          |          |          |                     |                                            --3--localtime_r
+                          |          |          |                     |          
+                          |          |          |                      --2--pisoda
+                          |          |          |          
+                          |          |           --3--__sigsetjmp
+                          |          |          
+                          |          |--39--pfrinstr_XCAL
+                          |          |          |          
+                          |          |          |--28--pevm_CHK_INST
+                          |          |          |          |          
+                          |          |          |           --20--kgiPinObject
+                          |          |          |                     |          
+                          |          |          |                      --10--kglpnp
+                          |          |          |          
+                          |          |           --8--pfrxca
+                          |          |          
+                          |          |--17--pfrinstr_ENTER
+                          |          |          |          
+                          |          |           --15--pevm_ENTER
+                          |          |          
+                          |          |--16--pfrinstr_RET
+                          |          |          pevm_RET
+                          |          |          |          
+                          |          |           --11--pfrust
+                          |          |          
+                          |          |--14--pfrinstr_INFR
+                          |          |          |          
+                          |          |           --13--pfrfd_init_frame
+                          |          |                     |          
+                          |          |                      --8--pfrfd1_init_locals
+                          |          |          
+                          |          |--4--pfrinstr_MOVA
+                          |          |          
+                          |          |--3--pfrinstr_BCTR
+                          |          |          
+                          |           --2--pevm_ENTER
+                          |          
+                           --3--pfrinstr_MOVD
+
+    77.13%     0.00%  oracle_5365_cdb  oracle              [.] ttcpip
+            |
+            ---ttcpip
+               opiodr
+               kpoal8
+               opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               |          
+               |--166--pfrrun_no_tool
+               |          |          
+               |          |--62--pfrinstr_BCAL
+               |          |          |          
+               |          |          |--57--pevm_icd_call_common
+               |          |          |          |          
+               |          |          |           --50--pessdt
+               |          |          |                     |          
+               |          |          |                     |--42--psdsysdt
+               |          |          |                     |          |          
+               |          |          |                     |           --36--dtegtdi
+               |          |          |                     |                     |          
+               |          |          |                     |                      --25--slgtd
+               |          |          |                     |                                |          
+               |          |          |                     |                                 --24--slgtds
+               |          |          |                     |                                           |          
+               |          |          |                     |                                           |--14--__vdso_gettimeofday
+               |          |          |                     |                                           |          
+               |          |          |                     |                                            --3--localtime_r
+               |          |          |                     |          
+               |          |          |                      --2--pisoda
+               |          |          |          
+               |          |           --3--__sigsetjmp
+               |          |          
+               |          |--39--pfrinstr_XCAL
+               |          |          |          
+               |          |          |--28--pevm_CHK_INST
+               |          |          |          |          
+               |          |          |           --20--kgiPinObject
+               |          |          |                     |          
+               |          |          |                      --10--kglpnp
+               |          |          |          
+               |          |           --8--pfrxca
+               |          |          
+               |          |--17--pfrinstr_ENTER
+               |          |          |          
+               |          |           --15--pevm_ENTER
+               |          |          
+               |          |--16--pfrinstr_RET
+               |          |          pevm_RET
+               |          |          |          
+               |          |           --11--pfrust
+               |          |          
+               |          |--14--pfrinstr_INFR
+               |          |          |          
+               |          |           --13--pfrfd_init_frame
+               |          |                     |          
+               |          |                      --8--pfrfd1_init_locals
+               |          |          
+               |          |--4--pfrinstr_MOVA
+               |          |          
+               |          |--3--pfrinstr_BCTR
+               |          |          
+               |           --2--pevm_ENTER
+               |          
+                --3--pfrinstr_MOVD
+
+    77.13%     0.00%  oracle_5365_cdb  oracle              [.] kpoal8
+            |
+            ---kpoal8
+               opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               |          
+               |--166--pfrrun_no_tool
+               |          |          
+               |          |--62--pfrinstr_BCAL
+               |          |          |          
+               |          |          |--57--pevm_icd_call_common
+               |          |          |          |          
+               |          |          |           --50--pessdt
+               |          |          |                     |          
+               |          |          |                     |--42--psdsysdt
+               |          |          |                     |          |          
+               |          |          |                     |           --36--dtegtdi
+               |          |          |                     |                     |          
+               |          |          |                     |                      --25--slgtd
+               |          |          |                     |                                |          
+               |          |          |                     |                                 --24--slgtds
+               |          |          |                     |                                           |          
+               |          |          |                     |                                           |--14--__vdso_gettimeofday
+               |          |          |                     |                                           |          
+               |          |          |                     |                                            --3--localtime_r
+               |          |          |                     |          
+               |          |          |                      --2--pisoda
+               |          |          |          
+               |          |           --3--__sigsetjmp
+               |          |          
+               |          |--39--pfrinstr_XCAL
+               |          |          |          
+               |          |          |--28--pevm_CHK_INST
+               |          |          |          |          
+               |          |          |           --20--kgiPinObject
+               |          |          |                     |          
+               |          |          |                      --10--kglpnp
+               |          |          |          
+               |          |           --8--pfrxca
+               |          |          
+               |          |--17--pfrinstr_ENTER
+               |          |          |          
+               |          |           --15--pevm_ENTER
+               |          |          
+               |          |--16--pfrinstr_RET
+               |          |          pevm_RET
+               |          |          |          
+               |          |           --11--pfrust
+               |          |          
+               |          |--14--pfrinstr_INFR
+               |          |          |          
+               |          |           --13--pfrfd_init_frame
+               |          |                     |          
+               |          |                      --8--pfrfd1_init_locals
+               |          |          
+               |          |--4--pfrinstr_MOVA
+               |          |          
+               |          |--3--pfrinstr_BCTR
+               |          |          
+               |           --2--pevm_ENTER
+               |          
+                --3--pfrinstr_MOVD
+
+    77.13%     0.00%  oracle_5365_cdb  oracle              [.] opiexe
+            |
+            ---opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               |          
+               |--166--pfrrun_no_tool
+               |          |          
+               |          |--62--pfrinstr_BCAL
+               |          |          |          
+               |          |          |--57--pevm_icd_call_common
+               |          |          |          |          
+               |          |          |           --50--pessdt
+               |          |          |                     |          
+               |          |          |                     |--42--psdsysdt
+               |          |          |                     |          |          
+               |          |          |                     |           --36--dtegtdi
+               |          |          |                     |                     |          
+               |          |          |                     |                      --25--slgtd
+               |          |          |                     |                                |          
+               |          |          |                     |                                 --24--slgtds
+               |          |          |                     |                                           |          
+               |          |          |                     |                                           |--14--__vdso_gettimeofday
+               |          |          |                     |                                           |          
+               |          |          |                     |                                            --3--localtime_r
+               |          |          |                     |          
+               |          |          |                      --2--pisoda
+               |          |          |          
+               |          |           --3--__sigsetjmp
+               |          |          
+               |          |--39--pfrinstr_XCAL
+               |          |          |          
+               |          |          |--28--pevm_CHK_INST
+               |          |          |          |          
+               |          |          |           --20--kgiPinObject
+               |          |          |                     |          
+               |          |          |                      --10--kglpnp
+               |          |          |          
+               |          |           --8--pfrxca
+               |          |          
+               |          |--17--pfrinstr_ENTER
+               |          |          |          
+               |          |           --15--pevm_ENTER
+               |          |          
+               |          |--16--pfrinstr_RET
+               |          |          pevm_RET
+               |          |          |          
+               |          |           --11--pfrust
+               |          |          
+               |          |--14--pfrinstr_INFR
+               |          |          |          
+               |          |           --13--pfrfd_init_frame
+               |          |                     |          
+               |          |                      --8--pfrfd1_init_locals
+               |          |          
+               |          |--4--pfrinstr_MOVA
+               |          |          
+               |          |--3--pfrinstr_BCTR
+               |          |          
+               |           --2--pevm_ENTER
+               |          
+                --3--pfrinstr_MOVD
+
+    77.13%     0.00%  oracle_5365_cdb  oracle              [.] kkxexe
+            |
+            ---kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               |          
+               |--166--pfrrun_no_tool
+               |          |          
+               |          |--62--pfrinstr_BCAL
+               |          |          |          
+               |          |          |--57--pevm_icd_call_common
+               |          |          |          |          
+               |          |          |           --50--pessdt
+               |          |          |                     |          
+               |          |          |                     |--42--psdsysdt
+               |          |          |                     |          |          
+               |          |          |                     |           --36--dtegtdi
+               |          |          |                     |                     |          
+               |          |          |                     |                      --25--slgtd
+               |          |          |                     |                                |          
+               |          |          |                     |                                 --24--slgtds
+               |          |          |                     |                                           |          
+               |          |          |                     |                                           |--14--__vdso_gettimeofday
+               |          |          |                     |                                           |          
+               |          |          |                     |                                            --3--localtime_r
+               |          |          |                     |          
+               |          |          |                      --2--pisoda
+               |          |          |          
+               |          |           --3--__sigsetjmp
+               |          |          
+               |          |--39--pfrinstr_XCAL
+               |          |          |          
+               |          |          |--28--pevm_CHK_INST
+               |          |          |          |          
+               |          |          |           --20--kgiPinObject
+               |          |          |                     |          
+               |          |          |                      --10--kglpnp
+               |          |          |          
+               |          |           --8--pfrxca
+               |          |          
+               |          |--17--pfrinstr_ENTER
+               |          |          |          
+               |          |           --15--pevm_ENTER
+               |          |          
+               |          |--16--pfrinstr_RET
+               |          |          pevm_RET
+               |          |          |          
+               |          |           --11--pfrust
+               |          |          
+               |          |--14--pfrinstr_INFR
+               |          |          |          
+               |          |           --13--pfrfd_init_frame
+               |          |                     |          
+               |          |                      --8--pfrfd1_init_locals
+               |          |          
+               |          |--4--pfrinstr_MOVA
+               |          |          
+               |          |--3--pfrinstr_BCTR
+               |          |          
+               |           --2--pevm_ENTER
+               |          
+                --3--pfrinstr_MOVD
+
+    77.13%     0.00%  oracle_5365_cdb  oracle              [.] peicnt
+            |
+            ---peicnt
+               plsql_run
+               pfrrun
+               |          
+               |--166--pfrrun_no_tool
+               |          |          
+               |          |--62--pfrinstr_BCAL
+               |          |          |          
+               |          |          |--57--pevm_icd_call_common
+               |          |          |          |          
+               |          |          |           --50--pessdt
+               |          |          |                     |          
+               |          |          |                     |--42--psdsysdt
+               |          |          |                     |          |          
+               |          |          |                     |           --36--dtegtdi
+               |          |          |                     |                     |          
+               |          |          |                     |                      --25--slgtd
+               |          |          |                     |                                |          
+               |          |          |                     |                                 --24--slgtds
+               |          |          |                     |                                           |          
+               |          |          |                     |                                           |--14--__vdso_gettimeofday
+               |          |          |                     |                                           |          
+               |          |          |                     |                                            --3--localtime_r
+               |          |          |                     |          
+               |          |          |                      --2--pisoda
+               |          |          |          
+               |          |           --3--__sigsetjmp
+               |          |          
+               |          |--39--pfrinstr_XCAL
+               |          |          |          
+               |          |          |--28--pevm_CHK_INST
+               |          |          |          |          
+               |          |          |           --20--kgiPinObject
+               |          |          |                     |          
+               |          |          |                      --10--kglpnp
+               |          |          |          
+               |          |           --8--pfrxca
+               |          |          
+               |          |--17--pfrinstr_ENTER
+               |          |          |          
+               |          |           --15--pevm_ENTER
+               |          |          
+               |          |--16--pfrinstr_RET
+               |          |          pevm_RET
+               |          |          |          
+               |          |           --11--pfrust
+               |          |          
+               |          |--14--pfrinstr_INFR
+               |          |          |          
+               |          |           --13--pfrfd_init_frame
+               |          |                     |          
+               |          |                      --8--pfrfd1_init_locals
+               |          |          
+               |          |--4--pfrinstr_MOVA
+               |          |          
+               |          |--3--pfrinstr_BCTR
+               |          |          
+               |           --2--pevm_ENTER
+               |          
+                --3--pfrinstr_MOVD
+
+    77.13%     0.00%  oracle_5365_cdb  oracle              [.] plsql_run
+            |
+            ---plsql_run
+               pfrrun
+               |          
+               |--166--pfrrun_no_tool
+               |          |          
+               |          |--62--pfrinstr_BCAL
+               |          |          |          
+               |          |          |--57--pevm_icd_call_common
+               |          |          |          |          
+               |          |          |           --50--pessdt
+               |          |          |                     |          
+               |          |          |                     |--42--psdsysdt
+               |          |          |                     |          |          
+               |          |          |                     |           --36--dtegtdi
+               |          |          |                     |                     |          
+               |          |          |                     |                      --25--slgtd
+               |          |          |                     |                                |          
+               |          |          |                     |                                 --24--slgtds
+               |          |          |                     |                                           |          
+               |          |          |                     |                                           |--14--__vdso_gettimeofday
+               |          |          |                     |                                           |          
+               |          |          |                     |                                            --3--localtime_r
+               |          |          |                     |          
+               |          |          |                      --2--pisoda
+               |          |          |          
+               |          |           --3--__sigsetjmp
+               |          |          
+               |          |--39--pfrinstr_XCAL
+               |          |          |          
+               |          |          |--28--pevm_CHK_INST
+               |          |          |          |          
+               |          |          |           --20--kgiPinObject
+               |          |          |                     |          
+               |          |          |                      --10--kglpnp
+               |          |          |          
+               |          |           --8--pfrxca
+               |          |          
+               |          |--17--pfrinstr_ENTER
+               |          |          |          
+               |          |           --15--pevm_ENTER
+               |          |          
+               |          |--16--pfrinstr_RET
+               |          |          pevm_RET
+               |          |          |          
+               |          |           --11--pfrust
+               |          |          
+               |          |--14--pfrinstr_INFR
+               |          |          |          
+               |          |           --13--pfrfd_init_frame
+               |          |                     |          
+               |          |                      --8--pfrfd1_init_locals
+               |          |          
+               |          |--4--pfrinstr_MOVA
+               |          |          
+               |          |--3--pfrinstr_BCTR
+               |          |          
+               |           --2--pevm_ENTER
+               |          
+                --3--pfrinstr_MOVD
+
+    77.13%     0.00%  oracle_5365_cdb  oracle              [.] pfrrun
+            |
+            ---pfrrun
+               |          
+               |--166--pfrrun_no_tool
+               |          |          
+               |          |--62--pfrinstr_BCAL
+               |          |          |          
+               |          |          |--57--pevm_icd_call_common
+               |          |          |          |          
+               |          |          |           --50--pessdt
+               |          |          |                     |          
+               |          |          |                     |--42--psdsysdt
+               |          |          |                     |          |          
+               |          |          |                     |           --36--dtegtdi
+               |          |          |                     |                     |          
+               |          |          |                     |                      --25--slgtd
+               |          |          |                     |                                |          
+               |          |          |                     |                                 --24--slgtds
+               |          |          |                     |                                           |          
+               |          |          |                     |                                           |--14--__vdso_gettimeofday
+               |          |          |                     |                                           |          
+               |          |          |                     |                                            --3--localtime_r
+               |          |          |                     |          
+               |          |          |                      --2--pisoda
+               |          |          |          
+               |          |           --3--__sigsetjmp
+               |          |          
+               |          |--39--pfrinstr_XCAL
+               |          |          |          
+               |          |          |--28--pevm_CHK_INST
+               |          |          |          |          
+               |          |          |           --20--kgiPinObject
+               |          |          |                     |          
+               |          |          |                      --10--kglpnp
+               |          |          |          
+               |          |           --8--pfrxca
+               |          |          
+               |          |--17--pfrinstr_ENTER
+               |          |          |          
+               |          |           --15--pevm_ENTER
+               |          |          
+               |          |--16--pfrinstr_RET
+               |          |          pevm_RET
+               |          |          |          
+               |          |           --11--pfrust
+               |          |          
+               |          |--14--pfrinstr_INFR
+               |          |          |          
+               |          |           --13--pfrfd_init_frame
+               |          |                     |          
+               |          |                      --8--pfrfd1_init_locals
+               |          |          
+               |          |--4--pfrinstr_MOVA
+               |          |          
+               |          |--3--pfrinstr_BCTR
+               |          |          
+               |           --2--pevm_ENTER
+               |          
+                --3--pfrinstr_MOVD
+
+    74.44%     2.69%  oracle_5365_cdb  oracle              [.] pfrrun_no_tool
+            |          
+            |--160--pfrrun_no_tool
+            |          |          
+            |          |--62--pfrinstr_BCAL
+            |          |          |          
+            |          |          |--57--pevm_icd_call_common
+            |          |          |          |          
+            |          |          |           --50--pessdt
+            |          |          |                     |          
+            |          |          |                     |--42--psdsysdt
+            |          |          |                     |          |          
+            |          |          |                     |           --36--dtegtdi
+            |          |          |                     |                     |          
+            |          |          |                     |                      --25--slgtd
+            |          |          |                     |                                |          
+            |          |          |                     |                                 --24--slgtds
+            |          |          |                     |                                           |          
+            |          |          |                     |                                           |--14--__vdso_gettimeofday
+            |          |          |                     |                                           |          
+            |          |          |                     |                                            --3--localtime_r
+            |          |          |                     |          
+            |          |          |                      --2--pisoda
+            |          |          |          
+            |          |           --3--__sigsetjmp
+            |          |          
+            |          |--39--pfrinstr_XCAL
+            |          |          |          
+            |          |          |--28--pevm_CHK_INST
+            |          |          |          |          
+            |          |          |           --20--kgiPinObject
+            |          |          |                     |          
+            |          |          |                      --10--kglpnp
+            |          |          |          
+            |          |           --8--pfrxca
+            |          |          
+            |          |--17--pfrinstr_ENTER
+            |          |          |          
+            |          |           --15--pevm_ENTER
+            |          |          
+            |          |--16--pfrinstr_RET
+            |          |          pevm_RET
+            |          |          |          
+            |          |           --11--pfrust
+            |          |          
+            |          |--14--pfrinstr_INFR
+            |          |          |          
+            |          |           --13--pfrfd_init_frame
+            |          |                     |          
+            |          |                      --8--pfrfd1_init_locals
+            |          |          
+            |          |--4--pfrinstr_MOVA
+            |          |          
+            |          |--3--pfrinstr_BCTR
+            |          |          
+            |           --2--pevm_ENTER
+            |          
+             --6--__libc_start_main
+                       main
+                       ssthrdmain
+                       opimai_real
+                       sou2o
+                       opidrv
+                       opiodr
+                       opiino
+                       opitsk
+                       ttcpip
+                       opiodr
+                       kpoal8
+                       opiexe
+                       kkxexe
+                       peicnt
+                       plsql_run
+                       pfrrun
+                       pfrrun_no_tool
+
+    28.25%     1.35%  oracle_5365_cdb  oracle              [.] pfrinstr_BCAL
+            |          
+            |--60--pfrinstr_BCAL
+            |          |          
+            |          |--57--pevm_icd_call_common
+            |          |          |          
+            |          |           --50--pessdt
+            |          |                     |          
+            |          |                     |--42--psdsysdt
+            |          |                     |          |          
+            |          |                     |           --36--dtegtdi
+            |          |                     |                     |          
+            |          |                     |                      --25--slgtd
+            |          |                     |                                |          
+            |          |                     |                                 --24--slgtds
+            |          |                     |                                           |          
+            |          |                     |                                           |--14--__vdso_gettimeofday
+            |          |                     |                                           |          
+            |          |                     |                                            --3--localtime_r
+            |          |                     |          
+            |          |                      --2--pisoda
+            |          |          
+            |           --3--__sigsetjmp
+            |          
+             --3--__libc_start_main
+                       main
+                       ssthrdmain
+                       opimai_real
+                       sou2o
+                       opidrv
+                       opiodr
+                       opiino
+                       opitsk
+                       ttcpip
+                       opiodr
+                       kpoal8
+                       opiexe
+                       kkxexe
+                       peicnt
+                       plsql_run
+                       pfrrun
+                       |          
+                        --2--pfrrun_no_tool
+                                  pfrinstr_BCAL
+
+    26.01%     3.59%  oracle_5365_cdb  oracle              [.] pevm_icd_call_common
+            |          
+            |--50--pevm_icd_call_common
+            |          pessdt
+            |          |          
+            |          |--42--psdsysdt
+            |          |          |          
+            |          |           --36--dtegtdi
+            |          |                     |          
+            |          |                      --25--slgtd
+            |          |                                |          
+            |          |                                 --24--slgtds
+            |          |                                           |          
+            |          |                                           |--14--__vdso_gettimeofday
+            |          |                                           |          
+            |          |                                            --3--localtime_r
+            |          |          
+            |           --2--pisoda
+            |          
+             --8--__libc_start_main
+                       main
+                       ssthrdmain
+                       opimai_real
+                       sou2o
+                       opidrv
+                       opiodr
+                       opiino
+                       opitsk
+                       ttcpip
+                       opiodr
+                       kpoal8
+                       opiexe
+                       kkxexe
+                       peicnt
+                       plsql_run
+                       pfrrun
+                       pfrrun_no_tool
+                       |          
+                        --7--pfrinstr_BCAL
+                                  pevm_icd_call_common
+
+    22.42%     2.69%  oracle_5365_cdb  oracle              [.] pessdt
+            |          
+            |--44--pessdt
+            |          |          
+            |          |--42--psdsysdt
+            |          |          |          
+            |          |           --36--dtegtdi
+            |          |                     |          
+            |          |                      --25--slgtd
+            |          |                                |          
+            |          |                                 --24--slgtds
+            |          |                                           |          
+            |          |                                           |--14--__vdso_gettimeofday
+            |          |                                           |          
+            |          |                                            --3--localtime_r
+            |          |          
+            |           --2--pisoda
+            |          
+             --6--__libc_start_main
+                       main
+                       ssthrdmain
+                       opimai_real
+                       sou2o
+                       opidrv
+                       opiodr
+                       opiino
+                       opitsk
+                       ttcpip
+                       opiodr
+                       kpoal8
+                       opiexe
+                       kkxexe
+                       peicnt
+                       plsql_run
+                       pfrrun
+                       pfrrun_no_tool
+                       pfrinstr_BCAL
+                       pevm_icd_call_common
+                       pessdt
+
+    18.83%     2.69%  oracle_5365_cdb  oracle              [.] psdsysdt
+            |          
+            |--36--psdsysdt
+            |          dtegtdi
+            |          |          
+            |           --25--slgtd
+            |                     |          
+            |                      --24--slgtds
+            |                                |          
+            |                                |--14--__vdso_gettimeofday
+            |                                |          
+            |                                 --3--localtime_r
+            |          
+             --6--__libc_start_main
+                       main
+                       ssthrdmain
+                       opimai_real
+                       sou2o
+                       opidrv
+                       opiodr
+                       opiino
+                       opitsk
+                       ttcpip
+                       opiodr
+                       kpoal8
+                       opiexe
+                       kkxexe
+                       peicnt
+                       plsql_run
+                       pfrrun
+                       pfrrun_no_tool
+                       pfrinstr_BCAL
+                       pevm_icd_call_common
+                       pessdt
+                       psdsysdt
+
+    17.49%     1.35%  oracle_5365_cdb  oracle              [.] pfrinstr_XCAL
+            |          
+            |--36--pfrinstr_XCAL
+            |          |          
+            |          |--28--pevm_CHK_INST
+            |          |          |          
+            |          |           --20--kgiPinObject
+            |          |                     |          
+            |          |                      --10--kglpnp
+            |          |          
+            |           --8--pfrxca
+            |          
+             --3--__libc_start_main
+                       main
+                       ssthrdmain
+                       opimai_real
+                       sou2o
+                       opidrv
+                       opiodr
+                       opiino
+                       opitsk
+                       ttcpip
+                       opiodr
+                       kpoal8
+                       opiexe
+                       kkxexe
+                       peicnt
+                       plsql_run
+                       pfrrun
+                       pfrrun_no_tool
+                       pfrinstr_XCAL
+
+    16.14%     4.93%  oracle_5365_cdb  oracle              [.] dtegtdi
+            |          
+            |--25--dtegtdi
+            |          slgtd
+            |          |          
+            |           --24--slgtds
+            |                     |          
+            |                     |--14--__vdso_gettimeofday
+            |                     |          
+            |                      --3--localtime_r
+            |          
+             --11--__libc_start_main
+                       main
+                       ssthrdmain
+                       opimai_real
+                       sou2o
+                       opidrv
+                       opiodr
+                       opiino
+                       opitsk
+                       ttcpip
+                       opiodr
+                       kpoal8
+                       opiexe
+                       kkxexe
+                       peicnt
+                       plsql_run
+                       pfrrun
+                       pfrrun_no_tool
+                       pfrinstr_BCAL
+                       pevm_icd_call_common
+                       pessdt
+                       psdsysdt
+                       dtegtdi
+
+    12.56%     2.24%  oracle_5365_cdb  oracle              [.] pevm_CHK_INST
+            |          
+            |--23--pevm_CHK_INST
+            |          |          
+            |           --20--kgiPinObject
+            |                     |          
+            |                      --10--kglpnp
+            |          
+             --5--__libc_start_main
+                       main
+                       ssthrdmain
+                       opimai_real
+                       sou2o
+                       opidrv
+                       opiodr
+                       opiino
+                       opitsk
+                       ttcpip
+                       opiodr
+                       kpoal8
+                       opiexe
+                       kkxexe
+                       peicnt
+                       plsql_run
+                       pfrrun
+                       pfrrun_no_tool
+                       pfrinstr_XCAL
+                       pevm_CHK_INST
+
+    11.21%     0.45%  oracle_5365_cdb  oracle              [.] slgtd
+            |          
+             --24--slgtd
+                       slgtds
+                       |          
+                       |--14--__vdso_gettimeofday
+                       |          
+                        --3--localtime_r
+
+    10.76%     3.14%  oracle_5365_cdb  oracle              [.] slgtds
+            |          
+            |--17--slgtds
+            |          |          
+            |          |--14--__vdso_gettimeofday
+            |          |          
+            |           --3--localtime_r
+            |          
+             --7--__libc_start_main
+                       main
+                       ssthrdmain
+                       opimai_real
+                       sou2o
+                       opidrv
+                       opiodr
+                       opiino
+                       opitsk
+                       ttcpip
+                       opiodr
+                       kpoal8
+                       opiexe
+                       kkxexe
+                       peicnt
+                       plsql_run
+                       pfrrun
+                       pfrrun_no_tool
+                       pfrinstr_BCAL
+                       pevm_icd_call_common
+                       pessdt
+                       psdsysdt
+                       dtegtdi
+                       slgtd
+                       slgtds
+
+     8.97%     4.04%  oracle_5365_cdb  oracle              [.] kgiPinObject
+            |          
+            |--11--kgiPinObject
+            |          |          
+            |           --10--kglpnp
+            |          
+             --9--__libc_start_main
+                       main
+                       ssthrdmain
+                       opimai_real
+                       sou2o
+                       opidrv
+                       opiodr
+                       opiino
+                       opitsk
+                       ttcpip
+                       opiodr
+                       kpoal8
+                       opiexe
+                       kkxexe
+                       peicnt
+                       plsql_run
+                       pfrrun
+                       pfrrun_no_tool
+                       pfrinstr_XCAL
+                       pevm_CHK_INST
+                       kgiPinObject
+
+     8.97%     8.97%  oracle_5365_cdb  libc-2.17.so        [.] __offtime
+            |          
+            |--18--0x40000000d
+            |          __offtime
+            |          
+             --2--0
+                       0x8d41aa10
+                       __offtime
+
+     8.07%     1.35%  oracle_5365_cdb  oracle              [.] pfrinstr_ENTER
+            |          
+            |--15--pfrinstr_ENTER
+            |          pevm_ENTER
+            |          
+             --3--__libc_start_main
+                       main
+                       ssthrdmain
+                       opimai_real
+                       sou2o
+                       opidrv
+                       opiodr
+                       opiino
+                       opitsk
+                       ttcpip
+                       opiodr
+                       kpoal8
+                       opiexe
+                       kkxexe
+                       peicnt
+                       plsql_run
+                       pfrrun
+                       |          
+                        --2--pfrrun_no_tool
+                                  pfrinstr_ENTER
+
+     8.07%     0.00%  oracle_5365_cdb  [unknown]           [.] 0x000000040000000d
+            |
+            ---0x40000000d
+               __offtime
+
+     7.62%     7.62%  oracle_5365_cdb  oracle              [.] pevm_ENTER
+            |
+            ---__libc_start_main
+               main
+               ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               ttcpip
+               opiodr
+               kpoal8
+               opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               pfrrun_no_tool
+               |          
+               |--15--pfrinstr_ENTER
+               |          pevm_ENTER
+               |          
+                --2--pevm_ENTER
+
+     7.17%     0.00%  oracle_5365_cdb  [unknown]           [.] 0x00007fb4ac5f9a68
+            |
+            ---0x7fb4ac5f9a68
+               |          
+               |--10--__tzfile_compute
+               |          
+                --6--__strlen_sse2
+
+     7.17%     2.24%  oracle_5365_cdb  oracle              [.] pevm_RET
+            |          
+            |--11--pevm_RET
+            |          pfrust
+            |          
+             --5--__libc_start_main
+                       main
+                       ssthrdmain
+                       opimai_real
+                       sou2o
+                       opidrv
+                       opiodr
+                       opiino
+                       opitsk
+                       ttcpip
+                       opiodr
+                       kpoal8
+                       opiexe
+                       kkxexe
+                       peicnt
+                       plsql_run
+                       pfrrun
+                       pfrrun_no_tool
+                       pfrinstr_RET
+                       pevm_RET
+
+     7.17%     0.00%  oracle_5365_cdb  oracle              [.] pfrinstr_RET
+            |
+            ---pfrinstr_RET
+               pevm_RET
+               |          
+                --11--pfrust
+
+     6.28%     6.28%  oracle_5365_cdb  [vdso]              [.] __vdso_gettimeofday
+            |
+            ---__libc_start_main
+               main
+               ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               ttcpip
+               opiodr
+               kpoal8
+               opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               pfrrun_no_tool
+               pfrinstr_BCAL
+               pevm_icd_call_common
+               pessdt
+               psdsysdt
+               dtegtdi
+               slgtd
+               slgtds
+               __vdso_gettimeofday
+
+     6.28%     0.45%  oracle_5365_cdb  oracle              [.] pfrinstr_INFR
+            |          
+             --13--pfrinstr_INFR
+                       pfrfd_init_frame
+                       |          
+                        --8--pfrfd1_init_locals
+
+     5.83%     2.24%  oracle_5365_cdb  oracle              [.] pfrfd_init_frame
+            |          
+            |--8--pfrfd_init_frame
+            |          pfrfd1_init_locals
+            |          
+             --5--__libc_start_main
+                       main
+                       ssthrdmain
+                       opimai_real
+                       sou2o
+                       opidrv
+                       opiodr
+                       opiino
+                       opitsk
+                       ttcpip
+                       opiodr
+                       kpoal8
+                       opiexe
+                       kkxexe
+                       peicnt
+                       plsql_run
+                       pfrrun
+                       pfrrun_no_tool
+                       pfrinstr_INFR
+                       pfrfd_init_frame
+
+     4.93%     4.48%  oracle_5365_cdb  libc-2.17.so        [.] __tzfile_compute
+            |          
+             --9--0x7fb4ac5f9a68
+                       __tzfile_compute
+
+     4.93%     4.04%  oracle_5365_cdb  oracle              [.] kglpnp
+            |          
+            |--9--__libc_start_main
+            |          main
+            |          ssthrdmain
+            |          opimai_real
+            |          sou2o
+            |          opidrv
+            |          opiodr
+            |          opiino
+            |          opitsk
+            |          ttcpip
+            |          opiodr
+            |          kpoal8
+            |          opiexe
+            |          kkxexe
+            |          peicnt
+            |          plsql_run
+            |          pfrrun
+            |          pfrrun_no_tool
+            |          pfrinstr_XCAL
+            |          pevm_CHK_INST
+            |          |          
+            |           --8--kgiPinObject
+            |                     kglpnp
+            |          
+             --2--kglpnp
+
+     4.93%     4.93%  oracle_5365_cdb  oracle              [.] pfrust
+            |
+            ---__libc_start_main
+               main
+               ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               ttcpip
+               opiodr
+               kpoal8
+               opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               pfrrun_no_tool
+               pfrinstr_RET
+               pevm_RET
+               pfrust
+
+     3.59%     3.59%  oracle_5365_cdb  oracle              [.] pfrfd1_init_locals
+            |
+            ---__libc_start_main
+               main
+               ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               ttcpip
+               opiodr
+               kpoal8
+               opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               pfrrun_no_tool
+               pfrinstr_INFR
+               pfrfd_init_frame
+               pfrfd1_init_locals
+
+     3.59%     3.59%  oracle_5365_cdb  oracle              [.] pfrxca
+            |
+            ---__libc_start_main
+               main
+               ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               ttcpip
+               opiodr
+               kpoal8
+               opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               pfrrun_no_tool
+               pfrinstr_XCAL
+               pfrxca
+
+     3.59%     0.00%  oracle_5365_cdb  [unknown]           [.] 0000000000000000
+            |
+            ---0
+               0x8d41aa10
+               |          
+               |--5--__tz_convert
+               |          
+                --2--__offtime
+
+     3.59%     0.00%  oracle_5365_cdb  [unknown]           [.] 0x000000008d41aa10
+            |
+            ---0x8d41aa10
+               |          
+               |--5--__tz_convert
+               |          
+                --2--__offtime
+
+     2.69%     2.24%  oracle_5365_cdb  libc-2.17.so        [.] __strlen_sse2
+            |          
+             --5--0x7fb4ac5f9a68
+                       __strlen_sse2
+
+     2.24%     2.24%  oracle_5365_cdb  libc-2.17.so        [.] __tz_convert
+            |
+            ---0
+               0x8d41aa10
+               __tz_convert
+
+     2.24%     2.24%  oracle_5365_cdb  libc-2.17.so        [.] __memcmp_sse2
+            |
+            ---__memcmp_sse2
+
+     1.79%     1.79%  oracle_5365_cdb  oracle              [.] pfrinstr_BCTR
+            |
+            ---__libc_start_main
+               main
+               ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               ttcpip
+               opiodr
+               kpoal8
+               opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               |          
+                --3--pfrrun_no_tool
+                          pfrinstr_BCTR
+
+     1.79%     1.79%  oracle_5365_cdb  oracle              [.] pfrinstr_MOVA
+            |
+            ---__libc_start_main
+               main
+               ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               ttcpip
+               opiodr
+               kpoal8
+               opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               pfrrun_no_tool
+               pfrinstr_MOVA
+
+     1.35%     1.35%  oracle_5365_cdb  oracle              [.] localtime_r
+            |
+            ---__libc_start_main
+               main
+               ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               ttcpip
+               opiodr
+               kpoal8
+               opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               pfrrun_no_tool
+               pfrinstr_BCAL
+               pevm_icd_call_common
+               pessdt
+               psdsysdt
+               dtegtdi
+               slgtd
+               slgtds
+               localtime_r
+
+     1.35%     1.35%  oracle_5365_cdb  libc-2.17.so        [.] __sigsetjmp
+            |
+            ---__libc_start_main
+               main
+               ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               ttcpip
+               opiodr
+               kpoal8
+               opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               pfrrun_no_tool
+               pfrinstr_BCAL
+               __sigsetjmp
+
+     1.35%     1.35%  oracle_5365_cdb  oracle              [.] pfrinstr_MOVD
+            |
+            ---__libc_start_main
+               main
+               ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               ttcpip
+               opiodr
+               kpoal8
+               opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               pfrinstr_MOVD
+
+     1.35%     1.35%  oracle_5365_cdb  libc-2.17.so        [.] __tzstring
+            |
+            ---__tzstring
+
+     0.90%     0.90%  oracle_5365_cdb  [kernel.vmlinux]    [k] e1000_xmit_frame
+     0.90%     0.90%  oracle_5365_cdb  oracle              [.] pisoda
+            |
+            ---__libc_start_main
+               main
+               ssthrdmain
+               opimai_real
+               sou2o
+               opidrv
+               opiodr
+               opiino
+               opitsk
+               ttcpip
+               opiodr
+               kpoal8
+               opiexe
+               kkxexe
+               peicnt
+               plsql_run
+               pfrrun
+               pfrrun_no_tool
+               pfrinstr_BCAL
+               pevm_icd_call_common
+               pessdt
+               pisoda
+
+     0.90%     0.45%  oracle_5365_cdb  [kernel.vmlinux]    [k] __do_softirq
+     0.90%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] irq_exit
+            |
+            ---irq_exit
+               __do_softirq
+
+     0.90%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] __tcp_transmit_skb
+            |
+            ---__tcp_transmit_skb
+               ip_queue_xmit
+               ip_local_out
+               ip_output
+               ip_finish_output
+               ip_finish_output2
+               neigh_resolve_output
+               dev_queue_xmit
+               __dev_queue_xmit
+               sch_direct_xmit
+               dev_hard_start_xmit
+               e1000_xmit_frame
+
+     0.90%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] ip_queue_xmit
+            |
+            ---ip_queue_xmit
+               ip_local_out
+               ip_output
+               ip_finish_output
+               ip_finish_output2
+               neigh_resolve_output
+               dev_queue_xmit
+               __dev_queue_xmit
+               sch_direct_xmit
+               dev_hard_start_xmit
+               e1000_xmit_frame
+
+     0.90%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] ip_local_out
+            |
+            ---ip_local_out
+               ip_output
+               ip_finish_output
+               ip_finish_output2
+               neigh_resolve_output
+               dev_queue_xmit
+               __dev_queue_xmit
+               sch_direct_xmit
+               dev_hard_start_xmit
+               e1000_xmit_frame
+
+     0.90%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] ip_output
+            |
+            ---ip_output
+               ip_finish_output
+               ip_finish_output2
+               neigh_resolve_output
+               dev_queue_xmit
+               __dev_queue_xmit
+               sch_direct_xmit
+               dev_hard_start_xmit
+               e1000_xmit_frame
+
+     0.90%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] ip_finish_output
+            |
+            ---ip_finish_output
+               ip_finish_output2
+               neigh_resolve_output
+               dev_queue_xmit
+               __dev_queue_xmit
+               sch_direct_xmit
+               dev_hard_start_xmit
+               e1000_xmit_frame
+
+     0.90%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] ip_finish_output2
+            |
+            ---ip_finish_output2
+               neigh_resolve_output
+               dev_queue_xmit
+               __dev_queue_xmit
+               sch_direct_xmit
+               dev_hard_start_xmit
+               e1000_xmit_frame
+
+     0.90%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] neigh_resolve_output
+            |
+            ---neigh_resolve_output
+               dev_queue_xmit
+               __dev_queue_xmit
+               sch_direct_xmit
+               dev_hard_start_xmit
+               e1000_xmit_frame
+
+     0.90%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] dev_queue_xmit
+            |
+            ---dev_queue_xmit
+               __dev_queue_xmit
+               sch_direct_xmit
+               dev_hard_start_xmit
+               e1000_xmit_frame
+
+     0.90%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] __dev_queue_xmit
+            |
+            ---__dev_queue_xmit
+               sch_direct_xmit
+               dev_hard_start_xmit
+               e1000_xmit_frame
+
+     0.90%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] sch_direct_xmit
+            |
+            ---sch_direct_xmit
+               dev_hard_start_xmit
+               e1000_xmit_frame
+
+     0.90%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] dev_hard_start_xmit
+            |
+            ---dev_hard_start_xmit
+               e1000_xmit_frame
+
+     0.45%     0.00%  oracle_5365_cdb  oracle              [.] opikndf2
+     0.45%     0.00%  oracle_5365_cdb  oracle              [.] nioqrc
+     0.45%     0.00%  oracle_5365_cdb  oracle              [.] nsbasic_bsd
+     0.45%     0.00%  oracle_5365_cdb  oracle              [.] nttfpwr
+     0.45%     0.00%  oracle_5365_cdb  libpthread-2.17.so  [.] __write_nocancel
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] entry_SYSCALL_64_after_hwframe
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] do_syscall_64
+     0.45%     0.45%  oracle_5365_cdb  oracle              [.] kglLockHandle
+     0.45%     0.45%  oracle_5365_cdb  oracle              [.] kglbrk
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] sys_write
+     0.45%     0.45%  oracle_5365_cdb  oracle              [.] kglPinSetContext
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] apic_timer_interrupt
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] vfs_write
+     0.45%     0.45%  oracle_5365_cdb  oracle              [.] kgiRemoveCachedIob
+     0.45%     0.45%  oracle_5365_cdb  oracle              [.] kss_get_owner
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] __vfs_write
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] smp_apic_timer_interrupt
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] sock_write_iter
+     0.45%     0.45%  oracle_5365_cdb  oracle              [.] pevm_MOVD
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] sock_sendmsg
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] inet_sendmsg
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] run_timer_softirq
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] call_timer_fn
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] tcp_sendmsg
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] tcp_delack_timer
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] tcp_sendmsg_locked
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] tcp_delack_timer_handler
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] tcp_push
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] __tcp_push_pending_frames
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] tcp_send_ack
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] __tcp_send_ack.part.32
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] tcp_write_xmit
+     0.45%     0.45%  oracle_5365_cdb  [kernel.vmlinux]    [k] finish_task_switch
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] swapgs_restore_regs_and_return_to_usermode
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] prepare_exit_to_usermode
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] exit_to_usermode_loop
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] ret_from_intr
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] do_IRQ
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] schedule
+     0.45%     0.00%  oracle_5365_cdb  [kernel.vmlinux]    [k] __schedule
+
+
+#
+# (Tip: Sample related events with: perf record -e '{cycles,instructions}:S')
+#
