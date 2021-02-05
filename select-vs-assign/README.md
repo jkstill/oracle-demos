@@ -335,6 +335,22 @@ The last three lines of the report for `select.sql` tell the story; when assigni
 
 That overhead can be avoided simply by assigning variables directly, as seen in `assign.sql`.
 
+Any blog that uses perf for analysis would be incomplete without the requisite Flame Graphs
+
+### Flame Graph for select.sql
+
+What is of interest in these flame graphs is the amount of work being done once the script enters the plsql_run section.
+
+The select.sql script has quite a bit of code being executed; not only is there a large stack of code being executed, it is very wide, which in in a flame graph indicates a lot of work being performed.
+
+[Flame Graph for select.sql](https://github.com/jkstill/oracle-demos/blob/master/select-vs-assign/perf-select.svg)
+
+### Flame Graph for assign.sql
+
+Now take a look the the flame graph for assign.sql.  There is much less above the plsql_run section. Not only is the stack shorter, it is much narrower, and therefore faster.
+
+[Flame Graph for assign.sql](https://github.com/jkstill/oracle-demos/blob/master/select-vs-assign/perf-assign.svg)
+
 ## Conclusion
 
 It is good to periodically test your assumptions.
