@@ -335,7 +335,7 @@ The last three lines of the report for `select.sql` tell the story; when assigni
 
 That overhead can be avoided simply by assigning variables directly, as seen in `assign.sql`.
 
-Any blog that uses perf for analysis would be incomplete without the requisite Flame Graphs
+Any blog that uses perf for analysis would be incomplete without the requisite [Flame Graphs](http://www.brendangregg.com/flamegraphs.html)
 
 ### Flame Graph for select.sql
 
