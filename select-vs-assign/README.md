@@ -134,7 +134,7 @@ Directly assigning via `vDate := sysdate` 1M times took significantly less time 
 
 It should be clear that `select from dual` should never be used when a direct variable assignment can be used.
 
-Now, let's dig a little bit and get a better understanding of why there is such a large difference between the two methods of assigning a value to a variable.
+Now, let's dig a little bit deeper and get a better understanding of why there is such a large difference between the two methods of assigning a value to a variable.
 
 ## Testing with Perf
 
@@ -279,32 +279,6 @@ It would seem the results are a bit skewed by the overhead of the trace, as ther
 
 Using standard linux tools, we can get a better idea of why the `select.sql` takes so much more time than `assign.sql`.
 
-_assign.sql trace_
-
-```text
-  awk '{ print $1 }' cdb1_ora_6414_ASSIGN.trc | sort | uniq -c | sort -n | tail -20
-      3 BINDS
-      3 Bind#0
-      3 Bind#1
-      3 Dump
-      3 Dumping
-      3 END
-      3 PARSING
-      3 oacdty=02
-      3 oacdty=123
-      3 oacflg=00
-      3 oacflg=01
-      3 toid
-      3 value=###
-      5 EXEC
-      5 PARSE
-      9
-      9 STAT
-     10 CLOSE
-     11 ***
-     16 WAIT
-```
-
 _select.sql trace_
 
 ```text
@@ -331,7 +305,33 @@ _select.sql trace_
 1000021 CLOSE
 ```
 
-The last three lines of the report tell the story; when assigning variable via `select into from dual`, Oracle had to create, fetch and close a cursor 1M times.
+_assign.sql trace_
+
+```text
+  awk '{ print $1 }' cdb1_ora_6414_ASSIGN.trc | sort | uniq -c | sort -n | tail -20
+      3 BINDS
+      3 Bind#0
+      3 Bind#1
+      3 Dump
+      3 Dumping
+      3 END
+      3 PARSING
+      3 oacdty=02
+      3 oacdty=123
+      3 oacflg=00
+      3 oacflg=01
+      3 toid
+      3 value=###
+      5 EXEC
+      5 PARSE
+      9
+      9 STAT
+     10 CLOSE
+     11 ***
+     16 WAIT
+```
+
+The last three lines of the report for `select.sql` tell the story; when assigning variable via `select into from dual`, Oracle had to create, fetch and close a cursor 1M times.
 
 That overhead can be avoided simply by assigning variables directly, as seen in `assign.sql`.
 
@@ -341,7 +341,7 @@ It is good to periodically test your assumptions.
 
 You probably would not notice the difference in singleton events that happen too quickly for a human to perceive the difference in timing.
 
-But when scaled up such as I have done here, the differences are easy to see.
+But when scaled up, such as I have done here, the differences are easy to see.
 
 Will using a direct assignment make a noticable difference in a PL/SQL program that does it only once?  Probably not.
 
