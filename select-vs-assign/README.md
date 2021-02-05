@@ -498,7 +498,7 @@ alter session set events '10046 trace name context off'
 /
 ```
 
-All files are found here on github: [select-vs-assign](https://github.com/jkstill/oracle-demos/select-vs-assign)
+All files are found here on github: [select-vs-assign](https://github.com/jkstill/oracle-demos/tree/master/select-vs-assign)
 
 
 
