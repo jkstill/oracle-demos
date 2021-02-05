@@ -10,11 +10,11 @@ However, many years ago, Oracle provided a workaround for using SELECT statement
 Some examples:
 
 ```sql
-select sysdate from dual
+select sysdate into vDate from dual
 
-select user from dual
+select user into vUser from dual
 
-select sys_context('userenv','sid') from dual;
+select sys_context('userenv','sid') into vSID from dual;
 ```
 
 While such usage can be useful at times, it is a bit of a performance hog.
@@ -32,7 +32,7 @@ end;
 /
 ```
 
-The same assignment can be peformed directly:
+The same assignment can be performed directly:
 
 ```sql
 declare
@@ -59,7 +59,7 @@ Two different forms of monitoring will be used for the tests
 - perf
 - Oracle Trace
 
-Additionaly, the scripts will be run with any monitoring, just so we can see the timing data.
+Additionally, the scripts will be run with any monitoring, just so we can see the timing data.
 
 Timing will be just be via `set timing on` in SQLPlus.
 
@@ -69,6 +69,13 @@ All scripts are shown in their entirety at the end of this article.
 
 
 ## Timings
+
+Before doing any kind of tracing, I will first run the test scripts to get timing information.
+
+First I will run `select.sql`, and then `assign.sql`.
+
+Each script will make 1M variable assignments.
+
 
 ### select.sql
 
@@ -95,12 +102,12 @@ PL/SQL procedure successfully completed.
 Elapsed: 00:00:07.99
 ```
 
-Assiging `sysdate into vDate` 1M times took 7.99 seconds.
+Assigning `sysdate into vDate` 1M times took 7.99 seconds.
 
 ### assign.sql
 
 ```text
-QL# @assign
+SQL# @assign
 
 USERNAME                    SID SPID
 -------------------- ---------- ------------------------
@@ -131,7 +138,7 @@ Now, let's dig a little bit and get a better understanding of why there is such 
 
 ## Testing with Perf
 
-We can use perf to count the operations performaed by the server.
+We can use perf to count the operations performed by the server.
 
 The `record.sh` script is used to start the recording on the server.
 
@@ -267,7 +274,7 @@ SQL*Net message to client                     0.00s    0.0%          7     0.000
 Total response time                           6.94s  100.0%
 ```
 
-It would seem the result are a bit skewed by the overhead of the trace, as there are 45 seconds of CPU used.
+It would seem the results are a bit skewed by the overhead of the trace, as there are 45 seconds of CPU used.
 (recall that without tracing, the script took 8 seconds)
 
 Using standard linux tools, we can get a better idea of why the `select.sql` takes so much more time than `assign.sql`.
@@ -344,6 +351,7 @@ What if there are several PL/SQL programs doing this?  Maybe some of them doing 
 
 Not only would the difference in performance be discernable, but extra resources would be consumed, which would not available for other processes.
 
+The next time you are writing some PL/SQL, be sure to look at it with a critical eye toward the impact it will have on system performance.
 
 
 ## Scripts
