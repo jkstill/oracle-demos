@@ -341,7 +341,7 @@ Any blog that uses perf for analysis would be incomplete without the requisite [
 
 What is of interest in these flame graphs is the amount of work being done once the script enters the plsql_run section.
 
-The select.sql script has quite a bit of code being executed; not only is there a large stack of code being executed, it is very wide, which in in a flame graph indicates a lot of work being performed.
+The select.sql script has quite a bit of code being executed; not only is there a large stack of code being executed, it is very wide, which in a flame graph indicates a lot of work being performed.
 
 ![Flame Graph for select.sql](./perf-select.svg)
 
