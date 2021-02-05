@@ -343,13 +343,15 @@ What is of interest in these flame graphs is the amount of work being done once 
 
 The select.sql script has quite a bit of code being executed; not only is there a large stack of code being executed, it is very wide, which in in a flame graph indicates a lot of work being performed.
 
-[Flame Graph for select.sql](https://github.com/jkstill/oracle-demos/blob/master/select-vs-assign/perf-select.svg)
+![Flame Graph for select.sql](./perf-select.svg)
+<img src="./perf-select.svg">
 
 ### Flame Graph for assign.sql
 
 Now take a look the the flame graph for assign.sql.  There is much less above the plsql_run section. Not only is the stack shorter, it is much narrower, and therefore faster.
 
-[Flame Graph for assign.sql](https://github.com/jkstill/oracle-demos/blob/master/select-vs-assign/perf-assign.svg)
+![Flame Graph for assign.sql](./perf-assign.svg)
+<img src="./perf-assign.svg">
 
 ## Conclusion
 
