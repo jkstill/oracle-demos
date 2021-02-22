@@ -25,4 +25,8 @@ multilevel collections in oracle 9i
 http://www.oracle-developer.net/display.php?id=208
 
 
+how to create index on nested table.
+https://community.oracle.com/tech/developers/discussion/2136173/how-to-create-index-on-nested-table
 
+Master Bitwise Operations in 10 Minutes
+https://medium.com/better-programming/master-bitwise-operations-in-10-minutes-7842c65608d7
