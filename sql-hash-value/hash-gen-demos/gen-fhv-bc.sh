@@ -27,9 +27,6 @@ do
 done
 
 
-[oracle@CC1v4 hash-gen-demos]$ expand -t3 gen-fhv.sh
-#!/usr/bin/env bash
-
 hex_to_num () {
 	local hexnum="$1"
 	#echo "hexnum: $hexnum"
