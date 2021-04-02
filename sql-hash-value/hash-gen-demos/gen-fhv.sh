@@ -142,8 +142,16 @@ declare sqlfile=${1:?'Please specify a file'}
 
 # sqlid should be the filename - sqlfiles/cabd9827dc032-SCHEMA.txt
 
-real_sqlid=$(echo $sqlfile | cut -f2 -d\/ | cut -f1 -d- )
-schema=$(echo $sqlfile | cut -f2 -d- | cut -f1 -d\.)
+declare real_sqlid
+declare schema=''
+
+if [[ "$sqlfile" =~ sqlfiles/[[:alnum:]]{13}-[[:alnum:]]+.txt ]]; then
+	#echo processing schema
+	real_sqlid=$(echo $sqlfile | cut -f2 -d\/ | cut -f1 -d- )
+	schema=$(echo $sqlfile | cut -f2 -d- | cut -f1 -d\.)
+else
+	real_sqlid=$(echo $sqlfile | cut -f2 -d\/ | cut -f1 -d\. )
+fi
 
 echo " sql_id: $real_sqlid"
 echo " schema: $schema"
@@ -173,13 +181,13 @@ if [ "$real_sqlid" != "$sql_id" ]; then
 	hash_value=$(fhv_to_hash_value $gen_fhv)
 	sql_id=$(md5_to_sqlid $md5)
 
+	echo "		new md5: $md5"
+	echo "			new generated fhv: $gen_fhv"
+	echo "  new generated hash_value: $hash_value"
+	echo "		new generated sql_id: $sql_id"
+
 	if [ "$real_sqlid" == "$sql_id" ]; then
 		echo "Found a match by appending chr(0)"
-
-		echo "		new md5: $md5"
-		echo "			new generated fhv: $gen_fhv"
-		echo "  new generated hash_value: $hash_value"
-		echo "		new generated sql_id: $sql_id"
 	else
 		echo "!! Appending chr(0) did not help"
 	fi

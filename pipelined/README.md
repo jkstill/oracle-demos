@@ -1,7 +1,7 @@
 pipeline functions
 ==================
 
-I always forget how to to this.
+I always forget how to do this.
 
 Here is at least 1 example of using a pipeline function to return rows from a table.
 

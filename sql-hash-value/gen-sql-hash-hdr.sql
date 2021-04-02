@@ -1,5 +1,6 @@
 
 create or replace package gen_sql_hash
+authid definer
 is
 
 /*
