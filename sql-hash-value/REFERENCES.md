@@ -10,3 +10,8 @@ http://blog.tanelpoder.com/2009/02/22/sql_id-is-just-a-fancy-representation-of-h
 https://externaltable.blogspot.com/2012/06/sql-signature-text-normalization-and.html
 http://mvelikikh.blogspot.com/2019/07/vdbpipes-unveiling-truth-of-oracle-hash.html
 
+As per "Querying V$Access Contents On Latch: Library Cache (Doc ID 757280.1)"
+it may be necessary to append chr(0), and/or other magic cookies to the object being hashed
+
+
+
