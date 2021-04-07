@@ -13,5 +13,6 @@ http://mvelikikh.blogspot.com/2019/07/vdbpipes-unveiling-truth-of-oracle-hash.ht
 As per "Querying V$Access Contents On Latch: Library Cache (Doc ID 757280.1)"
 it may be necessary to append chr(0), and/or other magic cookies to the object being hashed
 
-
+v$db_pipes: Unveiling the Truth of Oracle Hash Value 
+http://mvelikikh.blogspot.com/2019/07/vdbpipes-unveiling-truth-of-oracle-hash.html
 
