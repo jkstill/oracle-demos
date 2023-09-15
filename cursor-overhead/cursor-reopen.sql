@@ -23,9 +23,21 @@ declare
 	ct_error exception;
 	pragma exception_init(ct_error,-20000);
 
+	i_cursor_count pls_integer := 0;
+
+function get_cursor_count return pls_integer
+is
+	cursor_count pls_integer;
+begin
+	select count(*) into cursor_count from v$open_cursor where sid = sys_context('userenv','sid');
+	return cursor_count;
+end;
+
 begin
 
 	dbms_output.enable(null);
+
+	dbms_output.put_line('cursor count before: ' || to_char(get_cursor_count));
 
 	--h_sql_cursor := dbms_sql.open_cursor;
 	--dbms_sql.parse(h_sql_cursor, v_sql, dbms_sql.native);
@@ -34,6 +46,7 @@ begin
 	for i in 1..100000
 	loop
 		if not dbms_sql.is_open(h_sql_cursor) then
+			--dbms_output.put_line('creating cursor');
 			h_sql_cursor := dbms_sql.open_cursor;
 			dbms_sql.parse(h_sql_cursor, v_sql, dbms_sql.native);
 			dbms_sql.define_column(h_sql_cursor, 1, v_c1, 30);
@@ -59,6 +72,7 @@ begin
 	end loop;
 
 
+	dbms_output.put_line('cursor count after: ' || to_char(get_cursor_count));
 
 end;
 /
