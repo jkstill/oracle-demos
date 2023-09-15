@@ -92,7 +92,7 @@ from v$sql
 where (sql_id, child_number) in (
 		select sql_id, min(child_number)
 		from v$sql
-		where parsing_schema_name not in ('SYS','PERFSTAT','ORACLE_OCM')
+		--where parsing_schema_name not in ('SYS','PERFSTAT','ORACLE_OCM')
 		group by sql_id
 	)
 };
@@ -111,7 +111,8 @@ while ( my @sqlrec = $sth->fetchrow_array ) {
 	my $fh = IO::File->new;
 
 	$fh->open("> $sqlFilename") || die "could not create $sqlFilename - $!\n";
-	$fh->write($sqlrec[2] . chr(0));
+	#$fh->write($sqlrec[2] . chr(0));
+	$fh->write($sqlrec[2] );  # adding chr(0) in gen-fhv.sh
 	$fh->close;
 
 }

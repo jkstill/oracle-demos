@@ -145,7 +145,8 @@ declare sqlfile=${1:?'Please specify a file'}
 declare real_sqlid
 declare schema=''
 
-if [[ "$sqlfile" =~ sqlfiles/[[:alnum:]]{13}-[[:alnum:]]+.txt ]]; then
+#if [[ "$sqlfile" =~ sqlfiles/[[:alnum:]]{13}-[[:alnum:]]+.txt ]]; then
+if [[ "$sqlfile" =~ [[:alnum:]_]+/[[:alnum:]]{13}-[[:alnum:]_]+.txt ]]; then
 	#echo processing schema
 	real_sqlid=$(echo $sqlfile | cut -f2 -d\/ | cut -f1 -d- )
 	schema=$(echo $sqlfile | cut -f2 -d- | cut -f1 -d\.)
@@ -156,40 +157,54 @@ fi
 echo " sql_id: $real_sqlid"
 echo " schema: $schema"
 
-declare md5=$(md5sum "$sqlfile" | awk '{ print $1 }')
 
-echo "	 md5: $md5"
-declare gen_fhv=$(md5_to_fhv $md5)
+declare md5 gen_fhv tmpSqlFile nullsAdded sqlID
+declare matched=0
 
-echo "		 generated fhv: $gen_fhv"
+# try up to 5 nulls, first attempt without null
+for x in 0 1 2 3 4 5
+do
 
-# oracle is using the last 4 bytes of the full_hash_value(hex) to generate the hash_value (number)
-declare hash_value=$(fhv_to_hash_value $gen_fhv)
-echo "generated hash_value: $hash_value"
+	tmpSqlFile=$(mktemp);
+	cat $sqlfile > $tmpSqlFile
+
+	[[ $x -ge 0 ]] && {
+		for y in $(seq 1 $x )
+		do
+			#echo "    adding null"
+			echo -en "\x00" >>  $tmpSqlFile
+		done
+	}
+
+	md5=$(md5sum "$tmpSqlFile" | awk '{ print $1 }')
+	rm -f $tmpSqlFile
 
 
-declare sql_id=$(md5_to_sqlid $md5)
-echo "	 generated sql_id: $sql_id"
-
-if [ "$real_sqlid" != "$sql_id" ]; then
-	echo "!! Hash Gen Mismatch !!"
-	echo "Trying again with extra NUL"
-
-	# 2 chr(0) required as cat removes it
-	md5=$(echo -en $(cat $sqlfile)"\x00\x00" | md5sum | awk '{ print $1 }')
 	gen_fhv=$(md5_to_fhv $md5)
 	hash_value=$(fhv_to_hash_value $gen_fhv)
-	sql_id=$(md5_to_sqlid $md5)
+	sqlID=$(md5_to_sqlid $md5)
 
-	echo "		new md5: $md5"
-	echo "			new generated fhv: $gen_fhv"
-	echo "  new generated hash_value: $hash_value"
-	echo "		new generated sql_id: $sql_id"
-
-	if [ "$real_sqlid" == "$sql_id" ]; then
-		echo "Found a match by appending chr(0)"
-	else
-		echo "!! Appending chr(0) did not help"
+	nullsAdded=$x
+	if [ "$real_sqlid" == "$sqlID" ]; then
+		matched=1	
+		break
 	fi
+
+done
+
+#echo "matched:$matched"
+
+if [ $matched -eq 1 ]; then
+	echo "         new generated fhv: $gen_fhv"
+	echo "  new generated hash_value: $hash_value"
+	echo "      new generated sql_id: $sqlID"
+	echo "               nulls added: $nullsAdded"
+else
+	echo "  Failed to generate correct SQL_ID"
+	echo "               nulls added: $nullsAdded"
 fi
+
+
+
+
 

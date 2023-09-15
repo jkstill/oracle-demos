@@ -3,7 +3,17 @@
 sepline='##############################################################'
 sepsec='###'
 
-for sqlfile in sqlfiles/*.txt
+sqldir=$1
+
+[[ -z $sqldir ]] && {
+	echo
+	echo please supply a directory
+	echo Directory name must not include the '-' character
+	echo
+	exit 1
+}
+
+for sqlfile in $sqldir/*.txt
 do
 
 	echo $sepline
