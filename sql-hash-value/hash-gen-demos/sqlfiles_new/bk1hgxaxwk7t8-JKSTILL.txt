@@ -1,0 +1,2 @@
+/* SQL Analyze(277,1) */ insert into "SYS"."IMPDP_STATS" (  statid,type,version,c5,n1,n2,n3,n4,n5,n6  ,cl1  ) select * from ( select  null  ,type,version,c5,n1,n2,n3,n4,n5,n6  ,  cl1  from  sys."_user_stat"  where type = 'D' and  min_sc <= 2 and 2 < max_sc  )  where  c5 in 
+        (select to_char(n1) from sys.spd_scratch_tab l where n1 is not null)

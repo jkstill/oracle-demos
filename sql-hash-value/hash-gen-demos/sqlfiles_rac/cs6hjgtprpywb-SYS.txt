@@ -1,0 +1,1 @@
+begin prvt_hdm.register_slave_action( :dbid, :inst_num , :end_snap_id ); end;

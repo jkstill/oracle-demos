@@ -1,0 +1,1 @@
+select name, address, protocol, trans_name, subscriber_type, subscriber_id  , scn_at_add from  "SYS"."AQ$_ALERT_QT_S"   where queue_name = :1 and rule_name IS NULL and ruleset_name IS NULL and  negative_ruleset_name IS NULL and bitand(subscriber_type, 1) = 1

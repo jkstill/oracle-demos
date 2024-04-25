@@ -1,0 +1,1 @@
+select 1 from sys.aq$_subscriber_table   where rownum < 2 and subscriber_id <> 0 and table_objno <> 0

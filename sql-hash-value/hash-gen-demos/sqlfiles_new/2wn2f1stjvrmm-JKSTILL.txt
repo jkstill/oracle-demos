@@ -1,0 +1,1 @@
+SELECT /*+ opt_param('parallel_execution_enabled', 'false') */ EXTRACTVALUE(XMLVAL, '/*/info[@type = "dop_op_reason"]') FROM (SELECT XMLTYPE(:B1 ) XMLVAL FROM SYS.DUAL)

@@ -1,0 +1,1 @@
+select s.ts#, s.file#, s.block#, so.object_id, s.spare1, s.type#, s.hwmincr from seg$ s, sys_objects so where bitand(s.spare1,131072) = 0 and s.ts# = so.ts_number and s.file# = so.header_file and s.block# = so.header_block order by s.file# asc

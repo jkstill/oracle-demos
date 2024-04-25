@@ -1,0 +1,1 @@
+select l.col#, l.intcol#, l.lobj#, l.ind#, l.ts#, l.file#, l.block#, l.chunk, l.pctversion$, l.flags, l.property, l.retention, l.freepools from lob$ l where l.obj# = :1 order by l.intcol# asc

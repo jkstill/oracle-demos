@@ -1,0 +1,6 @@
+select
+	case when to_number('19') >= 12
+	then ''
+	else '--'
+	end use_12c_feature
+from dual

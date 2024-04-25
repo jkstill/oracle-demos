@@ -1,0 +1,1 @@
+select col#,intcol#,reftyp,stabid,expctoid from refcon$ where obj#=:1 order by intcol# asc

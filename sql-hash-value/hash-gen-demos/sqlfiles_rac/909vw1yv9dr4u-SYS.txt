@@ -1,0 +1,1 @@
+select min(time_manager_info) from "SYS"."AQ_SRVNTFN_TABLE_2"

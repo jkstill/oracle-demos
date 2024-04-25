@@ -1,0 +1,1 @@
+select sum(used_blocks), ts.ts#   from GV$SORT_SEGMENT gv, ts$ ts   where gv.tablespace_name = ts.name and   ts.bitmapped  <> 0   group by ts.ts#

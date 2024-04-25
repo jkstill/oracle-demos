@@ -1,0 +1,1 @@
+select obj#,index# from oid$ where user#=:1 and oid$=:2

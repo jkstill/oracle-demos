@@ -1,0 +1,189 @@
+SELECT /*+ GATHER_PLAN_STATISTICS leading(t pcm pc c r pth p tl pp cls) */ -- should match the ORDERED (deprecated) hint, but gets a better plan than ORDERED
+--SELECT /*+ GATHER_PLAN_STATISTICS leading(cls pth r tm c tl pcm p pc pp)) */ -- modified order
+                pp.policy_fk AS REAL_POLICY_FK,
+                pp.policy_fk AS POLICY_FK,
+                pp.transaction_log_fk,
+                p.policy_no AS REAL_POLICY_NO,
+                p.policy_no AS POLICY_NO,
+                p.policy_type_code,
+                --hiroc_rpt_user.hiroc_get_entity_name(pp.policy_fk,'POLHOLDER')  policy_holder,
+                pp.risk_fk,
+                r.risk_base_record_fk,
+                r.entity_fk,
+                --hiroc_rpt_user.hiroc_sel_entity_risk_name2 (pp.risk_fk,r.entity_fk)  risk_name,
+                substr(trim(nvl(r.county_code_used_to_rate,pth.issue_state_code)),1,2) rating_state_code,
+                --hiroc_rpt_user.hiroc_get_province_name(substr(trim(nvl(r.county_code_used_to_rate,pth.issue_state_code)),1,2), 'PROVINCE_CODE', 'L') rating_state_name,
+                --hiroc_rpt_user.hiroc_get_provicne_pol_prefix(substr(trim(nvl(r.county_code_used_to_rate,pth.issue_state_code)),1,2),p.policy_type_code) rating_prov_pol_prefix,
+                nvl(r.risk_cls_used_to_rate,pth.peer_groups_code) rating_peer_group_code,
+                --hiroc_rpt_user.hiroc_get_lookup_desc('PEER_GROUP',nvl(r.risk_cls_used_to_rate,pth.peer_groups_code),'L')  rating_peer_group_name,
+                pth.policy_term_history_pk,
+                pth.term_base_record_fk,
+                to_char(pth.effective_from_date,'yyyy') term_effective_year,
+                c.coverage_pk,
+                c.coverage_base_record_fk,
+                pc.coverage_code,
+                c.product_coverage_code,
+                pc.long_description,
+                pp.coverage_component_code,
+                c.effective_from_date,
+                c.effective_to_date,
+                cls.coverage_code coverage_class_code,
+                cls.coverage_long_desc coverage_class_long_desc,
+                decode(pp.coverage_component_code ,'GROSS',cls.exposure_unit,null) exposure_unit, --hiroc_get_expos_units_by_cov(c.coverage_pk,pc.coverage_code,c.effective_from_date,c.effective_to_date) exposure_unit,
+                decode(pp.coverage_component_code ,'GROSS',cls.number_of_patient_day,null) number_of_patient_day,
+                pth.effective_from_date  term_eff_from_date,
+                pth.effective_to_date term_eff_to_date,
+                pp.premium_amount premium_amount,
+                (case when (pc.coverage_code in ('CP','MC1','MC2','MC3','MC4','HR','F') or pc.coverage_code like 'ST%') and
+                              pp.coverage_component_code != 'RISKMGMT' then
+                        (nvl(pp.premium_amount,0))
+                    else
+                        0
+                end) primary_premium --,
+				    /*
+                (hiroc_rpt_user.hiroc_get_risk_units(hiroc_rpt_user.hiroc_get_provicne_pol_prefix(substr(trim(nvl(r.county_code_used_to_rate,pth.issue_state_code)),1,2),p.policy_type_code)-- rating_prov_pol_prefix
+                                    ,nvl(r.risk_cls_used_to_rate,pth.peer_groups_code) -- rating_peer_group_code
+                                    ,cls.coverage_code --coverage_class_code
+                                    ,decode(pp.coverage_component_code ,'GROSS',cls.exposure_unit,null)
+                                    ,pp.premium_amount
+                                    ,(case when (pc.coverage_code in ('CP','MC1','MC2','MC3','MC4','HR','F') or pc.coverage_code like 'ST%') and
+                                                  pp.coverage_component_code != 'RISKMGMT' then
+                                            (nvl(pp.premium_amount,0))
+                                        else
+                                            0
+                                     end)  -- primary_premium
+                                    ,p.policy_type_code
+                                    ,trunc(pth.effective_to_date))) risk_units
+						*/
+         from
+						PRODDW_MART.rmv_territory_makeup tm,
+                  PRODDW_MART.rmv_premium_class_makeup pcm,
+                  PRODDW_MART.rmv_product_coverage pc,
+                  PRODDW_MART.rmv_coverage c,
+                  PRODDW_MART.rmv_risk r,
+                  PRODDW_MART.rmv_policy_term_history pth,
+                  PRODDW_MART.rmv_policy p,
+                  PRODDW_MART.rmv_transaction_log tl,
+                  PRODDW_MART.rmv_policy_premium pp,
+                  HIROC_RPT_USER.HIROC_RU_CLS cls
+            where    tm.risk_type_code = r.risk_type_code
+            and        tm.county_code = r.county_code_used_to_rate
+				-- convert to BETWEEN
+            --and        tm.effective_from_date <= pp.rate_period_from_date
+            --and        tm.effective_to_date   >  pp.rate_period_from_date
+				and     pp.rate_period_from_date between tm.effective_from_date and trunc(tm.effective_to_date)-1
+            and        pcm.practice_state_code (+) = r.practice_state_code
+            and        pcm.risk_class_code (+) = r.risk_cls_used_to_rate
+				-- putting the predicate first on these 2 does not change the plan at all
+            and        nvl(pcm.effective_from_date, pp.rate_period_from_date) <= pp.rate_period_from_date
+            and        nvl(pcm.effective_to_date, to_date('01/01/3000','mm/dd/yyyy')) > pp.rate_period_from_date
+				--
+            --and        pp.rate_period_from_date >= nvl(pcm.effective_from_date, pp.rate_period_from_date)
+            --and        pp.rate_period_from_date < nvl(pcm.effective_to_date, to_date('01/01/3000','mm/dd/yyyy'))
+				--and pp.rate_period_from_date between nvl(pcm.effective_from_date, pp.rate_period_from_date) and nvl(pcm.effective_to_date, to_date('01/01/3000','mm/dd/yyyy'))
+            and        pc.code = c.product_coverage_code
+            and        c.base_record_b = 'N'
+            and        ( c.record_mode_code = 'OFFICIAL'
+                     and (c.closing_trans_log_fk is null or
+                          c.closing_trans_log_fk != tl.transaction_log_pk)
+                     or c.record_mode_code = 'TEMP'
+                     and c.transaction_log_fk = tl.transaction_log_pk )
+            and   c.parent_coverage_base_record_fk is null
+            and        c.effective_from_date  <  c.effective_to_date
+				-- convert to BETWEEN
+            --and        c.effective_from_date  <= pp.rate_period_from_date
+            --and        c.effective_to_date    >  pp.rate_period_from_date
+				and   pp.rate_period_from_date between c.effective_from_date and trunc(c.effective_to_date) -1
+				--
+				-- convert to BETWEEN
+            --and   c.accounting_from_date <= tl.accounting_date
+            --and   c.accounting_to_date   >  tl.accounting_date
+				and    tl.accounting_date between c.accounting_from_date and trunc(c.accounting_to_date)-1
+            and        c.coverage_base_record_fk=pp.coverage_fk
+            and        r.base_record_b = 'N'
+            and        ( r.record_mode_code = 'OFFICIAL'
+                    and (r.closing_trans_log_fk is null or
+                         r.closing_trans_log_fk != tl.transaction_log_pk)
+                    or r.record_mode_code = 'TEMP'
+                    and r.transaction_log_fk = tl.transaction_log_pk )
+            and        r.effective_from_date  <  r.effective_to_date
+				--
+				-- convert to BETWEEN
+            --and        r.effective_from_date  <= pp.rate_period_from_date
+            --and        r.effective_to_date    >  pp.rate_period_from_date
+				and     pp.rate_period_from_date between r.effective_from_date and trunc(r.effective_to_date)-1
+				-- convert to BETWEEN
+            --and   r.accounting_from_date <= tl.accounting_date
+            --and   r.accounting_to_date   >  tl.accounting_date
+				and tl.accounting_date between r.accounting_from_date and trunc(r.accounting_to_date)-1
+            and         r.risk_base_record_fk = pp.risk_fk
+            and        pth.base_record_b = 'N'
+            and        ( pth.record_mode_code = 'OFFICIAL'
+                    and (pth.closing_trans_log_fk is null or
+                         pth.closing_trans_log_fk != tl.transaction_log_pk)
+                    or pth.record_mode_code = 'TEMP'
+                    and pth.transaction_log_fk = tl.transaction_log_pk )
+				-- convert to BETWEEN
+            --and        pth.accounting_from_date <= tl.accounting_date
+            --and        pth.accounting_to_date   >  tl.accounting_date
+				and    tl.accounting_date between pth.accounting_from_date and trunc(pth.accounting_to_date)-1
+            and        pth.term_base_record_fk = pp.policy_term_fk
+            and   p.policy_pk = pp.policy_fk
+            and        tl.transaction_log_pk  =  pp.transaction_log_fk
+            and   pp.active_premium_b = 'Y'
+            and        pp.rate_period_type_code in ('CS_PERIOD','SR_PERIOD')
+            and        pp.rate_period_to_date > pp.rate_period_from_date
+            and tl.accounting_date <= sysdate
+            and p.policy_cycle_code = 'POLICY'
+            and substr(p.policy_no,1,1) <> 'Q'
+            and tl.transaction_log_pk = (select max(pp.transaction_log_fk)
+                                           from PRODDW_MART.rmv_policy_premium pp,PRODDW_MART.rmv_transaction_log tl2
+                                          where pth.term_base_record_fk = pp.policy_term_fk
+                                            and pp.transaction_log_fk = tl2.transaction_log_pk
+                                            and tl2.accounting_date <= sysdate )
+            -------------------------
+             and p.policy_type_code in ('LIABCRIME','MIDWIFE')
+             and pth.accounting_to_date =  to_date('01/01/3000','mm/dd/yyyy') --<<<*******  eliminates duplicates
+             ---------------------------------------------------------------
+             and p.policy_no = cls.policy_no
+            --and p.policy_no = '107543' --to_do
+        --     and r.risk_pk = cls.risk_pk
+             and c.coverage_base_record_fk = cls.parent_coverage_base_record_fk(+)
+             and  cls.effective_from_date < pth.effective_to_date -- from date less than period end date
+             and  cls.effective_to_date   > pth.effective_from_date -- to date greater than period start date
+             and  cls.policy_effective_date   < pth.effective_to_date -- from date less than period end date
+             and  cls.policy_expiry_date     > pth.effective_from_date -- to date greater than period start date
+             and  pth.issue_company_entity_fk = 1
+             ----------------------------------------------------
+       group by pp.policy_fk,
+                pp.transaction_log_fk,
+                p.policy_no,
+                p.policy_type_code,
+                pp.risk_fk,
+                r.risk_base_record_fk,
+                r.entity_fk,
+                r.county_code_used_to_rate,pth.issue_state_code, -- rating_state_code,
+                r.county_code_used_to_rate,
+                pth.issue_state_code,
+                pth.peer_groups_code , --  rating_peer_group_code,
+                r.risk_cls_used_to_rate,
+                pth.peer_groups_code,
+                pth.policy_term_history_pk,
+                pth.term_base_record_fk,
+                pth.effective_from_date, --term_effective_year,
+                c.coverage_pk,
+                c.coverage_base_record_fk,
+                pc.coverage_code,
+                c.product_coverage_code,
+                pc.long_description,
+                pp.coverage_component_code,
+                c.effective_from_date,
+                c.effective_to_date,
+                cls.coverage_code, -- coverage_class_code,
+                cls.coverage_long_desc, -- coverage_class_long_desc,
+                cls.exposure_unit,-- exposure_unit,
+                cls.number_of_patient_day, -- number_of_patient_day,
+                pth.effective_from_date, --term_eff_from_date,
+                pth.effective_to_date, --, --term_eff_to_date,
+                pp.premium_amount
+--@@9zkh0d78y45ga.sql

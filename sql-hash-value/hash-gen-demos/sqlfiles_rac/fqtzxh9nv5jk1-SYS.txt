@@ -1,0 +1,1 @@
+select name,mgmt_method,category from resource_consumer_group$ where obj#=:1 and status = 'ACTIVE'

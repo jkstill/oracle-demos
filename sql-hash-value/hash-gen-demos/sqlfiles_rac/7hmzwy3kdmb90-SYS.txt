@@ -1,0 +1,1 @@
+select name, address, protocol, subscriber_type, subscriber_id  from "SYS"."AQ$_ALERT_QT_S"  where queue_name = :1 and  ((bitand(subscriber_type, 1) = 1) OR   (bitand(subscriber_type, 4) = 4) OR   (bitand(subscriber_type, 8) = 8) OR   (bitand(subscriber_type, 4096) = 4096))  and rule_name IS NULL AND ruleset_name IS NULL AND  negative_ruleset_name IS NULL

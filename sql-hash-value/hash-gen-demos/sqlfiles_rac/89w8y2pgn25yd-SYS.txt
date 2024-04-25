@@ -1,0 +1,1 @@
+select ts# from ts$ where ts$.online$ != 3 and bitand(flags,2048) != 2048

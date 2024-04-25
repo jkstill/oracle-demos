@@ -1,0 +1,1 @@
+select ('95' - 10 ) cPageNumLoc from dual

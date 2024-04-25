@@ -1,0 +1,1 @@
+select a.default_cpu_cost, a.default_io_cost             from association$ a                                      where a.obj# = :1                                          and a.property = :2

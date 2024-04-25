@@ -1,0 +1,1 @@
+select count(*) from stats_advisor_filter_obj$ where rule_id = :rule_id and type = :type_expanded

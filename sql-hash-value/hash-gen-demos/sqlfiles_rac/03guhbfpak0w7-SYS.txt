@@ -1,0 +1,1 @@
+select /*+ index(idl_ub1$ i_idl_ub11) */ piece#,length,piece from idl_ub1$ where obj#=:1 and part=:2 and version=:3 order by piece#

@@ -1,0 +1,1 @@
+select file#, block# from recyclebin$ where ts# = :1     and file# != 0 and block# != 0 and space = 0

@@ -1,0 +1,5 @@
+select /* EXEC_FROM_DBMS_XPLAN */ rtrim(sql_text) 
+                       from sys.v_$sql 
+                       where SQL_ID=:v_sql_id 
+                         and child_number=:v_child_number
+                         and is_obsolete = 'N'

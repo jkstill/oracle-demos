@@ -1,0 +1,1 @@
+select shared_pool_size_for_estimate s,          shared_pool_size_factor * 100 f,          estd_lc_load_time l, 0             from v$shared_pool_advice

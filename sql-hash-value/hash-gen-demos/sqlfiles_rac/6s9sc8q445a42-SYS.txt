@@ -1,0 +1,13 @@
+declare
+         pdb_name varchar2(64);
+         begin
+           DBMS_SYSTEM.get_env ('ORACLE_PDB_SID', pdb_name);
+           if(pdb_name is not null)
+            then
+              EXECUTE IMMEDIATE 'alter session set container = ' || '"' || pdb_name
+                    || '"';
+            end if;
+         exception
+           when others then
+           NULL;
+         end dbms_set_pdb;

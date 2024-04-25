@@ -1,0 +1,1 @@
+select pname, enable_flag, ptxt, pcol, pfschma, ppname, pfname, stmt_type, powner# from fga$ where obj# = :1

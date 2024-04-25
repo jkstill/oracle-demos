@@ -1,0 +1,1 @@
+select upper('DBMS_SQLTUNE_INTERNAL') cobject from dual

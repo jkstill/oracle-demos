@@ -39,9 +39,12 @@ BEGIN
  RETURN l_sql_id;
 END compute_sql_id;
 /
-SHOW ERRORS;
+
+SHOW ERRORS function compute_sql_id
+
 -- test
 SET SERVEROUT ON;
+
 SELECT compute_sql_id('select ''Slavik'' from dual') FROM DUAL;
 -- you should get 29schpgjyfxux
 

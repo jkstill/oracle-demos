@@ -1,0 +1,1 @@
+select o.obj#, t.flags from tab$ t, obj$ o, user$ u where  u.user# = :1 and u.user# = o.owner# and o.name = :2 and o.obj# = t.obj#

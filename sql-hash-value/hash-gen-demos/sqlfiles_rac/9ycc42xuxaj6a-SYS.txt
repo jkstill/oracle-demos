@@ -1,0 +1,1 @@
+select distinct(-privilege#),mod(nvl(option$,0), 2), bitand(nvl(option$,0), 8) /8, bitand(nvl(option$,0), 16) /16, bitand(nvl(option$,0), 64) /64, bitand(nvl(option$,0), 128) /128 from sysauth$ where grantee#=:1 and privilege#<0

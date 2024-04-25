@@ -1,0 +1,1 @@
+select f.file#, f.block#, f.ts#, f.length from fet$ f, ts$ t where t.ts#=f.ts# and t.dflextpct!=0 and t.bitmapped=0

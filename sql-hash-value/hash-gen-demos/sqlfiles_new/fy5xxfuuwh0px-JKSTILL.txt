@@ -1,0 +1,1 @@
+select dbms_sql_translator.sql_id(:p1) from dual

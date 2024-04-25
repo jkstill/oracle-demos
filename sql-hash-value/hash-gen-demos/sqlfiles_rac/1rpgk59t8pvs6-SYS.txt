@@ -1,0 +1,3 @@
+      begin
+         dbms_output.get_line(:line, :status);
+      end;

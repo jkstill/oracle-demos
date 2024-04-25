@@ -1,0 +1,8 @@
+/* SQL Analyze(277,1) */  insert into sys.spd_scratch_tab l (n1)
+          select to_number(c5) from  sys."_user_stat"  d where type = 'D' and not exists
+         (select null from  sys."_user_stat"  do 
+          where d.c5 = do.c5 and do.type = 'O' and 
+          (do.n4 is null or do.n4 = 1)
+          and not exists 
+          (select null from sys.spd_scratch_tab l
+           where l.c1 = do.c1 and l.c2 = do.c2) and  min_sc <= 2 and 2 < max_sc  ) and  min_sc <= 2 and 2 < max_sc 

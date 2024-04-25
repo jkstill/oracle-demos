@@ -1,0 +1,1 @@
+select value, flags, modified_inst, additional_info,         attr_tstamp, attr_intv from  sys.scheduler$_global_attribute where obj# = :1

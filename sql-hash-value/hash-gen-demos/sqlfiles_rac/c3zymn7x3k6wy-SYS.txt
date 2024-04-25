@@ -1,0 +1,1 @@
+select obj#, dataobj#, part#, hiboundlen, hiboundval, flags, ts#, file#, block#, pctfree$, initrans, maxtrans, analyzetime, samplesize, rowcnt, blevel, leafcnt, distkey, lblkkey, dblkkey, clufac, pctthres$, length(bhiboundval), bhiboundval from indpart$ where bo# = :1 order by part#

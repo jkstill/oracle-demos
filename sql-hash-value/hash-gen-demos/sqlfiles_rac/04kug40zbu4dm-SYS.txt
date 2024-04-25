@@ -1,0 +1,1 @@
+select policy#, action# from aud_object_opt$ where object# = :1 and type = 2

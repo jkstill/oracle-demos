@@ -1,0 +1,1 @@
+select pc.intcol#, pc.col# , pc.type#, pc.spare1, pc.segcol#, pc.charsetform,   nvl(c.collintcol#, 0), nvl(c2.type#, 0), nvl(c2.charsetid, 0),    nvl(c2.charsetform , 0), nvl(c2.collid, 0) from partcol$ pc, col$ c, col$ c2 where pc.obj# = :1 and pc.obj# = c.obj#(+) and pc.intcol# = c.intcol#(+) and c.obj# = c2.obj#(+) and c.collintcol# = c2.intcol#(+) order by pc.pos#

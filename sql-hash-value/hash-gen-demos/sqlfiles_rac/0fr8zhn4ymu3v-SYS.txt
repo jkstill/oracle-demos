@@ -1,0 +1,1 @@
+select intcol#,type,flags,lobcol,objcol,extracol,schemaoid,  elemnum from opqtype$ where obj# = :1 order by intcol# asc

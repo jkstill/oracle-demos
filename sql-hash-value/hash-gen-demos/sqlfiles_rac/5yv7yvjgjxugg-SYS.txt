@@ -1,0 +1,1 @@
+select TIME_WAITED_MICRO from V$SYSTEM_EVENT  where event = 'Shared IO Pool Memory'

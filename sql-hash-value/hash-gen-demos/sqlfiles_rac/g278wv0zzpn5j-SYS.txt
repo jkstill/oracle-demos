@@ -1,0 +1,1 @@
+select unique objn from ((select objn from SYS_MFBA_STAGE_RID) union all (select d.objn "OBJN" from SYS_FBA_DL d, SYS_MFBA_TRACKED_TXN t where (d.usn=t.usn) and (d.slot = t.slot)))

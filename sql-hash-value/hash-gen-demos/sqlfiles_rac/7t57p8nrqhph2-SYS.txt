@@ -1,0 +1,1 @@
+BEGIN sys.dbms_aqadm_sys.create_plsql_notif_queue_int(:1); END;

@@ -1,0 +1,1 @@
+select /*+ FIRST_ROWS(1) RESULT_CACHE */ count(*) from mdsys.sdo_feature_usage where used = 'Y' and rownum = 1

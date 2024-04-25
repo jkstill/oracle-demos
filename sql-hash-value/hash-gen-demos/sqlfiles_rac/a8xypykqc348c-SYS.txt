@@ -1,0 +1,1 @@
+BEGIN    dbms_stats_internal.advisor_setup_obj_filter(:tid, :rid, 'EXECUTE', FALSE); END;

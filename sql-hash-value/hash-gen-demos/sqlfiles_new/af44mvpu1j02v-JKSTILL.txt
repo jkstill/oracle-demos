@@ -1,0 +1,1 @@
+SELECT /*+ opt_param('parallel_execution_enabled', 'false') */ EXTRACTVALUE(VALUE(D),'/info/@id') ||' - '|| EXTRACTVALUE(VALUE(D), '/info') FROM TABLE(XMLSEQUENCE(EXTRACT(XMLTYPE(:B1 ), '/*/info[@type = "px_ext_opns"]'))) D

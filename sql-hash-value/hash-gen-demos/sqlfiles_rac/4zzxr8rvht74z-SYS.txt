@@ -1,0 +1,1 @@
+select case when (bitand(u.spare1, 16) = 0) then         0        when (u.type# = 2) then         (u.spare2)        else         1        end from obj$ o, user$ u where o.obj# = :1 and o.owner# = u.user#

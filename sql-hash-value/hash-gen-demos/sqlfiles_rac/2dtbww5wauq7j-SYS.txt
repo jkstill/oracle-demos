@@ -1,0 +1,1 @@
+select /*+ no_parallel */ pvalue_num from sys.aq$_queue_params    where pname = :1 AND queue_name IS NULL AND owner_name IS NULL

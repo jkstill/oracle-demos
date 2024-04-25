@@ -1,0 +1,6 @@
+declare
+v_sql_id varchar2(13);
+begin
+v_sql_id :=  dbms_sql_translator.sql_id('');
+dbms_output.put_line(v_sql_id);
+end;

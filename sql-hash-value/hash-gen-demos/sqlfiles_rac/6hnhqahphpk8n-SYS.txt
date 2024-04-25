@@ -1,0 +1,1 @@
+select free_mb from v$asm_diskgroup_stat where name=:1

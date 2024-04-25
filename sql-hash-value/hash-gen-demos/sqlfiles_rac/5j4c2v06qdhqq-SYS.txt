@@ -1,0 +1,1 @@
+select procedure#,ownerlength,classlength,methodlength,siglength, flagslength,cookiesize from procedurejava$ where obj#=:1 order by procedure#

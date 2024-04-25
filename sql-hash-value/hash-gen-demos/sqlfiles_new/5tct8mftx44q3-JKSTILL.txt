@@ -1,0 +1,1 @@
+SELECT /*+ opt_param('parallel_execution_enabled', 'false') */ SUBSTR(VALUE(D).GETCLOBVAL(), 1, 32767) FROM TABLE(XMLSEQUENCE(EXTRACT(XMLTYPE(:B1 ), '/*/qb_registry/q'))) D

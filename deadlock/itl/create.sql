@@ -12,12 +12,14 @@ initrans 1
 maxtrans 1
 /
 
+--/*
 create unique index itl_wait_u_idx on itl_wait(id)
 storage( initial 1 next 0 minextents 1 maxextents 1)
 pctfree 0
 initrans 2
 maxtrans 1
 /
+--*/
 
 
 /*

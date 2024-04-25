@@ -1,0 +1,7 @@
+SELECT TO_CHAR(SYSDATE,'MM/DD/YY') TODAY,
+       TO_CHAR(SYSDATE,'HH:MI AM') TIME,
+       --DATABASE||' Database' DATABASE,
+       --rtrim(database) passout
+       name||' Database' DATABASE,
+       lower(rtrim(name)) passout
+FROM   v$database

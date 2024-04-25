@@ -1,0 +1,1 @@
+select increment$,minvalue,maxvalue,cycle#,order$,cache,highwater,audit$,flags from seq$ where obj#=:1

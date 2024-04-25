@@ -1,0 +1,1 @@
+select audit$,options from procedure$ where obj#=:1

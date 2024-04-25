@@ -1,0 +1,1 @@
+BEGIN  dbms_ha_alerts_prvt.clear_instance_resources(   :dbdomain, :dbuniquename, :instance_name, :event_time);END;

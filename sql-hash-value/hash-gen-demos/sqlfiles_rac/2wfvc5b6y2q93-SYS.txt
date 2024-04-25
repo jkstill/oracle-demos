@@ -1,0 +1,1 @@
+select appid#, ver#, app_status, flag, srvn, modn    from fed$apps    where app_name=:1 and spare1=0

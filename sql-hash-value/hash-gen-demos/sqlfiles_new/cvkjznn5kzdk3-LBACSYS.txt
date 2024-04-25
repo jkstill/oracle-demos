@@ -1,0 +1,1 @@
+SELECT count(*) FROM lbacsys.ols$props where name = 'POLICY_COLUMN_DATATYPE' AND value$ = 'NUMBER'

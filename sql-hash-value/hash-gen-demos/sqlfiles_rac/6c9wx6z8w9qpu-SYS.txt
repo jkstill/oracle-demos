@@ -1,0 +1,1 @@
+select a.default_selectivity                             from association$ a                                      where a.obj# = :1                                          and a.property = :2

@@ -1,0 +1,1 @@
+update link_sources$ set (LOGON_COUNT, LAST_LOGON_TIME) = (select (link_sources$.logon_count+count(*)),  MAX(LOGON_TIME) from link_logons$ where  (link_sources$.source_id = link_logons$.source_id)  AND (link_logons$.logon_time <= :ref_tstmp))  where link_sources$.source_id in  (select unique source_id from link_logons$ where   link_logons$.logon_time <= :ref_tstmp)

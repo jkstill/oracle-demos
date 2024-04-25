@@ -1,0 +1,15 @@
+       begin
+         :vsn_min := dbms_backup_restore.protocol_version_number_min;   
+         :rel_min := dbms_backup_restore.protocol_release_number_min;   
+         :upd_min := dbms_backup_restore.protocol_update_number_min;    
+         :cmp_min := 0;                                                 
+         
+         :vsn_max := dbms_backup_restore.protocol_version_number_max;   
+         :rel_max := dbms_backup_restore.protocol_release_number_max;   
+         :upd_max := dbms_backup_restore.protocol_update_number_max;    
+         :cmp_max := 0;                                                 
+         :pkg_vsn := to_char(:vsn_max, 'fm00')||'.'||
+                     to_char(:rel_max, 'fm00')||'.'||
+                     to_char(:upd_max, 'fm00')||'.'||
+                     to_char(:cmp_max, 'fm00');      
+      end;

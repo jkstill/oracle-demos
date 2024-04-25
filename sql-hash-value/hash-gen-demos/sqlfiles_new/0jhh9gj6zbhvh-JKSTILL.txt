@@ -1,0 +1,1 @@
+SELECT /* DS_SVC */ /*+ dynamic_sampling(0) no_sql_tune no_monitoring optimizer_features_enable(default) no_parallel  */ NVL(SUM(C1),0) FROM (SELECT /*+ qb_name("innerQuery") NO_INDEX_FFS( "CUSTOMERS")  */ 1 AS C1 FROM "SOE"."CUSTOMERS" SAMPLE BLOCK(5.67054, 8) SEED(1)  "CUSTOMERS") innerQuery

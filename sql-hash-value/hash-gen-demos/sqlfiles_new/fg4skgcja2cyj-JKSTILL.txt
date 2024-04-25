@@ -1,0 +1,1 @@
+SELECT EXTRACTVALUE(VALUE(D), '/row/@op'), EXTRACTVALUE(VALUE(D), '/row/@dis'), EXTRACTVALUE(VALUE(D), '/row/@par'), EXTRACTVALUE(VALUE(D), '/row/@prt'), EXTRACTVALUE(VALUE(D), '/row/@dep'), EXTRACTVALUE(VALUE(D), '/row/@skp') FROM TABLE(XMLSEQUENCE(EXTRACT(XMLTYPE(:B1 ), '/*/display_map/row'))) D

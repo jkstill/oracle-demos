@@ -1,0 +1,8 @@
+select sql_id, parsing_schema_name, sql_fulltext
+from v$sql
+where (sql_id, child_number) in (
+		select sql_id, min(child_number)
+		from v$sql
+		where parsing_schema_name not in ('SYS','PERFSTAT','ORACLE_OCM')
+		group by sql_id
+	)

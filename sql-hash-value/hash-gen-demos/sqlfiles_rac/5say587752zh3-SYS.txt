@@ -1,0 +1,1 @@
+select name,online$,contents$,undofile#,undoblock#,blocksize,dflmaxext,dflinit,dflincr,dflextpct,dflminext, dflminlen, owner#,scnwrp,scnbas, NVL(pitrscnwrp, 0), NVL(pitrscnbas, 0), dflogging, bitmapped, inc#, MOD(flags,(4294967296 * 4294967296)), plugged, NVL(spare1,0), NVL(spare2,0), affstrength, FLOOR(flags/(4294967296 * 4294967296)) from ts$ where ts#=:1

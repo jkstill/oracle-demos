@@ -1,0 +1,1 @@
+select count(FA#) from SYS_FBA_TRACKEDTABLES where OBJ# = :1 and bitand(FLAGS, :2)=0

@@ -1,0 +1,1 @@
+update seg$ set type#=:4,blocks=:5,extents=:6,minexts=:7,maxexts=:8,extsize=:9,extpct=:10,user#=:11,iniexts=:12,lists=decode(:13, 65535, NULL, :13),groups=decode(:14, 65535, NULL, :14), cachehint=:15, hwmincr=:16, spare1=DECODE(:17,0,NULL,:17),scanhint=:18, bitmapranges=:19 where ts#=:1 and file#=:2 and block#=:3

@@ -1,0 +1,8 @@
+       begin
+         :cmp_min := dbms_backup_restore.protocol_component_number_min; 
+         :cmp_max := dbms_backup_restore.protocol_component_number_max; 
+         :pkg_vsn := to_char(:vsn_max, 'fm00')||'.'||
+                     to_char(:rel_max, 'fm00')||'.'||
+                     to_char(:upd_max, 'fm00')||'.'||
+                     to_char(:cmp_max, 'fm00');      
+      end;

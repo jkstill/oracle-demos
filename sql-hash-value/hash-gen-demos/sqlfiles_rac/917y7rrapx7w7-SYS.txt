@@ -1,0 +1,1 @@
+delete from smon_scn_time where scn in (select scn from (select scn from smon_scn_time order by scn) where rownum <=:1)

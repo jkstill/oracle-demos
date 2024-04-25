@@ -1,0 +1,1 @@
+select max(scn) from smon_scn_time

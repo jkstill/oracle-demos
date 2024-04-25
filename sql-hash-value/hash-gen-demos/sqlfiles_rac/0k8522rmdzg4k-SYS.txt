@@ -1,0 +1,1 @@
+select privilege# from sysauth$ where (grantee#=:1 or grantee#=1) and privilege#>0

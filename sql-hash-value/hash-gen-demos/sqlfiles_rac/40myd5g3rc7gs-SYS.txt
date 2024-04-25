@@ -1,0 +1,1 @@
+select r.location_name, max(r.reg_id), r.con_id from CDB_SUBSCR_DUR_REGISTRATIONS r left outer join gv$subscr_registration_stats v on r.reg_id = v.reg_id and r.con_id = v.con_id where location_name like 'net8://(%' group by r.location_name, r.con_id having min(current_timestamp-nvl(last_ntfn_sent_time, reg_time)) > :1

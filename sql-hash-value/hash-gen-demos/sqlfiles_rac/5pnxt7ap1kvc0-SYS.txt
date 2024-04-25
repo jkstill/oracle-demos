@@ -1,0 +1,1 @@
+select position#,sequence#,level#,argument,type#,charsetid,charsetform,properties,nvl(length, 0), nvl(precision#, 0),nvl(scale, 0),nvl(radix, 0), type_owner,type_name,type_subname,type_linkname,pls_type,type_type# from argument$ where obj#=:1 and procedure#=:2 order by sequence#

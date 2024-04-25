@@ -1,0 +1,13 @@
+select object_name
+	,object_type
+	, owner
+	, status
+	, to_char(created,'mm/dd/yyyy hh24:mi:ss') created
+	, to_char(last_ddl_time,'mm/dd/yyyy hh24:mi:ss') last_ddl_time
+from dba_objects
+where object_name like upper('%DBMS_SQLTUNE_INTERNAL%')
+union all
+select name object_name, type object_type, 'SYS' owner, 'FIXED' status, null created, null last_ddl_time
+from v$fixed_table
+where name like upper('%DBMS_SQLTUNE_INTERNAL%')
+order by object_name

@@ -1,0 +1,1 @@
+SELECT count(*) FROM lbacsys.ols$props where name = 'OID_STATUS_FLAG' AND value$ = '1'

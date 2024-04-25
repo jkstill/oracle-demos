@@ -1,0 +1,1 @@
+select current_value from hang_manager_parameters where name = :1

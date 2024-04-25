@@ -1,0 +1,1 @@
+SELECT o.obj# FROM sys.obj$ o, sys."_BASE_USER" u WHERE o.owner# = u.user# AND u.name = :1 AND o.type# = 2 AND o.name = :2

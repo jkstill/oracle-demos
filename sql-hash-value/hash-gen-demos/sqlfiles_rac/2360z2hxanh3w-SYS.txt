@@ -1,0 +1,1 @@
+select nvl(con_id, 0), lobtsn, lobrdba, lobobjid from x$lobstat   where lobspcalloc > 0 and lobcurrtime >= :1   order by lobspcalloc desc

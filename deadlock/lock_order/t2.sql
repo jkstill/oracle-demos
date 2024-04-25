@@ -1,3 +1,6 @@
+
+@10046
+
 select 'My Session : ' || s.sid, s.serial#, p.pid, p.spid
 from v$session s,  v$process p
 where s.paddr=p.addr
@@ -17,4 +20,6 @@ insert into table_1 values (2,'S2');
 commit;
 
 set echo off
+
+@10046_off
 

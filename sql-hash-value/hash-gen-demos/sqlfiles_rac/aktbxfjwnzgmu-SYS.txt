@@ -1,0 +1,1 @@
+update WRM$_DATABASE_INSTANCE set    last_ash_sample_id = :last_ash_sample_id where  instance_number    = :instance_number   and  dbid               = :dbid   and  startup_time = (select max(startup_time)                        from   WRM$_DATABASE_INSTANCE                        where  instance_number = :instance_number2                          and  dbid            = :dbid2 )

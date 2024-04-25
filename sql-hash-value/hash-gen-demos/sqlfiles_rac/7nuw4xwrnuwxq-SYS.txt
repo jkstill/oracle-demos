@@ -1,0 +1,1 @@
+select col#,intcol#,toid,version#,packed,intcols,intcol#s,flags, synobj#, nvl(typidcol#, 0) from coltype$ where obj#=:1 order by intcol# desc

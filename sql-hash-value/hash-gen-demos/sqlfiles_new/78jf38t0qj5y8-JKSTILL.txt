@@ -1,0 +1,6 @@
+select
+	case when to_number('19') >= 11
+	then ''
+	else '--'
+	end use_11g_feature
+from dual

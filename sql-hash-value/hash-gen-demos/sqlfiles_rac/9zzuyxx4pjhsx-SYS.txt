@@ -1,0 +1,1 @@
+select p_obj#, flags, code, audit$ from edition$ where obj#=:1

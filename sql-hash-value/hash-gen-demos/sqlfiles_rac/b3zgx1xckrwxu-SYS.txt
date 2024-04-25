@@ -1,0 +1,1 @@
+select host,userid,password,flag,authusr,authpwd, passwordx, authpwdx from link$ where owner#=:1 and name=:2

@@ -1,0 +1,1 @@
+select size_for_estimate,                      size_factor * 100 f,                    estd_physical_read_time,                estd_physical_reads              from v$db_cache_advice where id = '3'

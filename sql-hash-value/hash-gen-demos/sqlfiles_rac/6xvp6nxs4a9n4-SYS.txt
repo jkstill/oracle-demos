@@ -1,0 +1,1 @@
+select nvl(sum(space),0) from recyclebin$ where ts# = :1

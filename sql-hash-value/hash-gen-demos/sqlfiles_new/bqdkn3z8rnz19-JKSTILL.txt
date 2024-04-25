@@ -1,0 +1,1 @@
+SELECT DECODE(COUNT(*), 0, 'old ', 'cbqt ') FROM TABLE(XMLSEQUENCE(EXTRACT(XMLTYPE(:B1 ), '/*/info[@type="cbqt_star_transformation"]'))) D

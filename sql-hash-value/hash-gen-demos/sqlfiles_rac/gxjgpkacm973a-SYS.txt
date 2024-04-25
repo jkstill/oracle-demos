@@ -1,0 +1,1 @@
+select obj#, prgoid, creation_time, mod_time, spec_time, flags    from sys.scheduler$_lwjob_obj where userid = :1 and name = :2 and    subname is null

@@ -1,0 +1,1 @@
+select audit$,properties from type_misc$ where obj#=:1

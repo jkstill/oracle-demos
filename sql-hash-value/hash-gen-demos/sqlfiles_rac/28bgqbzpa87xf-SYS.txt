@@ -1,0 +1,22 @@
+      declare
+         policy        varchar2(512);
+         alldest       number  := dbms_rcvman.FALSE#;
+         rlgscn        number; 
+      begin
+         if (:alldest > 0) then
+            alldest := dbms_rcvman.TRUE#;
+         end if;
+         dbms_rcvman.setRecoveryDestFile(TRUE); 
+         dbms_rcvman.getRedoLogDeletionPolicy(policy  => policy);
+         dbms_rcvman.setRedoLogDeletionPolicy(policy  =>  policy,
+                                              alldest =>  alldest);
+         if ((policy like '%APPLIED%' OR 
+              policy like '%SHIPPED%') AND 
+             policy not like '%BACKED UP%') then
+            dbms_rcvman.getSCNForAppliedPolicy(
+               minscn     => :applied_scn
+              ,rlgscn     => rlgscn);
+         else
+            :applied_scn := 0;
+         end if;
+      end;

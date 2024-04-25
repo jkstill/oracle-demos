@@ -1,0 +1,1 @@
+select count(*) from dba_goldengate_privileges where username = :1 and   grant_select_privileges = 'NO' and not exists   (select 1 from dba_role_privs where grantee=:2 and granted_role='DBA')

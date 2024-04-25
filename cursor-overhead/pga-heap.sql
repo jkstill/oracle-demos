@@ -1,0 +1,2 @@
+select KSMCHCOM, KSMCHCLS, count(*) from X$KSMPP group by KSMCHCOM, KSMCHCLS order by KSMCHCOM, KSMCHCLS
+/

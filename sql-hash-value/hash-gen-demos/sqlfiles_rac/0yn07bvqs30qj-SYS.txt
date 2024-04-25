@@ -1,0 +1,1 @@
+select pctfree_stg, pctused_stg, size_stg,initial_stg, next_stg, minext_stg, maxext_stg, maxsiz_stg, lobret_stg,mintim_stg, pctinc_stg, initra_stg, maxtra_stg, optimal_stg, maxins_stg,frlins_stg, flags_stg, bfp_stg, enc_stg, cmpflag_stg, cmplvl_stg,imcflag_stg, ccflag_stg, flags2_stg from deferred_stg$  where obj# =:1

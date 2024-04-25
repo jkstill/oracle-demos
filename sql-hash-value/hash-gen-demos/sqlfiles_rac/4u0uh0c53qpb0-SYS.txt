@@ -1,0 +1,1 @@
+select time_mp, time_dp, scn, scn_wrp, scn_bas, num_mappings, tim_scn_map from smon_scn_time where scn > :1 order by scn

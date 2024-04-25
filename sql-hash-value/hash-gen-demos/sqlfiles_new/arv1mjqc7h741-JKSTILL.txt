@@ -1,0 +1,7 @@
+select
+	 sql_fulltext sql_text
+	-- sql_text
+ from v$sqlarea
+-- from dba_hist_sqltext
+where sql_id = '94dpszf0tstbx'
+  and rownum < 2

@@ -1,0 +1,1 @@
+select order#,columns,types from access$ where d_obj#=:1

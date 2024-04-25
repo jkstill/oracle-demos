@@ -1,0 +1,1 @@
+select bo#, intcol# from icoldep$ where obj#=:1

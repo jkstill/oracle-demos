@@ -1,0 +1,8 @@
+select plan_table_output
+--from table(dbms_xplan.display_cursor( null,null,'ALL ALLSTATS LAST'))
+--
+-- show estimated and elapsed timings
+--from table(dbms_xplan.display_cursor( null,null,'ALL ALLSTATS LAST'))
+-- shows outline data - query block names that may be used for hints
+from table(dbms_xplan.display_cursor( null,null,'ADVANCED LAST ALLSTATS ALL ALIAS PREDICATE NOTE'))
+--from table(dbms_xplan.display_cursor( null,null,'TYPICAL LAST'))

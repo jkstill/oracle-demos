@@ -1,0 +1,1 @@
+select col#,intcol#,charsetid,charsetform from col$ where obj#=:1 order by intcol# asc

@@ -1,0 +1,1 @@
+select toid from type$ where package_obj#=:1 and typ_name=:2

@@ -1,0 +1,1 @@
+select pos#,intcol#,col#,spare1,bo#,spare2,spare3 from icol$ where obj#=:1

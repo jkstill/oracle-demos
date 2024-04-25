@@ -1,0 +1,1 @@
+select BARRIERSCN from SYS_FBA_BARRIERSCN where STATUS = 1 and inst_id = 2

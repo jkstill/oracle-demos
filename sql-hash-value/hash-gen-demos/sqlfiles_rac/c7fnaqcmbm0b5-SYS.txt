@@ -1,0 +1,1 @@
+SELECT SUM(NUM_MAPPINGS+1) FROM smon_scn_time

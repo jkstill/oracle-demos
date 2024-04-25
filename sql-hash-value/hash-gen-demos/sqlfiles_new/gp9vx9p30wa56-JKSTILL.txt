@@ -1,0 +1,3 @@
+select invalidations, executions, child_number
+from v$sql
+where sql_id = :vsqlid

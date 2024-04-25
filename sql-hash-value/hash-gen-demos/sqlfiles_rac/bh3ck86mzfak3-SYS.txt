@@ -1,0 +1,5 @@
+update wri$_adv_tasks set mtime = SYSDATE,
+                status = nvl(:new_status, status),
+                cleanup = nvl(:new_cleanup, cleanup),
+                version = nvl(:db_version, version)
+            where id = :task_id

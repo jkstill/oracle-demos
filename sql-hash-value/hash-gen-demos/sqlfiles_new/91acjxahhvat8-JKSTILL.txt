@@ -1,0 +1,1 @@
+SELECT /*+ opt_param('parallel_execution_enabled', 'false') */ EXTRACTVALUE(VALUE(D), '/stats/stat[@name="qb_copies"]') COPIES, EXTRACTVALUE(VALUE(D), '/stats/stat[@name="qb_costed"]') COSTED FROM TABLE(XMLSEQUENCE (EXTRACT(XMLTYPE(:B1 ), '/*/stats[@type="cbqt_metrics"]'))) D

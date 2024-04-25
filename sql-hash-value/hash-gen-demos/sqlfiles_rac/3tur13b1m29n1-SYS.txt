@@ -1,0 +1,1 @@
+select group_tbid_kewrtbgm, member_tbid_kewrtbgm from  (select * from x$kewrtbgm  where con_id = :con_id_01 or (   (:con_id_02 = 1        and con_id = 0)  or (:con_id_03 = 0        and con_id = 1))  ) 

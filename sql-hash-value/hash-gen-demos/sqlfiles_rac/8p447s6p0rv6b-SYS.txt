@@ -1,0 +1,1 @@
+select java_pool_size_for_estimate s,           java_pool_size_factor * 100 f,           estd_lc_load_time l, 0            from v$java_pool_advice

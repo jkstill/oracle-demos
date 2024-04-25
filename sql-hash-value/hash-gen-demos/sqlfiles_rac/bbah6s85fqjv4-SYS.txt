@@ -1,0 +1,1 @@
+select  decode(u.type#, 2, u.ext_username, u.name), o.name, trigger$.sys_evts, trigger$.type#  from   obj$ o, user$ u, trigger$  where o.type# = 12 and ((bitand(trigger$.property, 8) = 8)  or (bitand(trigger$.property,  1048576) = 1048576)) and   (bitand(trigger$.property, 16) != 16)  and   trigger$.obj# = o.obj# and o.owner# = u.user# order by o.obj#

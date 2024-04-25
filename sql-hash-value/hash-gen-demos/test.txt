@@ -1,0 +1,1 @@
+delete /* QOSH:PURGE_OSS */ /*+ dynamic_sampling(4) */ from sys.opt_sqlstat$  where last_gather_time < least(:1, sysdate - :2/86400)  and rownum <=  :3 

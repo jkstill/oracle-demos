@@ -1,0 +1,1 @@
+select /* QOSD*/ /*+ index(f) */ f_own#, type, reason, ctime, tab_cnt from opt_finding$ f where f_id = :1

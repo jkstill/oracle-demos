@@ -1,0 +1,1 @@
+SELECT /*+ opt_param('parallel_execution_enabled', 'false') */ SUBSTR(EXTRACT(VALUE(D), '/stats/@type'), LENGTH('transformation_')+1) NAME, EXTRACTVALUE(VALUE(D), '/stats/stat[@name="iter_count"]') FROM TABLE(XMLSEQUENCE (EXTRACT(XMLTYPE(:B1 ), '/*/stats'))) D WHERE EXTRACT(VALUE(D), '/stats/@type') LIKE 'transformation_%' ORDER BY 1

@@ -1,0 +1,1 @@
+SELECT /* DS_SVC */ /*+ dynamic_sampling(0) no_sql_tune no_monitoring optimizer_features_enable(default) no_parallel  */ NVL(SUM(C1),0) FROM (SELECT /*+ qb_name("innerQuery") NO_INDEX_FFS( "SOE_STATS")  */ 1 AS C1 FROM "SOE"."SOE_STATS" "SOE_STATS") innerQuery

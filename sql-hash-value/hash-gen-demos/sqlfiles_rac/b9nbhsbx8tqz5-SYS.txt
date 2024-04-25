@@ -1,0 +1,1 @@
+SELECT /*+ OPT_PARAM('_parallel_syspls_obey_force' 'false') */ SPARE4 FROM SYS.OPTSTAT_HIST_CONTROL$ WHERE SNAME = :B1 

@@ -1,0 +1,1 @@
+SELECT pol#, pol_name, column_name, package,  options, flags from lbacsys.ols$pol

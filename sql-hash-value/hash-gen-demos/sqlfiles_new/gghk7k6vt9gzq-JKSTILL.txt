@@ -1,0 +1,1 @@
+SELECT /*+ opt_param('parallel_execution_enabled', 'false') */ extract(xmlval, '/*/outline_data').getClobVal() from (select xmltype(:v_other_xml) xmlval from sys.dual)

@@ -1,0 +1,1 @@
+select ts#,file#,block#,cols,nvl(size$,-1),pctfree$,pctused$,initrans,maxtrans,hashkeys,func,extind,avgchn,nvl(degree,1),nvl(instances,1),nvl(flags,0),nvl(spare1,0), nvl(spare2,0) from clu$ where obj#=:1

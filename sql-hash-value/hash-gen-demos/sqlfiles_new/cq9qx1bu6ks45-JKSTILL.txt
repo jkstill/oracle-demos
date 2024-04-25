@@ -1,0 +1,1 @@
+SELECT /*+ opt_param('parallel_execution_enabled', 'false') */ SUBSTR(EXTRACTVALUE(VALUE(D), '/hint'),1,4000) FROM TABLE(XMLSEQUENCE(EXTRACT(XMLTYPE(:B1 ), '/*/outline_data/hint'))) D

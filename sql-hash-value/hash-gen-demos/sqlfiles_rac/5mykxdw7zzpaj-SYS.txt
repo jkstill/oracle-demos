@@ -1,0 +1,1 @@
+delete from link_logons$ where logon_time <= :ref_tstmp

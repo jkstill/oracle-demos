@@ -1,0 +1,1 @@
+select /*+ connect_by_filtering index(sysauth$ i_sysauth1) */ privilege#, bitand(nvl(option$, 0), 72), grantee#, level from sysauth$ connect by grantee#=prior privilege# and privilege#>0 start with grantee#=:1 and privilege#>0

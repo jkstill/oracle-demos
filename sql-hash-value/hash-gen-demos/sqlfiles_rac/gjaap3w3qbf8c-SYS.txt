@@ -1,0 +1,1 @@
+select count(*) from ilmobj$ where rownum = 1

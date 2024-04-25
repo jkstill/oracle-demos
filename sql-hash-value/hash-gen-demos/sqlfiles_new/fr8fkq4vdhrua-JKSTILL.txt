@@ -1,0 +1,1 @@
+select upper('compute_sql') cobject from dual

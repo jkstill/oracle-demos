@@ -1,0 +1,6 @@
+      begin
+         dbms_rcvman.setDatabase(upper(:dbname:dbname_i),
+                                 :rlgscn,
+                                 :rlgtime,
+                                 :fhdbi:fhdbi_i);
+      end;

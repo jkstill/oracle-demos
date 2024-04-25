@@ -1,0 +1,11 @@
+      declare
+         vsn  varchar2(20);
+            begin
+              vsn := dbms_rcvman.getPackageVersion;
+              :pkg_vsn:pkg_vsn_i := vsn;
+              if vsn is not null then
+                 :pkg_vsnub4 :=
+                   to_number(substr(vsn,1,2) || substr(vsn,4,2) ||
+                             substr(vsn,7,2) || nvl(substr(vsn,10,2),'00'));
+              end if;
+            end;

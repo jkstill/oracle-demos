@@ -1,0 +1,1 @@
+select vs.remote from sys.v_$sql vs where vs.sql_id = :sqlid and       vs.child_number = :child_cursor_no

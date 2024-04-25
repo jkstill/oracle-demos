@@ -1,0 +1,1 @@
+select procedure#,entrypoint# from procedureplsql$ where obj#=:1 order by procedure#

@@ -1,0 +1,1 @@
+select value$ from sys.props$ where name = :1

@@ -1,0 +1,1 @@
+select rowcnt, blkcnt, empcnt, avgspc, chncnt, avgrln, analyzetime, samplesize, avgspc_flb, flbcnt, flags from tab_stats$ where obj#=:1

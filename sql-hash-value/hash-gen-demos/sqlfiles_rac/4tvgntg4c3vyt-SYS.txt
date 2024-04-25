@@ -1,0 +1,1 @@
+select /* QOSD */  /*+ index(d) */  dir_id, f_id, type, state, flags, created, last_modified, last_used, vc_one from opt_directive$ d where dir_own# = :1

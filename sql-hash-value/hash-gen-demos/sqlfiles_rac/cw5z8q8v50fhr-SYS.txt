@@ -1,0 +1,1 @@
+select distinct how from audit_ng$ where policy# = :1

@@ -1,0 +1,1 @@
+select /* EXEC_FROM_DBMS_XPLAN */ 1, prev_sql_id, prev_child_number from sys.v_$session where sid=userenv('sid') and username is not null and prev_hash_value <> 0 

@@ -1,0 +1,1 @@
+select procedure#,procedurename,properties,itypeobj#, properties2 from procedureinfo$ where obj#=:1 order by procedurename desc, overload# desc

@@ -1,0 +1,4 @@
+select owner, object_name, package_name, argument_name
+from dba_arguments
+where argument_name like '%SQL%ID%'
+order by 1,2,3

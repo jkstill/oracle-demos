@@ -1,0 +1,16 @@
+select
+	username
+	, default_tablespace TABLESPACE
+	, temporary_tablespace TMP_SPACE
+	, to_char(created,'yyyy-mm-dd hh24:mi:ss') created
+	, profile
+	 , proxy_only_connect
+	 , password_versions
+	 , authentication_type
+	--  , oracle_maintained
+	, to_char(lock_date,'yyyy-mm-dd hh24:mi:ss') lock_date
+	, to_char(expiry_date,'yyyy-mm-dd hh24:mi:ss') expiry_date
+from dba_users
+where username like upper('%%') escape '\'
+	 and oracle_maintained != 'Y'
+order by username

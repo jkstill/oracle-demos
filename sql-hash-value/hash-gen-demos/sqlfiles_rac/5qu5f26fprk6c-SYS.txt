@@ -1,0 +1,1 @@
+select ct.toid, ct.version#  from sys.col$ c, sys.coltype$ ct, sys.obj$ o  where c.intcol# = ct.intcol#  and ct.toid = o.oid$  and o.type# <> 10  and c.obj# = ct.obj#  and c.name = 'USER_DATA'  and c.obj# = :1

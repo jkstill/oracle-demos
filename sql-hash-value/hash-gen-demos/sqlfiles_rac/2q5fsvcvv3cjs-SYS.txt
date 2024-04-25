@@ -1,0 +1,1 @@
+select inst_id, open_mode from gv$pdbs  where con_id = :1

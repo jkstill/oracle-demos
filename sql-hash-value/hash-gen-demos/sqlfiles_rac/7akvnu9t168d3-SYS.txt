@@ -1,0 +1,1 @@
+select baseobject,type#,update$,insert$,delete$,refnewname,refoldname,whenclause,definition,enabled,property,sys_evts,nttrigcol,nttrigatt,refprtname,rowid,actionlineno,trignameline,trignamecol, trignamecolofs,actioncolno from trigger$ where obj# =:1

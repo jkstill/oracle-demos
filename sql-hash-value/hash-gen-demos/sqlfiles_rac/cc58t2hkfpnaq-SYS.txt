@@ -1,0 +1,1 @@
+select condition, condition_eval, type, sysactn, syspriv from aud_policy$ where policy#=:1

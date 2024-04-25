@@ -1,0 +1,1 @@
+select cols,audit$,textlength,intcols,nvl(property,0),flags,rowid from view$ where obj#=:1

@@ -1,0 +1,1 @@
+select con_id  from v$containers    where open_mode in ('READ WRITE', 'READ ONLY') 

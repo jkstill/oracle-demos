@@ -1,0 +1,1 @@
+select tablespace_id, rfno, allocated_space, file_size, file_maxsize, changescn8, flag, inst_id from sys.ts$, GV$FILESPACE_USAGE where (con_id is NULL or con_id = sys_context('USERENV', 'CON_ID')) and ts# = tablespace_id and online$ != 3 and inst_id != :inst and (changescn8 > :s)

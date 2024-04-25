@@ -1,0 +1,1 @@
+select to_char(sysdate,'yyyy-mm-dd_HH24-MM-SS') u_date from dual

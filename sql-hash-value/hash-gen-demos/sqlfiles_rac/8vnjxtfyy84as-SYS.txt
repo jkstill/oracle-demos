@@ -1,0 +1,1 @@
+select flags from   system.aq$_queues q, system.aq$_queue_tables t where  q.table_objno = t.objno and t.schema= :1 and q.name= :2 

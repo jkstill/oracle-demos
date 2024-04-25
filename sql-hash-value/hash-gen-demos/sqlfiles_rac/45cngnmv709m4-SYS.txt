@@ -1,0 +1,1 @@
+select subscriber_id, name, address, protocol, subscriber_type,      rule_name, trans_name, ruleset_name, negative_ruleset_name,          creation_time, deletion_time,  modification_time, scn_at_remove      , scn_at_add from  AQ$_SUBSCRIBER_TABLE where queue_name=:1                        and schema=:2 and bitand(subscriber_type, 2) = 2

@@ -1,0 +1,1 @@
+select streams_pool_size_for_estimate s,           streams_pool_size_factor * 100 f,           estd_spill_time + estd_unspill_time, 0  from v$streams_pool_advice

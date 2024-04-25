@@ -1,0 +1,1 @@
+insert into  wrm$_snapshot_details  (snap_id,dbid,instance_number,table_id,begin_time,end_time,step_id)    values (:snap_id,:dbid,:instance_number,:bind1,:bind2,:bind3,:step_id)

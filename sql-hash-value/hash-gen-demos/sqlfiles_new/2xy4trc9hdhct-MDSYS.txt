@@ -1,0 +1,133 @@
+declare
+   stmt varchar2(200);
+   cnt number;
+   is_active number;
+   table_not_found exception;
+   pragma exception_init(table_not_found, -00942);
+   package_not_found exception;
+   pragma exception_init(package_not_found, -04042);
+   object_not_found exception;
+   pragma exception_init(object_not_found, -04043);
+   package_invalidated exception;
+   pragma exception_init(package_invalidated, -04061);
+BEGIN
+
+   stmt := 'select mdsys.sdo_util.SpatialActive from dual';
+   begin
+     execute immediate stmt into is_active;
+     exception
+       when package_invalidated then
+         is_active := 0;
+       when package_not_found then
+         is_active := 0;
+       when object_not_found then
+         is_active := 0;
+       when others then
+         is_active := 0;
+         SYS.DBMS_SYSTEM.KSDWRT(SYS.DBMS_SYSTEM.TRACE_FILE,
+                                  'EXCEPTION[prvtgmd.sql(' || $$PLSQL_LINE || ')3]: ' || SQLERRM);
+   end;
+   if ( is_active = 0 ) then
+     return;
+   end if;
+
+   if sys.dbms_standard.dictionary_obj_type = 'USER' THEN
+     begin
+       stmt := 'DELETE FROM MDSYS.SDO_GEOM_METADATA_TABLE ' ||
+               'WHERE SDO_OWNER = :owner ';
+       EXECUTE IMMEDIATE stmt USING sys.dbms_standard.dictionary_obj_name;
+       exception
+         when table_not_found then NULL;
+         when others then
+           SYS.DBMS_SYSTEM.KSDWRT(SYS.DBMS_SYSTEM.TRACE_FILE,
+                                  'EXCEPTION[prvtgmd.sql(' || $$PLSQL_LINE || ')4]: ' || SQLERRM); RAISE;
+     end;
+
+     begin
+       stmt := 'DELETE FROM MDSYS.SDO_MAPS_TABLE ' ||
+               'WHERE SDO_OWNER = :owner ';
+       EXECUTE IMMEDIATE stmt USING sys.dbms_standard.dictionary_obj_name;
+       exception
+         when table_not_found then NULL;
+         when others then
+           SYS.DBMS_SYSTEM.KSDWRT(SYS.DBMS_SYSTEM.TRACE_FILE,
+                                  'EXCEPTION[prvtgmd.sql(' || $$PLSQL_LINE || ')5]: ' || SQLERRM); RAISE;
+     end;
+
+     begin
+       stmt := 'DELETE FROM MDSYS.SDO_CACHED_MAPS_TABLE ' ||
+               'WHERE SDO_OWNER = :owner ';
+       EXECUTE IMMEDIATE stmt USING sys.dbms_standard.dictionary_obj_name;
+       exception
+         when table_not_found then NULL;
+         when others then
+           SYS.DBMS_SYSTEM.KSDWRT(SYS.DBMS_SYSTEM.TRACE_FILE,
+                                  'EXCEPTION[prvtgmd.sql(' || $$PLSQL_LINE || ')6]: ' || SQLERRM); RAISE;
+     end;
+
+     begin
+       stmt := 'DELETE FROM MDSYS.SDO_STYLES_TABLE ' ||
+               'WHERE SDO_OWNER = :owner ';
+       EXECUTE IMMEDIATE stmt USING sys.dbms_standard.dictionary_obj_name;
+       exception
+         when table_not_found then NULL;
+         when others then
+           SYS.DBMS_SYSTEM.KSDWRT(SYS.DBMS_SYSTEM.TRACE_FILE,
+                                  'EXCEPTION[prvtgmd.sql(' || $$PLSQL_LINE || ')7]: ' || SQLERRM); RAISE;
+     end;
+
+     begin
+       stmt := 'DELETE FROM MDSYS.SDO_THEMES_TABLE ' ||
+               'WHERE SDO_OWNER = :owner ';
+       EXECUTE IMMEDIATE stmt USING sys.dbms_standard.dictionary_obj_name;
+       exception
+         when table_not_found then NULL;
+         when others then
+           SYS.DBMS_SYSTEM.KSDWRT(SYS.DBMS_SYSTEM.TRACE_FILE,
+                                  'EXCEPTION[prvtgmd.sql(' || $$PLSQL_LINE || ')8]: ' || SQLERRM); RAISE;
+     end;
+
+     begin
+       stmt := 'DELETE FROM MDSYS.SDO_LRS_METADATA_TABLE ' ||
+               'WHERE SDO_OWNER = :owner ';
+       EXECUTE IMMEDIATE stmt USING sys.dbms_standard.dictionary_obj_name;
+       exception
+         when table_not_found then NULL;
+         when others then
+           SYS.DBMS_SYSTEM.KSDWRT(SYS.DBMS_SYSTEM.TRACE_FILE,
+                                  'EXCEPTION[prvtgmd.sql(' || $$PLSQL_LINE || ')9]: ' || SQLERRM); RAISE;
+     end;
+
+     begin
+       stmt := 'DELETE FROM MDSYS.SDO_TOPO_METADATA_TABLE ' ||
+               'WHERE SDO_OWNER = :owner ';
+       EXECUTE IMMEDIATE stmt USING sys.dbms_standard.dictionary_obj_name;
+       exception
+         when table_not_found then NULL;
+         when others then
+           SYS.DBMS_SYSTEM.KSDWRT(SYS.DBMS_SYSTEM.TRACE_FILE,
+                                  'EXCEPTION[prvtgmd.sql(' || $$PLSQL_LINE || ')10]: ' || SQLERRM); RAISE;
+     end;
+
+     begin
+       stmt := 'DELETE FROM MDSYS.SDO_ANNOTATION_TEXT_METADATA ' ||
+               'WHERE F_TABLE_SCHEMA = :owner ';
+       EXECUTE IMMEDIATE stmt USING sys.dbms_standard.dictionary_obj_name;
+       exception
+         when table_not_found then NULL;
+         when others then
+           SYS.DBMS_SYSTEM.KSDWRT(SYS.DBMS_SYSTEM.TRACE_FILE,
+                                  'EXCEPTION[prvtgmd.sql(' || $$PLSQL_LINE || ')11]: ' || SQLERRM); RAISE;
+     end;
+
+     begin
+       stmt := 'DELETE FROM MDSYS.CSW_SERVICE_INFO ' ||
+               'WHERE SDO_OWNER = :owner ';
+       EXCEPTION
+         when table_not_found then NULL;
+         when others then
+           SYS.DBMS_SYSTEM.KSDWRT(SYS.DBMS_SYSTEM.TRACE_FILE,
+                                  'EXCEPTION[prvtgmd.sql(' || $$PLSQL_LINE || ')12]: ' || SQLERRM); RAISE;
+    end;
+  end if;
+end;

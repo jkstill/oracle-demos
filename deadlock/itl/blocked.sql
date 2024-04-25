@@ -2,6 +2,7 @@
 col p1text format a10
 col p2text format a15
 col p3text format a15
+col event format a40
 
 set linesize 200
 
