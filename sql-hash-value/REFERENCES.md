@@ -1,8 +1,7 @@
 
 Some references that may be useful
 
-
-https://www.lab128.com/all_these_oracle_ids/article_text_sql_ids/
+https://web.archive.org/web/20230528173101/https://www.lab128.com/all_these_oracle_ids/article_text_sql_ids/
 
 https://carlos-sierra.net/2013/09/12/function-to-compute-sql_id-out-of-sql_text
 
